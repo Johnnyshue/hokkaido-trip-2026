@@ -16,13 +16,17 @@
   .card { transition: all 0.15s ease; overflow: hidden; }
   .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
   .card.checked { background: #ecfdf5; border-color: #10b981; }
-  .card-icon { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 44px; position: relative; }
-  .card-icon::after { content: ''; position: absolute; inset: 0; background: inherit; opacity: 0.15; }
-  .card-icon > span { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+  .card-icon { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 56px; position: relative; overflow: hidden; background-size: cover; background-position: center; }
+  .card-icon.has-img > span { display: none; }
+  .card-icon > span { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); z-index: 1; }
+  .card-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-icon .photo-credit { position: absolute; bottom: 2px; right: 4px; font-size: 9px; color: rgba(255,255,255,0.8); background: rgba(0,0,0,0.4); padding: 1px 4px; border-radius: 3px; z-index: 2; }
   .icon-景點 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
   .icon-美食 { background: linear-gradient(135deg, #fed7aa, #fdba74); }
   .icon-購物 { background: linear-gradient(135deg, #fbcfe8, #f9a8d4); }
   .icon-溫泉 { background: linear-gradient(135deg, #e9d5ff, #d8b4fe); }
+  .card-icon.loading::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 1.5s infinite; }
+  @keyframes shimmer { 0% { transform: translateX(-100%);} 100% { transform: translateX(100%);} }
   details summary { cursor: pointer; list-style: none; }
   details summary::-webkit-details-marker { display: none; }
   @media (prefers-color-scheme: dark) {
@@ -449,7 +453,7 @@ function render() {
       const icon = getIcon(d);
       return `
       <div class="card ${checked ? 'checked' : ''} bg-white border border-gray-200 rounded-lg flex flex-col" data-id="${d.id}">
-        <div class="card-icon icon-${d.type}"><span>${icon}</span></div>
+        <div class="card-icon icon-${d.type}" data-img-id="${d.id}" data-name="${encodeURIComponent(d.name)}"><span>${icon}</span></div>
         <div class="p-3 flex items-start gap-2">
           <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggle('${d.id}')" class="mt-1 w-4 h-4 accent-teal-600 flex-shrink-0">
           <div class="flex-1 min-w-0">
@@ -470,6 +474,8 @@ function render() {
       </div>`;
     }).join('');
   }
+  // 自動載入圖片
+  if (typeof observeImages === 'function') observeImages();
 }
 
 function switchTab(zone) {
@@ -535,11 +541,114 @@ function clearAll() {
   render();
 }
 
+// === 官網 og:image 照片（從 og_images.json 載入）+ Wikipedia fallback ===
+let OG_IMAGES = {};
+const WIKI_CACHE_KEY = 'hokkaido_wiki_cache_v1';
+const wikiCache = JSON.parse(localStorage.getItem(WIKI_CACHE_KEY) || '{}');
+
+function saveWikiCache() {
+  try { localStorage.setItem(WIKI_CACHE_KEY, JSON.stringify(wikiCache)); } catch {}
+}
+
+function cleanQuery(name) {
+  return name
+    .replace(/（[^）]*）|\([^)]*\)|\[[^\]]*\]|【[^】]*】/g, '')
+    .replace(/⚠️|★+|（[^）]*）|\([^)]*\)|同\s*[A-Z]\d+/g, '')
+    .split(/[／\/]/)[0]
+    .split('+')[0]
+    .trim();
+}
+
+async function fetchWikiImage(query, lang) {
+  try {
+    const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data.thumbnail?.source) return data.thumbnail.source.replace(/\/\d+px-/, '/480px-');
+    if (data.originalimage?.source) return data.originalimage.source;
+  } catch {}
+  return null;
+}
+
+function applyImage(el, url, source) {
+  const img = new Image();
+  img.onload = () => {
+    el.classList.add('has-img');
+    el.innerHTML = `<img src="${url}" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="photo-credit">${source}</div>`;
+  };
+  img.onerror = () => {
+    el.classList.remove('loading');
+  };
+  img.referrerPolicy = 'no-referrer';
+  img.src = url;
+}
+
+async function loadCardImage(el) {
+  if (el.dataset.loaded) return;
+  el.dataset.loaded = '1';
+  const id = el.dataset.imgId;
+  const name = decodeURIComponent(el.dataset.name);
+
+  // 1. 優先 og:image（官網照）
+  if (OG_IMAGES[id]) {
+    applyImage(el, OG_IMAGES[id], '官網');
+    return;
+  }
+
+  // 2. Wikipedia fallback
+  if (wikiCache[id] === 'none') return;
+  if (wikiCache[id]) { applyImage(el, wikiCache[id], 'Wikipedia'); return; }
+
+  el.classList.add('loading');
+  const q = cleanQuery(name);
+  let img = await fetchWikiImage(q, 'ja');
+  if (!img) img = await fetchWikiImage(q, 'en');
+  if (!img) img = await fetchWikiImage(q, 'zh');
+  el.classList.remove('loading');
+
+  if (img) { wikiCache[id] = img; applyImage(el, img, 'Wikipedia'); }
+  else wikiCache[id] = 'none';
+  saveWikiCache();
+}
+
+// 節流載入：og:image 全部立即載（瀏覽器 loading=lazy 會排程）；Wikipedia fallback 分批以避免 burst
+let wikiQueue = [];
+let wikiRunning = 0;
+const WIKI_CONCURRENCY = 4;
+
+async function processWikiQueue() {
+  while (wikiRunning < WIKI_CONCURRENCY && wikiQueue.length) {
+    const el = wikiQueue.shift();
+    wikiRunning++;
+    loadCardImage(el).finally(() => { wikiRunning--; processWikiQueue(); });
+  }
+}
+
+function observeImages() {
+  document.querySelectorAll('.card-icon[data-img-id]:not([data-loaded])').forEach(el => {
+    const id = el.dataset.imgId;
+    if (OG_IMAGES[id]) {
+      loadCardImage(el);  // 同步觸發，內部自己處理
+    } else {
+      wikiQueue.push(el);
+    }
+  });
+  processWikiQueue();
+}
+
+// 綁定初始 UI
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('filterRating').addEventListener('change', render);
 document.getElementById('filterType').addEventListener('change', render);
 document.getElementById('selectedCount').textContent = selected.size;
 render();
+
+// 載入 og_images.json 後重新 render 以觸發圖片載入
+fetch('og_images.json')
+  .then(r => r.ok ? r.json() : {})
+  .catch(() => ({}))
+  .then(data => { OG_IMAGES = data; render(); });
 </script>
 </body>
 </html>
