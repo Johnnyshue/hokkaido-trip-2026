@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="北海道 9 日自由行景點 Menu｜236 個精選景點、美食、購物選項，可互動勾選分享">
+<title>北海道 9 日 Trip Menu｜5/23–5/31</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif; }
+  .rating-3 { color: #f59e0b; }
+  .rating-2 { color: #06b6d4; }
+  .rating-1 { color: #94a3b8; }
+  .tab-active { background: #0f766e; color: white; }
+  .card { transition: all 0.15s ease; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .card.checked { background: #ecfdf5; border-color: #10b981; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0f172a; color: #e2e8f0; }
+    .card { background: #1e293b !important; border-color: #334155 !important; }
+    .card.checked { background: #064e3b !important; border-color: #10b981 !important; }
+    input[type="text"], select { background: #1e293b; color: #e2e8f0; border-color: #334155; }
+    header { background: #1e293b !important; }
+  }
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<header class="bg-white shadow sticky top-0 z-20">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center flex-wrap gap-2">
+      <h1 class="text-xl md:text-2xl font-bold text-teal-700">🗾 北海道 9 日 Trip Menu</h1>
+      <div class="text-sm text-gray-600 dark:text-gray-300">2026/5/23–5/31｜236 個選項</div>
+    </div>
+    <div class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+      路線：新千歲 → 洞爺湖(2) → 函館(2) → 札幌(4) → 新千歲｜勾選 <span id="selectedCount" class="font-bold text-teal-600">0</span> 個
+      <button onclick="exportSelection()" class="ml-2 px-2 py-0.5 bg-teal-600 text-white rounded text-xs hover:bg-teal-700">匯出所選 ID</button>
+      <button onclick="clearAll()" class="ml-1 px-2 py-0.5 bg-gray-400 text-white rounded text-xs hover:bg-gray-500">清除</button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <nav class="max-w-6xl mx-auto px-4 pb-2 flex gap-1 overflow-x-auto text-sm">
+    <button onclick="switchTab('A')" class="tab-btn tab-active whitespace-nowrap px-3 py-1.5 rounded font-medium" data-tab="A">A 洞爺湖 (47)</button>
+    <button onclick="switchTab('B')" class="tab-btn whitespace-nowrap px-3 py-1.5 rounded font-medium bg-gray-200" data-tab="B">B 函館 (62)</button>
+    <button onclick="switchTab('C')" class="tab-btn whitespace-nowrap px-3 py-1.5 rounded font-medium bg-gray-200" data-tab="C">C 札幌 (63)</button>
+    <button onclick="switchTab('D')" class="tab-btn whitespace-nowrap px-3 py-1.5 rounded font-medium bg-gray-200" data-tab="D">D Day Trip (52)</button>
+    <button onclick="switchTab('E')" class="tab-btn whitespace-nowrap px-3 py-1.5 rounded font-medium bg-gray-200" data-tab="E">E JR 沿線 (12)</button>
+  </nav>
+
+  <!-- Filter bar -->
+  <div class="max-w-6xl mx-auto px-4 pb-3 flex gap-2 flex-wrap items-center text-sm">
+    <input type="text" id="search" placeholder="🔍 搜尋名稱/特色..." class="flex-1 min-w-[180px] px-3 py-1.5 border rounded">
+    <select id="filterRating" class="px-2 py-1.5 border rounded">
+      <option value="">所有評級</option>
+      <option value="3">⭐⭐⭐ 必去</option>
+      <option value="2">⭐⭐ 有時間去</option>
+      <option value="1">⭐ 深度愛好者</option>
+    </select>
+    <select id="filterType" class="px-2 py-1.5 border rounded">
+      <option value="">所有類型</option>
+      <option value="景點">景點</option>
+      <option value="美食">美食</option>
+      <option value="購物">購物</option>
+      <option value="溫泉">溫泉</option>
+    </select>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-4">
+  <div id="items" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+  <div id="emptyMsg" class="hidden text-center py-12 text-gray-400">沒有符合條件的項目</div>
+</main>
+
+<footer class="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-400 dark:text-gray-500">
+  <p>資料來源：洞爺湖觀光協會、Travel Hakodate、HOKKAIDO LOVE、Tabelog、Japan Guide、KKday｜Updated 2026/04</p>
+  <p class="mt-1">勾選後按「匯出所選 ID」→ 回傳給 Claude 整合成最終行程表</p>
+</footer>
+
+<!-- Export modal -->
+<div id="exportModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+  <div class="bg-white dark:bg-slate-800 rounded-lg max-w-lg w-full p-5 max-h-[80vh] overflow-y-auto">
+    <h3 class="font-bold text-lg mb-2">已選 <span id="exportCount">0</span> 個項目</h3>
+    <textarea id="exportText" readonly class="w-full h-64 p-2 border rounded font-mono text-xs dark:bg-slate-900 dark:border-slate-700"></textarea>
+    <div class="flex gap-2 mt-3">
+      <button onclick="copyExport()" class="flex-1 px-3 py-2 bg-teal-600 text-white rounded hover:bg-teal-700">📋 複製</button>
+      <button onclick="closeModal()" class="px-3 py-2 bg-gray-300 dark:bg-slate-600 rounded">關閉</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = [
+// ========== A 洞爺湖 ==========
+{id:"A1",zone:"A",type:"景點",rating:3,name:"洞爺湖汽船（中島遊覽船）",price:"¥1,600",desc:"繞中島，可登島健行",web:"https://www.toyakokisen.com/",map:"https://www.google.com/maps/search/洞爺湖汽船+溫泉街"},
+{id:"A2",zone:"A",type:"景點",rating:3,name:"洞爺湖長期煙火大會（必看）",price:"免費（船¥1,800）",desc:"每晚 20:45–21:05",web:"https://www.laketoya.com/event/fireworks/",map:"https://www.google.com/maps/search/洞爺湖溫泉湖畔+煙火"},
+{id:"A3",zone:"A",type:"景點",rating:3,name:"有珠山纜車 + 昭和新山",price:"¥2,000",desc:"360° 火山景觀",web:"https://usuzan.hokkaido.jp/",map:"https://www.google.com/maps/search/有珠山ロープウェイ"},
+{id:"A4",zone:"A",type:"景點",rating:2,name:"Sairo 展望台 サイロ展望台",price:"免費",desc:"400m 俯瞰湖+羊蹄山",web:"https://www.instagram.com/silotenbodai_laketoyahokkaido/",map:"https://www.google.com/maps/search/サイロ展望台+洞爺湖"},
+{id:"A5",zone:"A",type:"景點",rating:2,name:"金比羅火口災害遺構散策路",price:"免費",desc:"被土石流掩埋公寓現場",web:"https://www.toya-usu-geopark.org/trail/konpira",map:"https://www.google.com/maps/search/金比羅火口災害遺構散策路"},
+{id:"A6",zone:"A",type:"景點",rating:2,name:"西山山麓火口散策路",price:"免費",desc:"走 2000 年噴發隆起路",web:"https://www.visit-hokkaido.jp/spot/detail_10430.html",map:"https://www.google.com/maps/search/西山山麓火口散策路"},
+{id:"A7",zone:"A",type:"景點",rating:2,name:"昭和新山熊牧場",price:"¥900",desc:"近距離餵棕熊",web:"https://www.kumakuma.co.jp/",map:"https://www.google.com/maps/search/昭和新山熊牧場"},
+{id:"A8",zone:"A",type:"景點",rating:2,name:"洞爺湖火山科學館",price:"¥600",desc:"2000 年噴發實況展",web:"https://www.japan.travel/national-parks/zh-hant/parks/shikotsu-toya/",map:"https://www.google.com/maps/search/洞爺湖ビジターセンター"},
+{id:"A9",zone:"A",type:"溫泉",rating:2,name:"洞龍之湯足湯",price:"免費 24h",desc:"湖畔足湯",web:"https://www.laketoya.com/tw/",map:"https://www.google.com/maps/search/洞龍の湯+洞爺湖"},
+{id:"A10",zone:"A",type:"溫泉",rating:1,name:"藥師手湯",price:"免費 24h",desc:"地藏祈福手湯",web:"https://www.laketoya.com/tw/",map:"https://www.google.com/maps/search/薬師手湯+洞爺湖"},
+{id:"A11",zone:"A",type:"景點",rating:1,name:"浮見堂公園",price:"免費",desc:"洞爺湖八景之一",web:"https://www.jalan.net/kankou/spt_01573ah3330042796/",map:"https://www.google.com/maps/search/浮見堂公園+洞爺湖"},
+{id:"A12",zone:"A",type:"景點",rating:1,name:"とうや湖環湖雕塑公園",price:"免費",desc:"環湖 58 座雕塑",web:"http://www.town.toyako.hokkaido.jp/tourism/art_culture/atc001/",map:"https://www.google.com/maps/search/とうや湖ぐるっと彫刻公園"},
+{id:"A13",zone:"A",type:"景點",rating:1,name:"虻田神社",price:"免費",desc:"能量景點",web:"https://abutajinja.holy.jp/",map:"https://www.google.com/maps/search/虻田神社"},
+{id:"A14",zone:"A",type:"景點",rating:1,name:"橫綱北之湖記念館",price:"¥400",desc:"相撲橫綱故鄉",web:"http://www.town.sobetsu.lg.jp/kanko/article/kitanoumi.html",map:"https://www.google.com/maps/search/横綱北の湖記念館"},
+{id:"A15",zone:"A",type:"景點",rating:3,name:"登別地獄谷",price:"免費",desc:"450m 硫磺火山口",web:"https://noboribetsu-spa.jp/sightseeing/jigokudani/",map:"https://www.google.com/maps/search/登別地獄谷"},
+{id:"A16",zone:"A",type:"溫泉",rating:2,name:"大湯沼川天然足湯",price:"免費",desc:"溪流天然足湯",web:"https://www.jalan.net/kankou/spt_01230ab2070007473/",map:"https://www.google.com/maps/search/大湯沼川天然足湯"},
+{id:"A17",zone:"A",type:"景點",rating:2,name:"登別熊牧場",price:"¥3,200",desc:"含纜車 60 隻棕熊",web:"https://bearpark.jp/",map:"https://www.google.com/maps/search/のぼりべつクマ牧場"},
+{id:"A18",zone:"A",type:"景點",rating:2,name:"登別伊達時代村",price:"¥3,300",desc:"江戶+忍者+花魁",web:"https://edo-trip.jp/",map:"https://www.google.com/maps/search/登別伊達時代村"},
+{id:"A19",zone:"A",type:"景點",rating:2,name:"登別尼克斯海洋公園",price:"¥3,200",desc:"企鵝遊行（全年）",web:"https://www.nixe.co.jp/",map:"https://www.google.com/maps/search/登別尼克斯海洋公園"},
+{id:"A20",zone:"A",type:"景點",rating:1,name:"閻魔王堂表演",price:"免費",desc:"每日 6 場地獄審判",web:"https://noboribetsu-spa.jp/",map:"https://www.google.com/maps/search/閻魔堂+登別溫泉"},
+{id:"A21",zone:"A",type:"景點",rating:3,name:"地球岬（室蘭）",price:"免費",desc:"北海道自然百選第一",web:"https://www.jalan.net/kankou/spt_01205ad3350045538/",map:"https://www.google.com/maps/search/地球岬+室蘭"},
+{id:"A22",zone:"A",type:"景點",rating:2,name:"白鳥大橋（室蘭）",price:"免費",desc:"東日本最大吊橋",web:"http://muro-kanko.com/see/hakuchouoohashi.html",map:"https://www.google.com/maps/search/白鳥大橋+室蘭"},
+{id:"A23",zone:"A",type:"景點",rating:3,name:"Upopoy 國立愛努博物館（白老）",price:"¥1,200",desc:"日本最大愛努文化設施",web:"https://ainu-upopoy.jp/",map:"https://www.google.com/maps/search/ウポポイ+白老"},
+{id:"A24",zone:"A",type:"景點",rating:1,name:"有珠善光寺（伊達）",price:"免費",desc:"北海道最古寺院",web:"https://www.visit-hokkaido.jp/spot/detail_11239.html",map:"https://www.google.com/maps/search/有珠善光寺+伊達"},
+{id:"A25",zone:"A",type:"景點",rating:1,name:"⚠️ 壯瞥公園梅林（5 月花季已過）",price:"免費",desc:"5 月僅新綠",web:"https://sobetsu-kanko.com/",map:"https://www.google.com/maps/search/壮瞥公園+梅林"},
+{id:"A26",zone:"A",type:"美食",rating:3,name:"望羊蹄 Bouyoutei",price:"¥1,100-2,500",desc:"1946 招牌多蜜醬漢堡排",web:"https://tabelog.com/en/hokkaido/A0108/A010801/1000241/",map:"https://www.google.com/maps/search/望羊蹄+洞爺湖"},
+{id:"A27",zone:"A",type:"美食",rating:2,name:"牛助燒肉",price:"¥2,500-4,000",desc:"溫泉街排隊王",web:"https://tabelog.com/hokkaido/A0108/A010801/1028344/",map:"https://www.google.com/maps/search/牛助+洞爺湖"},
+{id:"A28",zone:"A",type:"美食",rating:2,name:"燒肉金城",price:"¥3,000-5,000",desc:"手切和牛+牛舌",web:"https://tabelog.com/en/hokkaido/A0108/A010801/1002825/",map:"https://www.google.com/maps/search/焼肉金城+洞爺湖"},
+{id:"A29",zone:"A",type:"美食",rating:2,name:"拉麵一本亭",price:"¥900",desc:"20 小時熬湯",web:"https://tabelog.com/hokkaido/A0108/A010801/1004226/",map:"https://www.google.com/maps/search/ラーメン一本亭+洞爺湖"},
+{id:"A30",zone:"A",type:"美食",rating:2,name:"仙堂庵（わかさいも 2F）",price:"¥1,500-3,000",desc:"湖景蕎麥麵+鰻魚",web:"https://www.wakasaimo.com/",map:"https://www.google.com/maps/search/仙堂庵+洞爺湖"},
+{id:"A31",zone:"A",type:"美食",rating:3,name:"Lake Hill Farm",price:"¥500-2,000",desc:"20 口味 gelato+羊蹄山景",web:"https://www.lake-hill.com/",map:"https://www.google.com/maps/search/Lake+Hill+Farm+洞爺湖"},
+{id:"A32",zone:"A",type:"美食",rating:1,name:"岡田屋",price:"¥800",desc:"80 年白玉紅豆湯",web:"https://tabelog.com/en/hokkaido/A0108/A010801/1003343/",map:"https://www.google.com/maps/search/岡田屋+洞爺湖"},
+{id:"A33",zone:"A",type:"美食",rating:1,name:"道の駅 あぷた",price:"¥1,000-2,500",desc:"噴火灣海膽丼",web:"https://aputa.jp/",map:"https://www.google.com/maps/search/道の駅+あぷた"},
+{id:"A34",zone:"A",type:"美食",rating:2,name:"味の大王 室蘭本店",price:"¥900-1,300",desc:"室蘭咖哩拉麵發源",web:"https://tabelog.com/en/hokkaido/A0108/A010803/1004612/",map:"https://www.google.com/maps/search/味の大王+室蘭本店"},
+{id:"A35",zone:"A",type:"美食",rating:1,name:"室蘭やきとり 一平本店",price:"¥2,000-3,500",desc:"豬肉串",web:"https://www.muroran-ippei.com/",map:"https://www.google.com/maps/search/室蘭やきとり一平"},
+{id:"A36",zone:"A",type:"美食",rating:2,name:"溫泉市場（登別）",price:"¥1,500-3,500",desc:"閻魔炒麵",web:"https://onsenichiba.com/",map:"https://www.google.com/maps/search/温泉市場+登別"},
+{id:"A37",zone:"A",type:"美食",rating:1,name:"牧家 Bocca 伊達店",price:"¥1,200-2,500",desc:"起司白醬義大利麵",web:"https://tabelog.com/en/hokkaido/A0108/A010801/1001024/",map:"https://www.google.com/maps/search/牧家+伊達"},
+{id:"A38",zone:"A",type:"購物",rating:3,name:"わかさいも本舗 洞爺湖本店",price:"—",desc:"名物若狹芋+現炸いもてん",web:"https://www.wakasaimo.com/",map:"https://www.google.com/maps/search/わかさいも本舗+洞爺湖本店"},
+{id:"A39",zone:"A",type:"購物",rating:1,name:"越後屋（銀魂木刀）",price:"—",desc:"動漫朝聖",web:"https://www.laketoya.com/shop/",map:"https://www.google.com/maps/search/越後屋+洞爺湖"},
+{id:"A40",zone:"A",type:"購物",rating:2,name:"道の駅 そうべつ情報館 i",price:"—",desc:"蘋果派+當地蔬菜",web:"https://sobetsu-kanko.com/en/spot/michinoeki",map:"https://www.google.com/maps/search/道の駅+そうべつ"},
+{id:"A41",zone:"A",type:"購物",rating:2,name:"牧家 Bocca 伊達本店",price:"—",desc:"氣球白布丁",web:"https://www.bocca.co.jp/",map:"https://www.google.com/maps/search/牧家+伊達本店"},
+{id:"A42",zone:"A",type:"購物",rating:1,name:"貴泉堂（登別）",price:"—",desc:"登別限定鬼周邊",web:"https://kisendo.jp/",map:"https://www.google.com/maps/search/貴泉堂+登別"},
+{id:"A43",zone:"A",type:"溫泉",rating:3,name:"乃之風渡假村（一日湯）",price:"¥2,000",desc:"五星無邊際湖景",web:"https://en.nonokaze-resort.com/",map:"https://www.google.com/maps/search/乃の風リゾート"},
+{id:"A44",zone:"A",type:"溫泉",rating:2,name:"洞爺湖万世閣（一日湯）",price:"¥1,500",desc:"屋頂天空風呂",web:"https://www.toyamanseikaku.jp/",map:"https://www.google.com/maps/search/洞爺湖万世閣"},
+{id:"A45",zone:"A",type:"溫泉",rating:2,name:"洞爺太陽宮（一日湯）",price:"¥2,000",desc:"室內水上樂園",web:"https://www.sunpalace.co.jp/",map:"https://www.google.com/maps/search/洞爺サンパレス"},
+{id:"A46",zone:"A",type:"溫泉",rating:3,name:"The Windsor Hotel TOYA（一日湯）",price:"¥3,500+",desc:"G8 高峰會場地",web:"https://www.ihg.com/vignettecollection/hotels/us/en/toyako/spkto/hoteldetail",map:"https://www.google.com/maps/search/ウィンザーホテル洞爺"},
+{id:"A47",zone:"A",type:"溫泉",rating:3,name:"第一瀧本館（登別·一日湯）",price:"¥2,250（夕割¥1,700）",desc:"5 種泉源 35 池",web:"https://takimotokan.co.jp/",map:"https://www.google.com/maps/search/第一滝本館+登別"},
+
+// ========== B 函館 ==========
+{id:"B1",zone:"B",type:"景點",rating:3,name:"金森赤レンガ倉庫 BAY HAKODATE",price:"免費",desc:"1909 年紅磚倉庫",web:"https://hakodate-kanemori.com/",map:"https://www.google.com/maps/search/金森赤レンガ倉庫+函館"},
+{id:"B2",zone:"B",type:"景點",rating:2,name:"金森音樂盒堂",price:"免費",desc:"音樂盒",web:"https://hakodate-kanemori.com/",map:"https://www.google.com/maps/search/金森オルゴール堂"},
+{id:"B3",zone:"B",type:"景點",rating:2,name:"函館明治館",price:"免費",desc:"舊郵局玻璃工藝",web:"https://hakodate-factory.com/meijikan/",map:"https://www.google.com/maps/search/函館明治館"},
+{id:"B4",zone:"B",type:"景點",rating:1,name:"青函連絡船紀念館 摩周丸",price:"¥500",desc:"1988 退役船",web:"http://mashumaru.com/",map:"https://www.google.com/maps/search/摩周丸+函館"},
+{id:"B5",zone:"B",type:"景點",rating:3,name:"八幡坂",price:"免費",desc:"JAL 廣告取景",web:"https://www.hakodate.travel/cht/sightseeing-spots/",map:"https://www.google.com/maps/search/八幡坂+函館"},
+{id:"B6",zone:"B",type:"景點",rating:2,name:"舊函館區公會堂",price:"¥300",desc:"1910 藍黃洋館",web:"https://zaidan-hakodate.com/kokaido/",map:"https://www.google.com/maps/search/旧函館区公会堂"},
+{id:"B7",zone:"B",type:"景點",rating:2,name:"舊英國領事館",price:"¥300",desc:"玫瑰園+英式下午茶",web:"https://hakodate-kankou.com/british/",map:"https://www.google.com/maps/search/旧イギリス領事館+函館"},
+{id:"B8",zone:"B",type:"景點",rating:2,name:"函館ハリストス正教會",price:"¥200",desc:"日本首座東正教",web:"https://orthodox-hakodate.jp/",map:"https://www.google.com/maps/search/函館ハリストス正教会"},
+{id:"B9",zone:"B",type:"景點",rating:2,name:"元町天主教會",price:"免費",desc:"哥德風教堂",web:"https://motomachi-catholic.jp/",map:"https://www.google.com/maps/search/元町カトリック教会"},
+{id:"B10",zone:"B",type:"景點",rating:1,name:"聖約翰教會",price:"外觀",desc:"十字形屋頂",web:"https://nskk.org/hokkaido/hakodate/",map:"https://www.google.com/maps/search/函館聖ヨハネ教会"},
+{id:"B11",zone:"B",type:"景點",rating:1,name:"北方民族資料館",price:"¥300",desc:"愛努族資料",web:"https://zaidan-hakodate.com/hoppominzoku/",map:"https://www.google.com/maps/search/北方民族資料館+函館"},
+{id:"B12",zone:"B",type:"景點",rating:1,name:"基坂/二十間坂/大三坂",price:"免費",desc:"石板坡道",web:"https://www.hakodate.travel/cht/sightseeing-spots/",map:"https://www.google.com/maps/search/基坂+函館"},
+{id:"B13",zone:"B",type:"景點",rating:1,name:"高龍寺",price:"免費",desc:"北海道最古寺院",web:"https://www.koryuji.or.jp/",map:"https://www.google.com/maps/search/高龍寺+函館"},
+{id:"B14",zone:"B",type:"景點",rating:3,name:"函館山夜景纜車",price:"¥1,800",desc:"世界三大夜景",web:"https://334.co.jp/cht/",map:"https://www.google.com/maps/search/函館山ロープウェイ"},
+{id:"B15",zone:"B",type:"景點",rating:2,name:"立待岬",price:"免費",desc:"津輕海峽斷崖",web:"https://www.hakodate.travel/cht/",map:"https://www.google.com/maps/search/立待岬+函館"},
+{id:"B16",zone:"B",type:"景點",rating:2,name:"五稜郭公園（⚠️ 5 月櫻已謝）",price:"免費",desc:"星形要塞新綠+紫藤",web:"https://www.goryokaku-tower.co.jp/",map:"https://www.google.com/maps/search/五稜郭公園"},
+{id:"B17",zone:"B",type:"景點",rating:3,name:"五稜郭塔",price:"¥1,000",desc:"107m 俯瞰星形",web:"https://www.goryokaku-tower.co.jp/",map:"https://www.google.com/maps/search/五稜郭タワー"},
+{id:"B18",zone:"B",type:"景點",rating:2,name:"箱館奉行所",price:"¥500",desc:"2010 復元江戶役所",web:"https://www.hakodate-bugyosho.jp/",map:"https://www.google.com/maps/search/箱館奉行所"},
+{id:"B19",zone:"B",type:"景點",rating:1,name:"市立函館美術館",price:"¥260",desc:"函館畫家藏品",web:"https://www.artmuseum.pref.hokkaido.lg.jp/hkd/",map:"https://www.google.com/maps/search/函館美術館"},
+{id:"B20",zone:"B",type:"景點",rating:1,name:"市立函館博物館",price:"¥100",desc:"箱館戰爭史料",web:"https://www.city.hakodate.hokkaido.jp/",map:"https://www.google.com/maps/search/市立函館博物館"},
+{id:"B21",zone:"B",type:"景點",rating:3,name:"函館朝市（住宿隔壁）",price:"免費",desc:"250 攤聚集",web:"https://www.hakodate-asaichi.com/",map:"https://www.google.com/maps/search/函館朝市"},
+{id:"B22",zone:"B",type:"景點",rating:3,name:"どんぶり横丁市場",price:"—",desc:"20 家海鮮丼",web:"https://www.don-yoko.com/",map:"https://www.google.com/maps/search/どんぶり横丁+函館"},
+{id:"B23",zone:"B",type:"景點",rating:2,name:"函館市熱帶植物園（猴子泡湯）",price:"¥300",desc:"⚠️ 5 月末班尾聲",web:"https://www.hako-eco.com/",map:"https://www.google.com/maps/search/函館市熱帯植物園"},
+{id:"B24",zone:"B",type:"景點",rating:2,name:"湯之川溫泉街",price:"免費散步",desc:"北海道三大溫泉",web:"https://hakodate-yunokawa.jp/",map:"https://www.google.com/maps/search/湯の川温泉"},
+{id:"B25",zone:"B",type:"景點",rating:3,name:"大沼國定公園",price:"免費",desc:"JR 30 分，新綠+駒岳",web:"https://onumakouen.com/",map:"https://www.google.com/maps/search/大沼国定公園"},
+{id:"B26",zone:"B",type:"景點",rating:2,name:"大沼遊覽船",price:"¥1,460",desc:"30 分島巡",web:"https://www.onuma-parks.com/cruise",map:"https://www.google.com/maps/search/大沼遊覧船"},
+{id:"B27",zone:"B",type:"景點",rating:1,name:"松前城（車程 2h）",price:"¥360",desc:"北海道唯一城郭",web:"https://asobinin.com/matsumae/",map:"https://www.google.com/maps/search/松前城"},
+{id:"B28",zone:"B",type:"景點",rating:1,name:"江差 舊中村家住宅",price:"¥300",desc:"北海道首座日本遺產",web:"https://hokkaido-esashi.jp/",map:"https://www.google.com/maps/search/旧中村家住宅+江差"},
+{id:"B29",zone:"B",type:"景點",rating:1,name:"トラピスト修道院",price:"免費",desc:"日本首座男子修道院",web:"https://www.trappist.or.jp/",map:"https://www.google.com/maps/search/トラピスト修道院+北斗"},
+{id:"B30",zone:"B",type:"景點",rating:1,name:"雉鳳高原全景展望台",price:"免費",desc:"看大沼+駒岳+函館山",web:"https://hokutoinfo.com/tec/",map:"https://www.google.com/maps/search/きじひき高原"},
+{id:"B31",zone:"B",type:"美食",rating:3,name:"きくよ食堂 本店",price:"¥1,500-3,000",desc:"1956 元祖巴丼",web:"https://hakodate-kikuyo.com/",map:"https://www.google.com/maps/search/きくよ食堂本店"},
+{id:"B32",zone:"B",type:"美食",rating:2,name:"きくよ食堂 BAY エリア店",price:"¥1,500-3,000",desc:"金森旁分店",web:"https://hakodate-kikuyo.com/",map:"https://www.google.com/maps/search/きくよ食堂ベイエリア店"},
+{id:"B33",zone:"B",type:"美食",rating:2,name:"一花亭たびじ（活烏賊丼）",price:"¥1,800-2,500",desc:"活跳烏賊舞蹈丼",web:"https://tabelog.com/hokkaido/A0105/A010501/1011124/",map:"https://www.google.com/maps/search/一花亭たびじ"},
+{id:"B34",zone:"B",type:"美食",rating:1,name:"馬子とやすべ",price:"¥1,800-3,000",desc:"當日魚貨",web:"https://tabelog.com/hokkaido/A0105/A010501/1000260/",map:"https://www.google.com/maps/search/馬子とやすべ+函館"},
+{id:"B35",zone:"B",type:"美食",rating:3,name:"鮨処 木はら（五稜郭）",price:"¥5,000+",desc:"高評價江戶前",web:"https://kihara-sushi.com/",map:"https://www.google.com/maps/search/鮨処木はら"},
+{id:"B36",zone:"B",type:"美食",rating:2,name:"活魚料理いか清",price:"¥4,000+",desc:"活烏賊刺身",web:"https://www.ikasei.com/",map:"https://www.google.com/maps/search/いか清+函館"},
+{id:"B37",zone:"B",type:"美食",rating:2,name:"函太郎 宇賀浦本店",price:"¥2,000-3,500",desc:"海岸邊迴轉壽司",web:"https://www.kantaro-hakodate.com/",map:"https://www.google.com/maps/search/函太郎宇賀浦本店"},
+{id:"B38",zone:"B",type:"美食",rating:2,name:"根室花まる キラリス函館",price:"¥2,000-3,000",desc:"駅前平價新鮮",web:"https://www.sushi-hanamaru.com/",map:"https://www.google.com/maps/search/根室花まる+キラリス"},
+{id:"B39",zone:"B",type:"美食",rating:3,name:"あじさい（味彩）本店 五稜郭",price:"¥900-1,200",desc:"80 年函館塩拉麵代表",web:"https://ajisai.tv/",map:"https://www.google.com/maps/search/あじさい本店+函館"},
+{id:"B40",zone:"B",type:"美食",rating:2,name:"あじさい JR 函館駅店",price:"¥900-1,200",desc:"駅內分店",web:"https://ajisai.tv/",map:"https://www.google.com/maps/search/あじさい+函館駅"},
+{id:"B41",zone:"B",type:"美食",rating:2,name:"滋養軒",price:"¥700-900",desc:"1947 銅板拉麵",web:"https://tabelog.com/hokkaido/A0105/A010501/1000173/",map:"https://www.google.com/maps/search/滋養軒+函館"},
+{id:"B42",zone:"B",type:"美食",rating:1,name:"函館麺や一文字",price:"¥900",desc:"昆布鹽湯",web:"https://www.1mon.net/",map:"https://www.google.com/maps/search/函館麺や一文字"},
+{id:"B43",zone:"B",type:"美食",rating:3,name:"ラッキーピエロ ベイエリア本店",price:"¥500-900",desc:"Chinese Chicken Burger",web:"https://luckypierrot.jp/shop/bayarea/",map:"https://www.google.com/maps/search/ラッキーピエロベイエリア本店"},
+{id:"B44",zone:"B",type:"美食",rating:2,name:"ラッキーピエロ 函館駅前店",price:"¥500-900",desc:"駅前分店",web:"https://luckypierrot.jp/shop/hakodatest/",map:"https://www.google.com/maps/search/ラッキーピエロ函館駅前店"},
+{id:"B45",zone:"B",type:"美食",rating:2,name:"ラッキーピエロ 五稜郭公園前店",price:"¥500-900",desc:"塔正對面",web:"https://luckypierrot.jp/shop/goryokaku/",map:"https://www.google.com/maps/search/ラッキーピエロ五稜郭"},
+{id:"B46",zone:"B",type:"美食",rating:3,name:"ハセガワストア（やきとり弁当）",price:"¥500-700",desc:"豬肉串便當 GLAY 推薦",web:"https://www.hasesuto.co.jp/",map:"https://www.google.com/maps/search/ハセガワストア函館駅前店"},
+{id:"B47",zone:"B",type:"美食",rating:3,name:"五島軒本店 雪河亭",price:"¥2,000-5,000",desc:"1879 函館カレー有形文化財",web:"https://gotoken1879.jp/restaurant/",map:"https://www.google.com/maps/search/五島軒本店雪河亭"},
+{id:"B48",zone:"B",type:"美食",rating:2,name:"PETITE MERVEILLE 金森店",price:"¥500-1,000",desc:"金賞半熟起司蛋糕",web:"https://petite-merveille.jp/",map:"https://www.google.com/maps/search/プティメルヴィーユ+金森"},
+{id:"B49",zone:"B",type:"美食",rating:2,name:"美鈴珈琲 本店",price:"¥500-800",desc:"1932 北海道最古咖啡",web:"https://www.misuzucoffee.com/",map:"https://www.google.com/maps/search/美鈴珈琲松風本店"},
+{id:"B50",zone:"B",type:"美食",rating:2,name:"六花亭 漁火通店（海景）",price:"¥500+",desc:"津輕海峽海景",web:"https://www.rokkatei.co.jp/",map:"https://www.google.com/maps/search/六花亭漁火通"},
+{id:"B51",zone:"B",type:"美食",rating:2,name:"茶房 菊泉（元町）",price:"¥800",desc:"百年老屋豆腐聖代",web:"https://tabelog.com/hokkaido/A0105/A010501/1000213/",map:"https://www.google.com/maps/search/茶房菊泉+函館"},
+{id:"B52",zone:"B",type:"美食",rating:1,name:"シアターミレ",price:"¥800-1,500",desc:"古民家咖啡",web:"https://tabelog.com/hokkaido/A0105/A010501/1015090/",map:"https://www.google.com/maps/search/シアターミレ+函館"},
+{id:"B53",zone:"B",type:"美食",rating:2,name:"炉ばた大謀（大門横丁）",price:"¥3,000-5,000",desc:"網元直營爐端",web:"https://www.hakodate-yatai.com/shop/daibou",map:"https://www.google.com/maps/search/炉ばた大謀+大門横丁"},
+{id:"B54",zone:"B",type:"美食",rating:2,name:"はこはち漁港（大門横丁）",price:"¥3,000+",desc:"海鮮居酒屋",web:"https://www.hakodate-yatai.com/shop/hakohachi-gyokou",map:"https://www.google.com/maps/search/はこはち漁港"},
+{id:"B55",zone:"B",type:"購物",rating:2,name:"函館ひかりの屋台 大門横丁",price:"—",desc:"26 間屋台",web:"https://www.hakodate-yatai.com/",map:"https://www.google.com/maps/search/大門横丁"},
+{id:"B56",zone:"B",type:"購物",rating:2,name:"スナッフルス Snaffle's",price:"¥972+",desc:"チーズオムレット",web:"https://www.snaffles.jp/",map:"https://www.google.com/maps/search/スナッフルス+函館"},
+{id:"B57",zone:"B",type:"購物",rating:2,name:"六花亭 函館五稜郭店",price:"—",desc:"蘭姆葡萄夾心",web:"https://www.rokkatei.co.jp/",map:"https://www.google.com/maps/search/六花亭五稜郭店"},
+{id:"B58",zone:"B",type:"購物",rating:2,name:"北菓樓 函館五稜郭店",price:"—",desc:"妖精之森年輪",web:"https://www.kitakaro.com/",map:"https://www.google.com/maps/search/北菓樓+函館"},
+{id:"B59",zone:"B",type:"購物",rating:1,name:"柳屋（昆布專門）",price:"—",desc:"昆布糖、真昆布",web:"https://www.yanagiya.co.jp/",map:"https://www.google.com/maps/search/柳屋+函館+昆布"},
+{id:"B60",zone:"B",type:"購物",rating:2,name:"松前漬本舗",price:"—",desc:"數之子+昆布+烏賊",web:"https://www.hakodate-asaichi.com/",map:"https://www.google.com/maps/search/松前漬+函館朝市"},
+{id:"B61",zone:"B",type:"購物",rating:2,name:"キラリス函館",price:"—",desc:"駅前綜合伴手禮",web:"https://www.kiralis-hakodate.jp/",map:"https://www.google.com/maps/search/キラリス函館"},
+{id:"B62",zone:"B",type:"購物",rating:2,name:"はこだて海鮮市場 本店",price:"—",desc:"帝王蟹冷凍配送",web:"https://hakodate-factory.com/kaisen/",map:"https://www.google.com/maps/search/はこだて海鮮市場"},
+
+// ========== C 札幌 ==========
+{id:"C1",zone:"C",type:"景點",rating:3,name:"大通公園 1-12 丁目",price:"免費",desc:"距飯店 3 分、丁香花祭",web:"https://odori-park.jp/",map:"https://www.google.com/maps/search/大通公園+札幌"},
+{id:"C2",zone:"C",type:"景點",rating:2,name:"札幌電視塔",price:"¥1,000",desc:"90m 夜景",web:"https://www.tv-tower.co.jp/",map:"https://www.google.com/maps/search/札幌電視塔"},
+{id:"C3",zone:"C",type:"景點",rating:2,name:"札幌時計台",price:"¥200",desc:"1878 美式木鐘樓",web:"https://sapporoshi-tokeidai.jp/",map:"https://www.google.com/maps/search/札幌市時計台"},
+{id:"C4",zone:"C",type:"景點",rating:2,name:"北海道廳舊本廳舍（⚠️ 整修中）",price:"免費",desc:"2025 重開",web:"https://www.pref.hokkaido.lg.jp/",map:"https://www.google.com/maps/search/北海道廳舊本廳舍"},
+{id:"C5",zone:"C",type:"景點",rating:3,name:"札幌啤酒博物館",price:"免費（試飲¥500）",desc:"日本唯一啤酒博物館",web:"https://www.sapporobeer.jp/brewery/s_museum/",map:"https://www.google.com/maps/search/サッポロビール博物館"},
+{id:"C6",zone:"C",type:"景點",rating:2,name:"札幌啤酒園（成吉思汗）",price:"¥4,200",desc:"90 分鐘吃到飽",web:"https://www.sapporo-bier-garten.jp/",map:"https://www.google.com/maps/search/札幌ビール園"},
+{id:"C7",zone:"C",type:"景點",rating:3,name:"北海道大學",price:"免費",desc:"銀杏+克拉克像",web:"https://www.hokudai.ac.jp/",map:"https://www.google.com/maps/search/北海道大學"},
+{id:"C8",zone:"C",type:"景點",rating:2,name:"北大植物園",price:"¥420",desc:"13ha 都市植物園",web:"https://www.hokudai.ac.jp/fsc/bg/",map:"https://www.google.com/maps/search/北大植物園"},
+{id:"C9",zone:"C",type:"景點",rating:3,name:"北海道神宮",price:"免費",desc:"⚠️ 5 月櫻已謝看新綠",web:"https://www.hokkaidojingu.or.jp/",map:"https://www.google.com/maps/search/北海道神宮"},
+{id:"C10",zone:"C",type:"景點",rating:2,name:"圓山公園+円山動物園",price:"¥800",desc:"北極熊+雪豹",web:"https://www.city.sapporo.jp/zoo/",map:"https://www.google.com/maps/search/円山動物園"},
+{id:"C11",zone:"C",type:"景點",rating:2,name:"白色戀人公園",price:"¥800",desc:"ISHIYA 歐風童話村",web:"https://www.shiroikoibitopark.jp/",map:"https://www.google.com/maps/search/白い恋人パーク"},
+{id:"C12",zone:"C",type:"景點",rating:3,name:"藻岩山纜車夜景",price:"¥2,100",desc:"日本新三大夜景",web:"https://mt-moiwa.jp/",map:"https://www.google.com/maps/search/藻岩山"},
+{id:"C13",zone:"C",type:"景點",rating:3,name:"莫埃來沼公園（野口勇設計）",price:"免費",desc:"玻璃金字塔",web:"https://moerenumapark.jp/",map:"https://www.google.com/maps/search/モエレ沼公園"},
+{id:"C14",zone:"C",type:"景點",rating:2,name:"羊之丘展望台",price:"¥600",desc:"Boys be ambitious 像",web:"https://www.hitsujigaoka.jp/",map:"https://www.google.com/maps/search/羊ヶ丘展望台"},
+{id:"C15",zone:"C",type:"景點",rating:2,name:"JR 塔展望室 T38",price:"¥740",desc:"160m 全景",web:"https://www.jr-tower.com/t38",map:"https://www.google.com/maps/search/JRタワー展望室T38"},
+{id:"C16",zone:"C",type:"景點",rating:2,name:"札幌藝術之森",price:"¥700",desc:"74 件戶外雕塑",web:"https://artpark.or.jp/",map:"https://www.google.com/maps/search/札幌芸術の森"},
+{id:"C17",zone:"C",type:"景點",rating:2,name:"大倉山跳台+冬季奧運博物館",price:"¥1,600",desc:"1972 奧運場地",web:"https://okurayama-jump.jp/",map:"https://www.google.com/maps/search/大倉山ジャンプ競技場"},
+{id:"C18",zone:"C",type:"景點",rating:2,name:"真駒內瀧野靈園（頭大佛）",price:"¥300",desc:"安藤忠雄設計",web:"https://www.takinoreien.com/",map:"https://www.google.com/maps/search/頭大仏"},
+{id:"C19",zone:"C",type:"景點",rating:3,name:"狸小路商店街 1-7 丁目",price:"免費",desc:"200+ 店",web:"https://www.tanukikoji.or.jp/",map:"https://www.google.com/maps/search/狸小路+札幌"},
+{id:"C20",zone:"C",type:"景點",rating:3,name:"二條市場",price:"免費",desc:"海鮮丼早餐",web:"https://nijomarket.com/",map:"https://www.google.com/maps/search/二条市場+札幌"},
+{id:"C21",zone:"C",type:"景點",rating:2,name:"場外市場（中央卸賣）",price:"免費",desc:"批發市場旁",web:"https://www.jyogaishijo.jp/",map:"https://www.google.com/maps/search/札幌場外市場"},
+{id:"C22",zone:"C",type:"景點",rating:2,name:"北海道博物館+開拓之村",price:"¥800",desc:"54 棟明治大正建築",web:"https://www.kaitaku.or.jp/",map:"https://www.google.com/maps/search/北海道開拓の村"},
+{id:"C23",zone:"C",type:"景點",rating:1,name:"薄野交差點",price:"免費",desc:"Nikka 大螢幕",web:"https://www.visit-hokkaido.jp/",map:"https://www.google.com/maps/search/すすきの交差点"},
+{id:"C24",zone:"C",type:"景點",rating:2,name:"丁香花祭（5/30-31 川下公園）",price:"免費",desc:"副會場開放",web:"https://lilaz.sapporo-fes.com/",map:"https://www.google.com/maps/search/川下公園"},
+{id:"C25",zone:"C",type:"美食",rating:3,name:"GARAKU 湯咖哩",price:"¥1,300-1,800",desc:"排隊名店始祖",web:"https://s-garaku.com/",map:"https://www.google.com/maps/search/GARAKU+札幌"},
+{id:"C26",zone:"C",type:"美食",rating:3,name:"Suage 本店",price:"¥1,400-1,900",desc:"知床雞腿",web:"https://suage.info/",map:"https://www.google.com/maps/search/Suage本店+札幌"},
+{id:"C27",zone:"C",type:"美食",rating:3,name:"Picante（圓山）",price:"¥1,400-2,000",desc:"湯頭可選 4 種",web:"https://picante.jp/",map:"https://www.google.com/maps/search/ピカンティ+円山"},
+{id:"C28",zone:"C",type:"美食",rating:2,name:"らっきょ 大サーカス",price:"¥1,400",desc:"薩摩赤雞腿",web:"https://www.spicegogo.com/",map:"https://www.google.com/maps/search/らっきょ大サーカス"},
+{id:"C29",zone:"C",type:"美食",rating:2,name:"MAGIC SPICE",price:"¥1,500",desc:"湯咖哩命名者",web:"https://magicspice.net/",map:"https://www.google.com/maps/search/マジックスパイス+札幌"},
+{id:"C30",zone:"C",type:"美食",rating:3,name:"麵屋彩未（Tabelog No.1）",price:"¥900",desc:"薑味噌、地鐵美園站",web:"http://www.saimi.info/",map:"https://www.google.com/maps/search/麺屋彩未"},
+{id:"C31",zone:"C",type:"美食",rating:3,name:"すみれ 本店",price:"¥1,000",desc:"味噌拉麵代名詞",web:"https://www.sumireya.com/",map:"https://www.google.com/maps/search/すみれ+中の島"},
+{id:"C32",zone:"C",type:"美食",rating:2,name:"すみれ 札幌站 ESTA 店",price:"¥1,000",desc:"拉麵共和國",web:"https://www.sumireya.com/",map:"https://www.google.com/maps/search/すみれ+札幌エスタ"},
+{id:"C33",zone:"C",type:"美食",rating:2,name:"白樺山莊",price:"¥900",desc:"水煮蛋吃到飽",web:"https://shirakaba-sansou.com/",map:"https://www.google.com/maps/search/白樺山荘+札幌エスタ"},
+{id:"C34",zone:"C",type:"美食",rating:3,name:"けやき 薄野本店",price:"¥900",desc:"深夜排隊",web:"https://www.sapporo-keyaki.jp/",map:"https://www.google.com/maps/search/けやき+すすきの"},
+{id:"C35",zone:"C",type:"美食",rating:2,name:"一幻（海老拉麵）",price:"¥950",desc:"蝦湯獨門",web:"https://www.santouka.co.jp/ichigen/",map:"https://www.google.com/maps/search/えびそば一幻"},
+{id:"C36",zone:"C",type:"美食",rating:2,name:"山頭火 札幌站店",price:"¥900",desc:"鹽豚骨",web:"https://www.santouka.co.jp/",map:"https://www.google.com/maps/search/山頭火+札幌エスタ"},
+{id:"C37",zone:"C",type:"美食",rating:3,name:"だるま 本店（成吉思汗）",price:"¥3,000",desc:"1954 創業排隊 30 分",web:"http://best.miru-kuru.com/daruma/",map:"https://www.google.com/maps/search/成吉思汗だるま本店"},
+{id:"C38",zone:"C",type:"美食",rating:2,name:"だるま 6.4 店",price:"¥3,000",desc:"本店排隊替代",web:"http://best.miru-kuru.com/daruma/",map:"https://www.google.com/maps/search/だるま6.4店"},
+{id:"C39",zone:"C",type:"美食",rating:2,name:"松尾ジンギスカン 札幌站前",price:"¥3,500",desc:"醬醃風格",web:"https://www.matsuo1956.jp/",map:"https://www.google.com/maps/search/松尾ジンギスカン+札幌駅前"},
+{id:"C40",zone:"C",type:"美食",rating:2,name:"肉屋 三四郎",price:"¥4,500",desc:"精選羊排",web:"https://tabelog.com/hokkaido/A0101/A010102/1048612/",map:"https://www.google.com/maps/search/肉屋三四郎+札幌"},
+{id:"C41",zone:"C",type:"美食",rating:3,name:"根室花まる JR 塔店",price:"¥200-600/盤",desc:"迴轉壽司名店",web:"https://www.sushi-hanamaru.com/",map:"https://www.google.com/maps/search/根室花まる+JRタワー"},
+{id:"C42",zone:"C",type:"美食",rating:2,name:"回轉壽司 トリトン",price:"¥200-600",desc:"北海道起家",web:"https://toriton-kita1.com/",map:"https://www.google.com/maps/search/回転寿しトリトン+札幌"},
+{id:"C43",zone:"C",type:"美食",rating:2,name:"大磯（二條市場）",price:"¥2,500",desc:"海鮮蓋飯",web:"https://tabelog.com/hokkaido/A0101/A010101/1053442/",map:"https://www.google.com/maps/search/大磯+二条市場"},
+{id:"C44",zone:"C",type:"美食",rating:2,name:"かに本家 札幌站前本店",price:"¥6,000-15,000",desc:"蟹專門",web:"https://www.kani-honke.co.jp/",map:"https://www.google.com/maps/search/かに本家+札幌駅前"},
+{id:"C45",zone:"C",type:"美食",rating:2,name:"かに将軍",price:"¥6,000-15,000",desc:"蟹專門",web:"https://www.kani-ya.co.jp/shogun/",map:"https://www.google.com/maps/search/かに将軍+札幌"},
+{id:"C46",zone:"C",type:"美食",rating:3,name:"六花亭 札幌本店",price:"—",desc:"2F 喫茶室",web:"https://www.rokkatei.co.jp/",map:"https://www.google.com/maps/search/六花亭+札幌本店"},
+{id:"C47",zone:"C",type:"美食",rating:3,name:"北菓樓 札幌本館（安藤忠雄）",price:"—",desc:"年輪+2F 咖啡",web:"https://www.kitakaro.com/",map:"https://www.google.com/maps/search/北菓樓+札幌本館"},
+{id:"C48",zone:"C",type:"美食",rating:2,name:"ISHIYA CAFE 大通店",price:"—",desc:"白色戀人甜點",web:"https://www.ishiya.co.jp/ishiya-cafe/",map:"https://www.google.com/maps/search/ISHIYA+CAFE+大通"},
+{id:"C49",zone:"C",type:"美食",rating:2,name:"雪印パーラー 本店",price:"—",desc:"昭和風霜淇淋",web:"https://www.snowbrand-p.co.jp/",map:"https://www.google.com/maps/search/雪印パーラー+札幌"},
+{id:"C50",zone:"C",type:"美食",rating:2,name:"KINOTOYA BAKE JR 塔店",price:"—",desc:"烤起司塔",web:"https://www.kinotoya.com/",map:"https://www.google.com/maps/search/きのとやBAKE"},
+{id:"C51",zone:"C",type:"美食",rating:2,name:"ROYCE' 大通公園店",price:"—",desc:"生巧克力",web:"https://www.royce.com/",map:"https://www.google.com/maps/search/ロイズ+大通"},
+{id:"C52",zone:"C",type:"美食",rating:3,name:"海鮮居酒屋 はちきょう",price:"¥4,000+",desc:"Tsukko 鮭魚卵飯",web:"https://www.hachikyo.com/",map:"https://www.google.com/maps/search/はちきょう+すすきの"},
+{id:"C53",zone:"C",type:"美食",rating:2,name:"炉端大助",price:"¥3,500+",desc:"爐端燒",web:"http://robata-daisuke.com/",map:"https://www.google.com/maps/search/炉端大助+本店"},
+{id:"C54",zone:"C",type:"購物",rating:2,name:"大丸札幌店（B1 食品街）",price:"—",desc:"百貨",web:"https://www.daimaru.co.jp/sapporo/",map:"https://www.google.com/maps/search/大丸札幌"},
+{id:"C55",zone:"C",type:"購物",rating:2,name:"札幌 PARCO",price:"—",desc:"年輕客群+Loft",web:"https://sapporo.parco.jp/",map:"https://www.google.com/maps/search/札幌PARCO"},
+{id:"C56",zone:"C",type:"購物",rating:2,name:"Stellar Place",price:"—",desc:"札幌站直結",web:"https://www.stellarplace.net/",map:"https://www.google.com/maps/search/ステラプレイス"},
+{id:"C57",zone:"C",type:"購物",rating:2,name:"札幌三越",price:"—",desc:"高級路線",web:"https://www.mistore.jp/sapporo.html",map:"https://www.google.com/maps/search/札幌三越"},
+{id:"C58",zone:"C",type:"購物",rating:2,name:"丸井今井",price:"—",desc:"B1 甜點",web:"https://www.maruiimai.mistore.jp/sapporo.html",map:"https://www.google.com/maps/search/丸井今井+札幌本店"},
+{id:"C59",zone:"C",type:"購物",rating:3,name:"唐吉訶德 狸小路",price:"—",desc:"藥妝激安",web:"https://www.donki.com/",map:"https://www.google.com/maps/search/ドンキホーテ+狸小路"},
+{id:"C60",zone:"C",type:"購物",rating:3,name:"札幌藥妝 狸小路本店",price:"—",desc:"北海道限定",web:"https://www.sapporodrug.co.jp/",map:"https://www.google.com/maps/search/サツドラ+狸小路"},
+{id:"C61",zone:"C",type:"購物",rating:2,name:"三井 Outlet 北廣島",price:"—",desc:"180 店",web:"https://mitsui-shopping-park.com/mop/sapporo/",map:"https://www.google.com/maps/search/三井アウトレット+北広島"},
+{id:"C62",zone:"C",type:"購物",rating:2,name:"BIC CAMERA 札幌站店",price:"—",desc:"電器",web:"https://www.biccamera.co.jp/",map:"https://www.google.com/maps/search/ビックカメラ+札幌"},
+{id:"C63",zone:"C",type:"購物",rating:2,name:"どさんこプラザ 札幌站",price:"—",desc:"伴手禮一站購",web:"https://www.dosanko-plaza.jp/",map:"https://www.google.com/maps/search/どさんこプラザ+札幌"},
+
+// ========== D Day Trip ==========
+{id:"D1-1",zone:"D",type:"景點",rating:3,name:"[小樽] 運河",price:"免費",desc:"淺草橋最佳拍照",web:"https://otaru.gr.jp/sightseeing/otaru-canal",map:"https://www.google.com/maps/search/小樽運河"},
+{id:"D1-2",zone:"D",type:"景點",rating:3,name:"[小樽] 堺町通商店街",price:"免費",desc:"甜點名店集中",web:"https://otaru-sakaimachi.com/",map:"https://www.google.com/maps/search/堺町通+小樽"},
+{id:"D1-3",zone:"D",type:"景點",rating:3,name:"[小樽] 音樂盒堂本館",price:"免費",desc:"蒸氣鐘整點報時",web:"https://www.otaru-orgel.co.jp/",map:"https://www.google.com/maps/search/小樽音樂盒堂"},
+{id:"D1-4",zone:"D",type:"景點",rating:2,name:"[小樽] 北一硝子三號館",price:"免費",desc:"煤油燈咖啡廳",web:"https://kitaichiglass.co.jp/",map:"https://www.google.com/maps/search/北一硝子三號館"},
+{id:"D1-5",zone:"D",type:"景點",rating:2,name:"[小樽] 天狗山纜車",price:"¥1,400",desc:"三大夜景",web:"https://tenguyama.ckk.chuo-bus.co.jp/",map:"https://www.google.com/maps/search/小樽天狗山"},
+{id:"D1-6",zone:"D",type:"景點",rating:2,name:"[小樽] 水族館",price:"—",desc:"海獸公園 5 月表演",web:"https://otaru-aq.jp/",map:"https://www.google.com/maps/search/小樽水族館"},
+{id:"D1-7",zone:"D",type:"美食",rating:3,name:"[小樽] LeTAO 本店",price:"¥1,728",desc:"雙層起司蛋糕",web:"https://www.letao.jp/",map:"https://www.google.com/maps/search/LeTAO+小樽本店"},
+{id:"D1-8",zone:"D",type:"美食",rating:3,name:"[小樽] おたる政寿司",price:"¥5,000+",desc:"建議預約",web:"https://masazushi.co.jp/shop-honten/",map:"https://www.google.com/maps/search/おたる政寿司本店"},
+{id:"D1-9",zone:"D",type:"美食",rating:3,name:"[小樽] 伊勢鮨（米其林一星）",price:"¥8,000+",desc:"2 個月前訂",web:"https://www.isezushi.com/",map:"https://www.google.com/maps/search/伊勢鮨+小樽"},
+{id:"D1-10",zone:"D",type:"美食",rating:2,name:"[小樽] 若雞時代なると",price:"¥1,200",desc:"半隻炸雞",web:"https://otaru-naruto.jp/",map:"https://www.google.com/maps/search/若鶏時代なると"},
+{id:"D2-1",zone:"D",type:"景點",rating:3,name:"[余市] NIKKA 蒸餾所",price:"免費",desc:"預約制",web:"https://www.nikka.com/distilleries/yoichi/",map:"https://www.google.com/maps/search/NIKKA余市蒸餾所"},
+{id:"D2-2",zone:"D",type:"美食",rating:3,name:"[余市] 柿崎商店海鮮工房",price:"¥1,500",desc:"便宜海鮮丼",web:"https://kakizaki.biz/",map:"https://www.google.com/maps/search/柿崎商店+余市"},
+{id:"D2-3",zone:"D",type:"景點",rating:2,name:"[余市] 水族館",price:"—",desc:"小型水族",web:"https://www.yoichi-aq.jp/",map:"https://www.google.com/maps/search/余市水族館"},
+{id:"D2-4",zone:"D",type:"景點",rating:1,name:"[余市] 宇宙記念館",price:"—",desc:"航太博物館",web:"https://www.spacedome.jp/",map:"https://www.google.com/maps/search/余市宇宙記念館"},
+{id:"D3-1",zone:"D",type:"景點",rating:3,name:"[旭川] 旭山動物園",price:"¥1,000",desc:"⚠️ 企鵝散步 5 月不開",web:"https://www.city.asahikawa.hokkaido.jp/asahiyamazoo/",map:"https://www.google.com/maps/search/旭山動物園"},
+{id:"D3-2",zone:"D",type:"景點",rating:2,name:"[旭川] 拉麵村",price:"—",desc:"8 家名店集中",web:"https://www.ramenmura.com/",map:"https://www.google.com/maps/search/旭川拉麵村"},
+{id:"D3-3",zone:"D",type:"美食",rating:3,name:"[旭川] 梅光軒 本店",price:"¥900",desc:"米其林推薦",web:"https://www.baikohken.com/",map:"https://www.google.com/maps/search/梅光軒本店+旭川"},
+{id:"D3-4",zone:"D",type:"美食",rating:2,name:"[旭川] 青葉本店",price:"¥900",desc:"1947 醬油拉麵",web:"https://tabelog.com/hokkaido/A0104/A010401/",map:"https://www.google.com/maps/search/青葉拉麵+旭川"},
+{id:"D3-5",zone:"D",type:"美食",rating:3,name:"[旭川] 蜂屋 本店",price:"¥900",desc:"焦脂醬油獨門",web:"https://www.instagram.com/hachiya19471208/",map:"https://www.google.com/maps/search/蜂屋本店+旭川"},
+{id:"D3-6",zone:"D",type:"景點",rating:2,name:"[旭川] 男山酒造資料館",price:"免費",desc:"酒藏博物館",web:"https://www.otokoyama.com/museum/",map:"https://www.google.com/maps/search/男山酒造+旭川"},
+{id:"D3-7",zone:"D",type:"景點",rating:2,name:"[旭川] 上野農場",price:"—",desc:"花園 4/26 開",web:"https://www.uenofarm.net/",map:"https://www.google.com/maps/search/上野農場+旭川"},
+{id:"D4-1",zone:"D",type:"景點",rating:3,name:"[美瑛] 白金青池",price:"免費",desc:"⚠️ 5 月偏綠",web:"https://www.biei-hokkaido.jp/zh/shiroganeaoiike",map:"https://www.google.com/maps/search/白金青池+美瑛"},
+{id:"D4-2",zone:"D",type:"景點",rating:3,name:"[美瑛] 四季彩之丘（鬱金香）",price:"¥500",desc:"5 月鬱金香見頃",web:"https://www.shikisainooka.jp/tc/",map:"https://www.google.com/maps/search/四季彩之丘"},
+{id:"D4-3",zone:"D",type:"景點",rating:2,name:"[富良野] Farm Tomita",price:"免費",desc:"⚠️ 薰衣草 7 月",web:"https://www.farm-tomita.co.jp/",map:"https://www.google.com/maps/search/Farm+Tomita"},
+{id:"D4-4",zone:"D",type:"景點",rating:2,name:"[美瑛] 拼布之路",price:"免費",desc:"郊外景觀公路",web:"https://www.biei-hokkaido.jp/zh/patchwork_road/",map:"https://www.google.com/maps/search/パッチワークの路"},
+{id:"D4-5",zone:"D",type:"景點",rating:2,name:"[美瑛] 十勝岳望岳台",price:"免費",desc:"殘雪山景",web:"https://www.biei-hokkaido.jp/",map:"https://www.google.com/maps/search/十勝岳望岳台"},
+{id:"D4-6",zone:"D",type:"美食",rating:3,name:"[富良野] 唯我独尊",price:"¥1,200",desc:"咖哩蛋包飯",web:"https://doxon.jp/",map:"https://www.google.com/maps/search/唯我独尊+富良野"},
+{id:"D5-1",zone:"D",type:"景點",rating:3,name:"[登別] 地獄谷（同 A15）",price:"免費",desc:"450m 火山口",web:"https://noboribetsu-spa.jp/sightseeing/jigokudani/",map:"https://www.google.com/maps/search/登別地獄谷"},
+{id:"D5-2",zone:"D",type:"溫泉",rating:2,name:"[登別] 大湯沼足湯",price:"免費",desc:"天然溪流足湯",web:"https://noboribetsu-spa.jp/",map:"https://www.google.com/maps/search/大湯沼+登別"},
+{id:"D5-3",zone:"D",type:"景點",rating:2,name:"[登別] 熊牧場",price:"¥3,200",desc:"60 隻棕熊",web:"https://bearpark.jp/",map:"https://www.google.com/maps/search/登別熊牧場"},
+{id:"D5-4",zone:"D",type:"景點",rating:2,name:"[登別] 伊達時代村",price:"¥3,300",desc:"江戶主題",web:"https://edo-trip.jp/",map:"https://www.google.com/maps/search/登別伊達時代村"},
+{id:"D5-5",zone:"D",type:"景點",rating:2,name:"[登別] NIXE 海洋公園",price:"¥3,200",desc:"企鵝遊行",web:"https://www.nixe.co.jp/",map:"https://www.google.com/maps/search/登別尼克斯海洋公園"},
+{id:"D5-6",zone:"D",type:"溫泉",rating:3,name:"[登別] 第一滝本館一日湯",price:"¥2,250（夕割¥1,700）",desc:"35 池五種泉源",web:"https://takimotokan.co.jp/en/day_spa/",map:"https://www.google.com/maps/search/第一滝本館"},
+{id:"D6-1",zone:"D",type:"景點",rating:3,name:"[支笏湖] 觀光船",price:"¥2,000",desc:"透明度 Top 3",web:"https://shikotsu-ship.co.jp/",map:"https://www.google.com/maps/search/支笏湖觀光船"},
+{id:"D6-2",zone:"D",type:"景點",rating:3,name:"[支笏湖] 透明獨木舟",price:"¥6,000+",desc:"Ocean Days",web:"https://ocean-days.com/",map:"https://www.google.com/maps/search/Ocean+Days+支笏湖"},
+{id:"D6-3",zone:"D",type:"溫泉",rating:2,name:"[支笏湖] 丸駒溫泉一日湯",price:"¥1,200",desc:"湖畔秘湯",web:"https://www.marukoma.co.jp/",map:"https://www.google.com/maps/search/丸駒溫泉"},
+{id:"D6-4",zone:"D",type:"美食",rating:2,name:"[支笏湖] 休暇村",price:"¥1,500",desc:"湖畔餐廳",web:"https://www.qkamura.or.jp/shikotsu/",map:"https://www.google.com/maps/search/休暇村支笏湖"},
+{id:"D7-1",zone:"D",type:"景點",rating:2,name:"[定山溪] 二見吊橋",price:"免費",desc:"溪谷新綠",web:"https://jozankei.jp/",map:"https://www.google.com/maps/search/二見吊橋+定山溪"},
+{id:"D7-2",zone:"D",type:"景點",rating:2,name:"[定山溪] 豐平峽水庫",price:"¥640 電動巴士",desc:"新綠紅葉名所",web:"https://www.houheikyou.jp/",map:"https://www.google.com/maps/search/豐平峽水庫"},
+{id:"D7-3",zone:"D",type:"景點",rating:1,name:"[定山溪] 時之鐘+河童大王",price:"免費",desc:"河童傳說",web:"https://jozankei.jp/",map:"https://www.google.com/maps/search/定山溪+河童大王"},
+{id:"D7-4",zone:"D",type:"美食",rating:2,name:"[定山溪] 大黑屋商店",price:"¥100",desc:"溫泉饅頭",web:"https://jozankei.jp/",map:"https://www.google.com/maps/search/大黑屋商店+定山溪"},
+{id:"D7-5",zone:"D",type:"溫泉",rating:3,name:"[定山溪] 翠山亭一日湯",price:"¥2,000",desc:"高級旅館",web:"https://www.jyozankei-daiichi.co.jp/jyozankei/",map:"https://www.google.com/maps/search/翠山亭+定山溪"},
+{id:"D7-6",zone:"D",type:"溫泉",rating:3,name:"[定山溪] 鶴雅森之謌一日湯",price:"¥2,000",desc:"森林風呂",web:"https://www.morino-uta.com/",map:"https://www.google.com/maps/search/鶴雅森之謌"},
+{id:"D8-1",zone:"D",type:"景點",rating:3,name:"[白老] Upopoy（同 A23）",price:"¥1,200",desc:"國立愛努博物館",web:"https://ainu-upopoy.jp/",map:"https://www.google.com/maps/search/Upopoy+白老"},
+{id:"D8-2",zone:"D",type:"景點",rating:2,name:"[白老] Poroto 湖",price:"免費",desc:"湖畔散步",web:"https://ainu-upopoy.jp/",map:"https://www.google.com/maps/search/ポロト湖"},
+{id:"D8-3",zone:"D",type:"美食",rating:2,name:"[白老] 白老牛 Meat Dining",price:"¥3,000",desc:"炭火自烤",web:"https://shiraoi-cowbell.com/",map:"https://www.google.com/maps/search/カウベル+白老牛"},
+{id:"D8-4",zone:"D",type:"美食",rating:3,name:"[苫小牧] マルトマ食堂",price:"¥1,500",desc:"漁港海鮮丼名店",web:"https://www.city.tomakomai.hokkaido.jp/",map:"https://www.google.com/maps/search/マルトマ食堂+苫小牧"},
+{id:"D9-1",zone:"D",type:"景點",rating:2,name:"[機場] 哆啦 A 夢 Sky Park",price:"¥800",desc:"主題樂園",web:"https://www.hokkaido-airports.com/en/new-chitose/doraemon_en/",map:"https://www.google.com/maps/search/哆啦A夢+新千歲"},
+{id:"D9-2",zone:"D",type:"景點",rating:3,name:"[機場] Royce Chocolate World",price:"免費",desc:"免費入場",web:"https://www.royce.com/contents/world/",map:"https://www.google.com/maps/search/Royce+Chocolate+World"},
+{id:"D9-3",zone:"D",type:"溫泉",rating:2,name:"[機場] 新千歲空港溫泉",price:"¥1,500",desc:"雪見風呂",web:"https://www.new-chitose-airport-onsen.com/",map:"https://www.google.com/maps/search/新千歲空港溫泉"},
+{id:"D9-4",zone:"D",type:"美食",rating:3,name:"[機場] 北海道拉麵道場",price:"¥1,000",desc:"10 家名店集中",web:"https://www.new-chitose-airport.jp/ja/eat/ramen/",map:"https://www.google.com/maps/search/北海道拉麵道場"},
+{id:"D10-1",zone:"D",type:"購物",rating:2,name:"[北廣島] 三井 Outlet",price:"—",desc:"180 店",web:"https://mitsui-shopping-park.com/mop/sapporo/",map:"https://www.google.com/maps/search/三井アウトレット+北広島"},
+{id:"D10-2",zone:"D",type:"景點",rating:2,name:"[北廣島] ES CON FIELD 火腿主場",price:"—",desc:"5 月有比賽",web:"https://www.hkdballpark.com/",map:"https://www.google.com/maps/search/ES+CON+FIELD"},
+{id:"D10-3",zone:"D",type:"溫泉",rating:2,name:"[北廣島] tower eleven 球場溫泉",price:"¥3,000",desc:"看球場泡湯",web:"https://www.hkdballpark.com/",map:"https://www.google.com/maps/search/tower+eleven+onsen"},
+{id:"D11-1",zone:"D",type:"景點",rating:2,name:"[千歲] 水族館",price:"¥800",desc:"鮭魚主題",web:"https://chitose-aq.jp/",map:"https://www.google.com/maps/search/千歲水族館"},
+
+// ========== E JR 沿線 ==========
+{id:"E1",zone:"E",type:"景點",rating:3,name:"[大沼公園] 國定公園+遊船",price:"¥1,460",desc:"Day 3 必停 30 分",web:"https://onumakouen.com/",map:"https://www.google.com/maps/search/大沼国定公園"},
+{id:"E2",zone:"E",type:"美食",rating:2,name:"[大沼公園] 沼の家だんご",price:"¥400-650",desc:"站前 15 分必買",web:"https://numanoya.com/",map:"https://www.google.com/maps/search/沼の家+大沼だんご"},
+{id:"E3",zone:"E",type:"美食",rating:3,name:"[長万部] かなや かにめし",price:"¥1,300",desc:"日本三大駅弁",web:"https://www.osyamanbe-kankou.jp/kanimeshi.html",map:"https://www.google.com/maps/search/かなや+かにめし+長万部"},
+{id:"E4",zone:"E",type:"溫泉",rating:2,name:"[長万部] 溫泉",price:"¥500-1,000",desc:"站 10 分一日湯",web:"https://www.town.oshamambe.lg.jp/soshiki/8/283.html",map:"https://www.google.com/maps/search/長万部温泉"},
+{id:"E5",zone:"E",type:"美食",rating:3,name:"[森] 阿部商店いかめし",price:"¥780",desc:"1941 花枝飯便當",web:"https://ikameshi.co.jp/",map:"https://www.google.com/maps/search/いかめし阿部商店+森町"},
+{id:"E6",zone:"E",type:"美食",rating:2,name:"[八雲] ハーベスター八雲炸雞",price:"¥1,200-1,800",desc:"⚠️ 離站遠",web:"https://harvester-yakumo.com/",map:"https://www.google.com/maps/search/ハーベスター八雲"},
+{id:"E7",zone:"E",type:"景點",rating:3,name:"[東室蘭] 地球岬",price:"免費",desc:"需包計程車 15 分",web:"https://www.jalan.net/kankou/spt_01205ad3350045538/",map:"https://www.google.com/maps/search/地球岬+室蘭"},
+{id:"E8",zone:"E",type:"景點",rating:2,name:"[東室蘭] 白鳥大橋",price:"免費",desc:"夜景",web:"https://www.visit-hokkaido.jp/spot/detail_10195.html",map:"https://www.google.com/maps/search/白鳥大橋+室蘭"},
+{id:"E9",zone:"E",type:"景點",rating:3,name:"[登別] 地獄谷（同 A15）",price:"免費",desc:"全日套組",web:"https://noboribetsu-spa.jp/",map:"https://www.google.com/maps/search/登別地獄谷"},
+{id:"E10",zone:"E",type:"景點",rating:3,name:"[白老] Upopoy（同 A23）",price:"¥1,200",desc:"Day 5 強推半日",web:"https://ainu-upopoy.jp/",map:"https://www.google.com/maps/search/Upopoy+白老"},
+{id:"E11",zone:"E",type:"景點",rating:2,name:"[苫小牧] ノーザンホースパーク",price:"¥800",desc:"機場免費接駁",web:"https://www.visit-hokkaido.jp/spot/detail_10047.html",map:"https://www.google.com/maps/search/ノーザンホースパーク"},
+{id:"E12",zone:"E",type:"景點",rating:1,name:"[新函館北斗] トラピスト修道院",price:"免費",desc:"需計程車 30 分",web:"https://www.trappist.or.jp/",map:"https://www.google.com/maps/search/トラピスト修道院+北斗"},
+];
+
+let currentZone = 'A';
+const selected = new Set(JSON.parse(localStorage.getItem('hokkaido_selected') || '[]'));
+
+function render() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const rating = document.getElementById('filterRating').value;
+  const type = document.getElementById('filterType').value;
+
+  const filtered = DATA.filter(d =>
+    d.zone === currentZone &&
+    (!search || d.name.toLowerCase().includes(search) || d.desc.toLowerCase().includes(search)) &&
+    (!rating || d.rating == rating) &&
+    (!type || d.type === type)
+  );
+
+  const container = document.getElementById('items');
+  const empty = document.getElementById('emptyMsg');
+  if (filtered.length === 0) {
+    container.innerHTML = '';
+    empty.classList.remove('hidden');
+  } else {
+    empty.classList.add('hidden');
+    container.innerHTML = filtered.map(d => {
+      const stars = '⭐'.repeat(d.rating);
+      const ratingClass = `rating-${d.rating}`;
+      const checked = selected.has(d.id);
+      const typeColor = {
+        '景點': 'bg-blue-100 text-blue-700',
+        '美食': 'bg-orange-100 text-orange-700',
+        '購物': 'bg-pink-100 text-pink-700',
+        '溫泉': 'bg-purple-100 text-purple-700'
+      }[d.type] || 'bg-gray-100 text-gray-700';
+      return `
+      <div class="card ${checked ? 'checked' : ''} bg-white border border-gray-200 rounded-lg p-3 flex flex-col" data-id="${d.id}">
+        <div class="flex items-start gap-2">
+          <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggle('${d.id}')" class="mt-1 w-4 h-4 accent-teal-600 flex-shrink-0">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1 flex-wrap">
+              <span class="text-xs font-mono text-gray-400">${d.id}</span>
+              <span class="px-1.5 py-0.5 text-xs rounded ${typeColor}">${d.type}</span>
+              <span class="text-xs ${ratingClass}">${stars}</span>
+            </div>
+            <div class="font-semibold text-sm mt-1 leading-tight">${d.name}</div>
+            <div class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">${d.desc}</div>
+            <div class="text-xs text-teal-700 dark:text-teal-400 font-medium mt-1">${d.price}</div>
+            <div class="flex gap-2 mt-2 text-xs">
+              <a href="${d.web}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">🌐 官網</a>
+              <a href="${d.map}" target="_blank" rel="noopener" class="text-red-600 hover:underline">📍 Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function switchTab(zone) {
+  currentZone = zone;
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.dataset.tab === zone) {
+      b.classList.add('tab-active');
+      b.classList.remove('bg-gray-200');
+    } else {
+      b.classList.remove('tab-active');
+      b.classList.add('bg-gray-200');
+    }
+  });
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggle(id) {
+  if (selected.has(id)) selected.delete(id);
+  else selected.add(id);
+  localStorage.setItem('hokkaido_selected', JSON.stringify([...selected]));
+  document.getElementById('selectedCount').textContent = selected.size;
+  render();
+}
+
+function exportSelection() {
+  if (selected.size === 0) {
+    alert('還沒選任何項目喔');
+    return;
+  }
+  const sorted = [...selected].sort((a, b) => {
+    const [az, an] = [a[0], parseInt(a.slice(1)) || 0];
+    const [bz, bn] = [b[0], parseInt(b.slice(1)) || 0];
+    return az.localeCompare(bz) || an - bn;
+  });
+  const items = sorted.map(id => {
+    const d = DATA.find(x => x.id === id);
+    return d ? `${id} ${d.name} (${d.type})` : id;
+  }).join('\n');
+  const text = `# 我的北海道選擇（${selected.size} 項）\n\nID 清單：${sorted.join(', ')}\n\n詳細：\n${items}`;
+  document.getElementById('exportText').value = text;
+  document.getElementById('exportCount').textContent = selected.size;
+  document.getElementById('exportModal').classList.remove('hidden');
+}
+
+function copyExport() {
+  const ta = document.getElementById('exportText');
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(() => {
+    alert('已複製到剪貼簿！貼回 Claude 即可');
+  });
+}
+
+function closeModal() {
+  document.getElementById('exportModal').classList.add('hidden');
+}
+
+function clearAll() {
+  if (!confirm('確定清除所有勾選？')) return;
+  selected.clear();
+  localStorage.setItem('hokkaido_selected', '[]');
+  document.getElementById('selectedCount').textContent = 0;
+  render();
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('filterRating').addEventListener('change', render);
+document.getElementById('filterType').addEventListener('change', render);
+document.getElementById('selectedCount').textContent = selected.size;
+render();
+</script>
+</body>
+</html>
