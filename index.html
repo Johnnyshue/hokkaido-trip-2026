@@ -13,9 +13,16 @@
   .rating-2 { color: #06b6d4; }
   .rating-1 { color: #94a3b8; }
   .tab-active { background: #0f766e; color: white; }
-  .card { transition: all 0.15s ease; }
+  .card { transition: all 0.15s ease; overflow: hidden; }
   .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
   .card.checked { background: #ecfdf5; border-color: #10b981; }
+  .card-icon { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 44px; position: relative; }
+  .card-icon::after { content: ''; position: absolute; inset: 0; background: inherit; opacity: 0.15; }
+  .card-icon > span { position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+  .icon-景點 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+  .icon-美食 { background: linear-gradient(135deg, #fed7aa, #fdba74); }
+  .icon-購物 { background: linear-gradient(135deg, #fbcfe8, #f9a8d4); }
+  .icon-溫泉 { background: linear-gradient(135deg, #e9d5ff, #d8b4fe); }
   details summary { cursor: pointer; list-style: none; }
   details summary::-webkit-details-marker { display: none; }
   @media (prefers-color-scheme: dark) {
@@ -344,6 +351,69 @@ const DATA = [
 {id:"E12",zone:"E",type:"景點",rating:1,name:"[新函館北斗] トラピスト修道院",price:"免費",desc:"需計程車 30 分",web:"https://www.trappist.or.jp/",map:"https://www.google.com/maps/search/トラピスト修道院+北斗"},
 ];
 
+function getIcon(d) {
+  const n = d.name;
+  // 特定關鍵字優先（細→粗）
+  if (/煙火|花火/.test(n)) return '🎆';
+  if (/運河/.test(n)) return '🌉';
+  if (/紅磚|赤レンガ/.test(n)) return '🧱';
+  if (/機場|空港/.test(n)) return '✈️';
+  if (/駅|鐵道|列車/.test(n)) return '🚂';
+  if (/纜車|ロープウェイ/.test(n)) return '🚠';
+  if (/夜景|藻岩|函館山/.test(n)) return '🌃';
+  if (/遊船|汽船|遊覽|獨木舟|観光船|觀光船/.test(n)) return '🚢';
+  if (/企鵝/.test(n)) return '🐧';
+  if (/熊|クマ|くま/.test(n)) return '🐻';
+  if (/水族|海洋公園|海豚/.test(n)) return '🐟';
+  if (/動物園/.test(n)) return '🦁';
+  if (/神宮|神社/.test(n)) return '⛩️';
+  if (/寺|修道院|善光/.test(n)) return '🛕';
+  if (/教會|教堂|正教|ハリストス/.test(n)) return '⛪';
+  if (/城|奉行所|伊達時代村/.test(n)) return '🏯';
+  if (/博物館|美術館|資料館|文學館|記念館|科學館|記念/.test(n)) return '🏛️';
+  if (/音樂盒|オルゴール/.test(n)) return '🎵';
+  if (/跳台|ジャンプ|奧運|球場|FIELD|競馬/.test(n)) return '🏟️';
+  if (/展望|塔|T38/.test(n)) return '🗼';
+  if (/岬|斷崖|地球岬|燈塔/.test(n)) return '🏞️';
+  if (/大橋|吊橋/.test(n)) return '🌉';
+  if (/花園|公園|圓山|農場|Farm|植物園|花|玫瑰|鬱金香|梅林|薰衣草|田/.test(n)) return '🌸';
+  if (/湖|沼|池/.test(n)) return '🏞️';
+  if (/山|岳|駒/.test(n)) return '🗻';
+  if (/火口|地獄|火山|昭和新山|有珠/.test(n)) return '🌋';
+  if (/足湯/.test(n)) return '🦶';
+  if (/溫泉|湯|ゆもと|瀧本|旅館|渡假村|翠山亭|乃之風|万世閣|太陽宮|Windsor|ウィンザー/.test(n)) return '♨️';
+  // 美食
+  if (/拉麵|ラーメン|麵|麺|そば|うどん|山頭火|彩未|すみれ|白樺|けやき|一幻|梅光軒|蜂屋|青葉|滋養軒|あじさい|一本亭|味の大王|一文字/.test(n)) return '🍜';
+  if (/壽司|寿司|鮨|政寿司|花まる|トリトン|函太郎|木はら|伊勢鮨|旭寿司/.test(n)) return '🍣';
+  if (/蟹|かに|カニ|かにめし/.test(n)) return '🦀';
+  if (/海鮮|丼|朝市|市場|海膽|扇貝|帆立|烏賊|いか|マルトマ/.test(n)) return '🐟';
+  if (/燒肉|焼肉|ジンギスカン|成吉思汗|羊|だるま|松尾|牛助|金城|ウエスト|三四郎|ビーフ|牛|Beef/.test(n)) return '🥩';
+  if (/漢堡|バーガー|ラッキーピエロ|ピエロ|Lucky/.test(n)) return '🍔';
+  if (/咖哩|カレー|湯咖哩|GARAKU|Suage|Picante|らっきょ|MAGIC|SAMA|SAVOY|Yellow|Treasure|lavi/.test(n)) return '🍛';
+  if (/甜點|ケーキ|蛋糕|夾心|巧克力|チョコ|ROYCE|LeTAO|六花亭|北菓樓|柳月|Snaffle|スナッフル|KINOTOYA|きのとや|雪印|PETITE|メルヴィーユ|ISHIYA|菊泉|岡田屋|Calbee|薯條/.test(n)) return '🍰';
+  if (/咖啡|珈琲|カフェ|café|Cafe|cafe|美鈴|ミレ|唯我独尊/.test(n)) return '☕';
+  if (/便當|弁当|やきとり|燒鳥|ハセガワ|長谷川|いかめし/.test(n)) return '🍱';
+  if (/冰淇淋|gelato|ジェラート|アイス|霜淇淋|Lake Hill|牛乳/.test(n)) return '🍦';
+  if (/啤酒|ビール|Sapporo Beer|札幌啤酒|Bier/.test(n)) return '🍺';
+  if (/威士忌|Whisky|NIKKA|蒸餾|余市蒸/.test(n)) return '🥃';
+  if (/居酒屋|炉端|炉ばた|爐端|はちきょう|大助|大謀|はこはち|くらぶ|マルハ/.test(n)) return '🍶';
+  if (/炸雞|鶏|ハーベスター/.test(n)) return '🍗';
+  if (/洋食|雪河亭|五島軒|望羊蹄|牧家|Bocca/.test(n)) return '🍽️';
+  if (/わかさいも|仙堂庵|和菓子|饅頭|大黑屋|銘菓/.test(n)) return '🍡';
+  // 購物
+  if (/商店街|百貨|PARCO|大丸|三越|丸井|Stellar|ESTA|Apia|Paseo|Outlet|アウトレット|Le\s?Trois|PIVOT|狸小路/.test(n)) return '🏬';
+  if (/藥妝|ドンキ|唐吉訶德|ツルハ|マツキヨ|サツドラ|札幌藥妝/.test(n)) return '💊';
+  if (/伴手禮|土產|お土産|四季彩館|どさんこプラザ|キラリス|明治館|大門横丁|光の屋台|屋台村|海鮮市場|越後屋|貴泉堂|柳屋|松前漬|道の駅/.test(n)) return '🎁';
+  if (/家居|ニトリ|Nitori|BIC|ヨドバシ|電器/.test(n)) return '📱';
+  if (/UNIQLO|GU|服飾/.test(n)) return '👕';
+  // Fallback by type
+  if (d.type === '景點') return '📍';
+  if (d.type === '美食') return '🍴';
+  if (d.type === '購物') return '🛍️';
+  if (d.type === '溫泉') return '♨️';
+  return '⭐';
+}
+
 let currentZone = 'A';
 const selected = new Set(JSON.parse(localStorage.getItem('hokkaido_selected') || '[]'));
 
@@ -376,9 +446,11 @@ function render() {
         '購物': 'bg-pink-100 text-pink-700',
         '溫泉': 'bg-purple-100 text-purple-700'
       }[d.type] || 'bg-gray-100 text-gray-700';
+      const icon = getIcon(d);
       return `
-      <div class="card ${checked ? 'checked' : ''} bg-white border border-gray-200 rounded-lg p-3 flex flex-col" data-id="${d.id}">
-        <div class="flex items-start gap-2">
+      <div class="card ${checked ? 'checked' : ''} bg-white border border-gray-200 rounded-lg flex flex-col" data-id="${d.id}">
+        <div class="card-icon icon-${d.type}"><span>${icon}</span></div>
+        <div class="p-3 flex items-start gap-2">
           <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggle('${d.id}')" class="mt-1 w-4 h-4 accent-teal-600 flex-shrink-0">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-1 flex-wrap">
