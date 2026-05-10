@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北海道 9 日 驗證版｜2026/5/23–5/31</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafafa;--card:#fff;--ink:#1a1a1a;--mute:#666;--accent:#0066cc;--ok:#16a34a;--warn:#ea580c;--err:#dc2626;--border:#e5e5e5}
+@media (prefers-color-scheme:dark){:root{--bg:#0a0a0a;--card:#171717;--ink:#fafafa;--mute:#999;--accent:#60a5fa;--border:#262626}}
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:1.6em;margin-bottom:4px}
+h2{font-size:1.3em;margin:24px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:1.1em;margin:16px 0 8px;color:var(--accent)}
+h4{font-size:1em;margin:10px 0 6px;color:var(--mute)}
+.sub{color:var(--mute);font-size:.9em;margin-bottom:16px}
+.disclaimer{background:#fff7ed;border-left:4px solid var(--warn);padding:12px;margin:16px 0;border-radius:4px;font-size:.9em}
+@media (prefers-color-scheme:dark){.disclaimer{background:#451a03}}
+.alert{background:#fef2f2;border-left:4px solid var(--err);padding:12px;margin:16px 0;border-radius:4px}
+@media (prefers-color-scheme:dark){.alert{background:#450a0a}}
+.tip{background:#f0fdf4;border-left:4px solid var(--ok);padding:12px;margin:16px 0;border-radius:4px}
+@media (prefers-color-scheme:dark){.tip{background:#052e16}}
+.tabs{display:flex;gap:4px;margin:16px 0;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:10}
+.tab{padding:8px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.95em;white-space:nowrap}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.section{display:none}
+.section.active{display:block}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92em}
+th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--card);font-weight:600;font-size:.88em;color:var(--mute)}
+.id{font-family:ui-monospace,monospace;font-size:.85em;color:var(--mute);white-space:nowrap}
+.star{color:#f59e0b;font-size:.9em;white-space:nowrap}
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:.75em;margin-right:3px}
+.tag-new{background:#dbeafe;color:#1e40af}
+.tag-fix{background:#fef3c7;color:#92400e}
+.tag-warn{background:#fed7aa;color:#9a3412}
+.tag-err{background:#fecaca;color:#991b1b}
+@media (prefers-color-scheme:dark){
+  .tag-new{background:#1e3a8a;color:#bfdbfe}
+  .tag-fix{background:#78350f;color:#fde68a}
+  .tag-warn{background:#7c2d12;color:#fed7aa}
+  .tag-err{background:#7f1d1d;color:#fecaca}
+}
+.banlist li{margin:4px 0}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px;margin:8px 0}
+.card{background:var(--card);border:1px solid var(--border);padding:10px;border-radius:6px}
+.card .id{display:block;margin-bottom:2px}
+.card-name{font-weight:600;margin-bottom:4px}
+.card-meta{font-size:.85em;color:var(--mute)}
+ul,ol{padding-left:24px}
+li{margin:3px 0}
+@media (max-width:600px){
+  body{padding:10px;font-size:14px}
+  th,td{padding:5px 4px;font-size:.85em}
+  .tab{padding:6px 10px;font-size:.85em}
+}
+.footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--border);font-size:.85em;color:var(--mute);text-align:center}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0;font-size:.85em;color:var(--mute)}
+.toc{background:var(--card);border:1px solid var(--border);padding:12px;border-radius:6px;margin:16px 0}
+.toc a{display:inline-block;margin:2px 8px 2px 0;padding:2px 6px;background:var(--bg);border-radius:3px;font-size:.88em}
+.must{font-weight:600}
+.price-old{text-decoration:line-through;color:var(--mute);font-size:.85em}
+.price-new{color:var(--err);font-weight:600}
+</style>
+</head>
+<body>
+
+<h1>🗾 北海道 9 日</h1>
+<p class="sub">2026/5/23（六）–5/31（日）｜大眾交通｜2 人</p>
+
+<div class="legend">
+⭐⭐⭐ 必去｜⭐⭐ 推薦｜🌿 自然｜🏛 歷史｜🍴 美食｜<span class="tag tag-new">NEW</span> 2024–2025 開幕｜<span class="tag tag-fix">已更正</span>｜<span class="tag tag-warn">注意</span>｜<span class="tag tag-err">不要去</span>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="show('home',this)">📍 首頁</button>
+<button class="tab" onclick="show('toya',this)">🏔 洞爺湖（Day 1-3）</button>
+<button class="tab" onclick="show('hakodate',this)">🌃 函館（Day 3-5）</button>
+<button class="tab" onclick="show('sapporo',this)">🍻 札幌（Day 5-9）</button>
+<button class="tab" onclick="show('tickets',this)">🎫 套票</button>
+<button class="tab" onclick="show('action',this)">📌 動作清單</button>
+<button class="tab" onclick="show('avoid',this)">❌ 黑名單</button>
+</div>
+
+<!-- ============ 首頁 ============ -->
+<div id="home" class="section active">
+
+<h2>🚨 你絕對不能忘的 10 件事</h2>
+<ol>
+<li><strong>5/29–5/31 ES CON FIELD 有主場 vs 讀賣巨人</strong>（先前說「無賽」是錯的）— 想看球可排</li>
+<li><strong>絕對不要買</strong> KKday 548082 函館山纜車票（2026/3/31 已過期）</li>
+<li><strong>絕對不要買</strong> KKday 130253 白色戀人門票（疑下架）→ 改用 <a href="https://www.klook.com/zh-TW/activity/136238-shiroi-koibito-park-ticket/" target="_blank">Klook 136238</a></li>
+<li><strong>C25 GARAKU 湯咖哩 2025/10/15 已搬到南 3 東 2 B1F</strong>（靠近二条市場，<strong>不要去舊狸小路址</strong>）</li>
+<li><strong>5/20–5/31 札幌丁香花祭 + Wine Garden</strong>（飯店步行 3 分，5/30–31 加開川下會場）</li>
+<li><strong>5/29 須避</strong>：Toya Terrace 平日休、福庵已停、Cookies Toya 週一二休、Meguriya 週一二休</li>
+<li><strong>道南巴士「登別↔洞爺」直達線 2025/10/26 停駛</strong> → 走 JR 經長萬部</li>
+<li><strong>函館山纜車 2026/4/20 起末班改為「下山末班前 30 分」</strong></li>
+<li><strong>第一瀧本館夕割 2026/2/28 已廢</strong> → 只有 ¥2,250</li>
+<li><strong>5/27–31 黃金組合</strong>：丁香花祭 + Wine Garden + ES CON 巨人交流戰</li>
+</ol>
+
+<h2>🌸 5 月底花期 ✅ / ❌ 確認版</h2>
+<table>
+<tr><th>項目</th><th>狀態</th></tr>
+<tr><td>函館五稜郭櫻 / 神宮櫻 / 富田薰衣草</td><td>❌ 都看不到</td></tr>
+<tr><td>滝川菜の花祭（5/16–5/24）</td><td>❌ 5/27 抵達已過</td></tr>
+<tr><td>旭山企鵝散步 / 鬼花火 / YOSAKOI / 神宮例祭</td><td>❌ 都不在期間</td></tr>
+<tr><td><strong>洞爺湖煙火</strong>（4/28–10/31 每晚）</td><td>✅ 全期間</td></tr>
+<tr><td><strong>札幌丁香花祭大通會場</strong>（5/20–5/31）</td><td>✅ 完美重疊</td></tr>
+<tr><td><strong>川下會場副場</strong>（5/30–5/31）</td><td>✅ 完美重疊</td></tr>
+<tr><td><strong>大通公園 Wine Garden</strong>（5/20–5/31 限定）</td><td>✅ 完美重疊</td></tr>
+<tr><td><strong>ES CON 主場 vs 讀賣巨人</strong>（5/29–5/31）</td><td>✅ 完美重疊</td></tr>
+<tr><td>鬱金香（四季彩之丘）/ 美瑛白金青池 / 大沼新綠</td><td>✅ 都 OK</td></tr>
+</table>
+
+<h2>🏨 住宿動線</h2>
+<table>
+<tr><th>日期</th><th>飯店</th><th>區</th></tr>
+<tr><td>5/23–5/25（2 晚）</td><td>洞爺華美 ホテル華美</td><td>洞爺湖溫泉街</td></tr>
+<tr><td>5/25–5/27（2 晚）</td><td>Toyoko Inn 函館駅前朝市</td><td>函館站旁朝市隔壁</td></tr>
+<tr><td>5/27–5/31（4 晚）</td><td>KOKO Hotel Sapporo Odori</td><td>札幌大通</td></tr>
+</table>
+
+<h2>✈️ 航班</h2>
+<table>
+<tr><td>5/23（六）去程</td><td>BR116 桃園 10:10 → 新千歲 15:00</td></tr>
+<tr><td>5/31（日）回程</td><td>BR115 新千歲 16:15 → 桃園 19:15</td></tr>
+</table>
+
+</div>
+
+<!-- ============ 洞爺湖 ============ -->
+<div id="toya" class="section">
+
+<h2>🏔 基地 1｜洞爺華美（5/23–5/25 共 2 晚）</h2>
+
+<h3>🚶 步行 ≤10 分 — 景點</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">A2</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>洞爺湖煙火大會</strong></td><td>免費（船 ¥1,700–1,900）</td><td>每晚 20:45–21:05，4/28–10/31 飯店窗前</td></tr>
+<tr><td class="id">A1</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>洞爺湖汽船 中島巡</strong></td><td><span class="tag tag-fix">已更正</span> ¥1,800</td><td>原 ¥1,600 已漲</td></tr>
+<tr><td class="id">A48</td><td><span class="star">⭐⭐</span> 🏛 北海道洞爺湖サミット記念館</td><td>免費</td><td>巴士總站 3F，2008 G8 高峰會原桌椅</td></tr>
+<tr><td class="id">A52</td><td><span class="star">⭐⭐</span> 🏛 泉源公園</td><td>免費 24h</td><td>每 3h 8m 高間歇泉 + 9 金棒</td></tr>
+<tr><td class="id">A5</td><td><span class="star">⭐⭐</span> 🌿 金比羅火口災害遺構散策路</td><td>免費</td><td>2000 年噴發埋公寓現場</td></tr>
+<tr><td class="id">A8</td><td><span class="star">⭐⭐</span> 🏛 火山科學館</td><td>¥600</td><td>2000 噴發 4D 體驗</td></tr>
+<tr><td class="id">A9</td><td><span class="star">⭐⭐</span> 🌿 洞龍之湯足湯</td><td>免費 24h</td><td>湖畔泡腳</td></tr>
+</table>
+
+<h3>🚶 步行 ≤10 分 — 美食</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>價位</th><th>說明</th></tr>
+<tr><td class="id">A26</td><td><span class="star">⭐⭐⭐</span> 望羊蹄</td><td>¥1,100–2,500</td><td>1946 多蜜醬漢堡排國民洋食</td></tr>
+<tr><td class="id">A31</td><td><span class="star">⭐⭐⭐</span> Lake Hill Farm</td><td>¥500–2,000</td><td>20 口味 gelato + 羊蹄山景，計程車 15 分</td></tr>
+<tr><td class="id">A27</td><td><span class="star">⭐⭐</span> 牛助燒肉</td><td>¥2,500–4,000</td><td>溫泉街排隊王，<strong>需訂位</strong></td></tr>
+<tr><td class="id">A30</td><td><span class="star">⭐⭐</span> 仙堂庵</td><td>¥1,500–3,000</td><td>湖景蕎麥麵</td></tr>
+<tr><td class="id">A29</td><td><span class="star">⭐⭐</span> 拉麵一本亭</td><td>¥900</td><td>20 小時熬湯</td></tr>
+<tr><td class="id">A61</td><td><span class="star">⭐⭐</span> Cookies Toya <span class="tag tag-new">NEW</span></td><td>¥1,000–2,000</td><td>越後屋 2F 工房咖啡，<span class="tag tag-fix">已更正</span> <strong>週一二休</strong></td></tr>
+<tr><td class="id">A62</td><td><span class="star">⭐⭐</span> BLOSSOM COFFEE <span class="tag tag-new">NEW</span></td><td>¥800–1,800</td><td><span class="tag tag-fix">已更正</span> 万世閣 <strong>B1F</strong>（不是 1F），<strong>9:00–18:30</strong></td></tr>
+<tr><td class="id">A63</td><td><span class="star">⭐⭐</span> Meguriya <span class="tag tag-new">NEW</span></td><td>¥1,000–2,500</td><td>湖畔露台，<span class="tag tag-fix">已更正</span> <strong>週一二休</strong></td></tr>
+</table>
+
+<h3>🚌 巴士/計程車 10–30 分</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">A3</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>有珠山纜車 + 昭和新山</strong></td><td>¥2,000</td><td>360° 火山景 + 羊蹄山 + 太平洋</td></tr>
+<tr><td class="id">A7</td><td><span class="star">⭐⭐</span> 昭和新山熊牧場</td><td><span class="tag tag-fix">已更正</span> ¥1,000</td><td>原 ¥900 已漲</td></tr>
+<tr><td class="id">A4</td><td><span class="star">⭐⭐</span> 🌿 Sairo 展望台</td><td>免費</td><td>400m 俯瞰湖 + 羊蹄山</td></tr>
+<tr><td class="id">A6</td><td><span class="star">⭐⭐</span> 西山山麓火口散策路</td><td>免費</td><td>2000 噴發隆起道路</td></tr>
+</table>
+
+<h3>🚂 JR 一日來回（30 分–1h）— 景點</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">A15</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>登別地獄谷</strong></td><td>免費</td><td>450m 硫磺火山口</td></tr>
+<tr><td class="id">A23</td><td><span class="star">⭐⭐⭐</span> 🏛 <strong>Upopoy 國立愛努博物館（白老）</strong></td><td>¥1,200（線上 ¥1,000）</td><td>日本最大愛努文化設施 2020</td></tr>
+<tr><td class="id">A21</td><td><span class="star">⭐⭐⭐</span> 🌿 地球岬（室蘭）</td><td>免費</td><td>北海道自然百選 No.1，計程車 15 分</td></tr>
+<tr><td class="id">A50</td><td><span class="star">⭐⭐</span> 🌿 鐵泉池 <span class="tag tag-new">NEW</span></td><td>免費</td><td>地獄谷散策路中段，4-5 分噴一次</td></tr>
+<tr><td class="id">A51</td><td><span class="star">⭐⭐</span> 🌿 奧之湯 <span class="tag tag-new">NEW</span></td><td>免費</td><td>地獄谷步行 25-30 分</td></tr>
+<tr><td class="id">A49</td><td><span class="star">⭐⭐</span> 🌿 大湯沼展望台遊步道 <span class="tag tag-new">NEW</span></td><td>免費</td><td>俯瞰冒煙大湯沼</td></tr>
+<tr><td class="id">A16</td><td><span class="star">⭐⭐</span> 🌿 大湯沼川天然足湯</td><td>免費</td><td>溪流就是溫泉</td></tr>
+<tr><td class="id">A54</td><td><span class="star">⭐⭐</span> 室蘭夜景遊船 <span class="tag tag-new">NEW</span></td><td>¥4,000</td><td>5 月運航，<strong>最少 5 人成團</strong>，19:00 出航</td></tr>
+<tr><td class="id">A55</td><td><span class="star">⭐⭐</span> 白鳥大橋登塔船 <span class="tag tag-new">NEW</span></td><td><span class="tag tag-fix">已更正</span> ¥6,500 起</td><td>原 ¥4,000 嚴重低估，TEPPEN ¥9,000</td></tr>
+<tr><td class="id">A56</td><td><span class="star">⭐⭐</span> 🏛 旧室蘭駅舎 <span class="tag tag-new">NEW</span></td><td>免費</td><td>1912 北海道現存最古木造站</td></tr>
+<tr><td class="id">A17</td><td><span class="star">⭐⭐</span> 登別熊牧場</td><td>¥3,200</td><td>含纜車 60 隻棕熊</td></tr>
+<tr><td class="id">A19</td><td><span class="star">⭐⭐</span> 登別尼克斯海洋公園</td><td>¥3,200</td><td>企鵝遊行全年</td></tr>
+<tr><td class="id">A47</td><td><span class="star">⭐⭐</span> 第一瀧本館 day spa</td><td><span class="tag tag-fix">已更正</span> ¥2,250</td><td><strong>夕割 2026/2/28 已廢止</strong></td></tr>
+</table>
+
+<h3>🚂 JR 一日來回 — 美食</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>價位</th><th>說明</th></tr>
+<tr><td class="id">A65</td><td><span class="star">⭐⭐⭐</span> まるひら 雲丹專門 <span class="tag tag-new">NEW</span></td><td>¥2,000–4,500</td><td>登別 2023/7 開，週一休</td></tr>
+<tr><td class="id">A67</td><td><span class="star">⭐⭐⭐</span> ななかまど IRENKA <span class="tag tag-new">NEW</span></td><td>¥400–1,200</td><td>白老 Upopoy 入口前蘋果派</td></tr>
+<tr><td class="id">A68</td><td><span class="star">⭐⭐⭐</span> 牛之里 <span class="tag tag-new">NEW</span></td><td>¥2,310–2,900</td><td>武田農場直營白老牛</td></tr>
+<tr><td class="id">A69</td><td><span class="star">⭐⭐</span> IRENKA Hamburger <span class="tag tag-new">NEW</span></td><td>¥1,000–1,999</td><td><span class="tag tag-fix">已更正</span> 登別<strong>溫泉街內步行可達</strong>，週四休</td></tr>
+<tr><td class="id">A57</td><td><span class="star">⭐⭐</span> 大漁番屋虎杖浜 <span class="tag tag-new">NEW</span></td><td>¥3,000+ <span class="tag tag-warn">未驗證</span></td><td>鱈魚子直銷，週三休</td></tr>
+<tr><td class="id">A58</td><td><span class="star">⭐⭐</span> 母's+ <span class="tag tag-new">NEW</span></td><td>¥600–1,500</td><td>白老雞蛋甜點咖啡，赤煉瓦建築賞 2021</td></tr>
+<tr><td class="id">A59</td><td><span class="star">⭐⭐</span> <strong>北のランプ亭</strong> <span class="tag tag-new">NEW</span></td><td>¥2,000–4,000</td><td><span class="tag tag-fix">已更正名稱</span> 不是 LAMP 是片假名 ランプ，<strong>週日休</strong></td></tr>
+<tr><td class="id">A36</td><td><span class="star">⭐⭐</span> 溫泉市場（登別）</td><td>¥1,500–3,500</td><td>閻魔炒麵</td></tr>
+<tr><td class="id">A34</td><td><span class="star">⭐⭐</span> 味の大王 室蘭</td><td>¥900–1,300</td><td>室蘭咖哩拉麵發源</td></tr>
+</table>
+
+<div class="alert">
+❌ <strong>已刪除 / 不要去</strong>：A66 福庵蕎麥麵（2024 年確認停業）、A53 EL'TOYA（營業狀況不明）、A64 Toya Terrace（5/25 週一公休）、A25 壯瞥公園梅林（5 月已謝）
+</div>
+
+</div>
+
+<!-- ============ 函館 ============ -->
+<div id="hakodate" class="section">
+
+<h2>🌃 基地 2｜函館 Toyoko Inn 駅前朝市（5/25–5/27 共 2 晚）</h2>
+<p class="sub">JR 函館站旁 1 分，朝市隔壁｜函館市電 ¥600/日券</p>
+
+<h3>🚶 步行 ≤5 分 — 景點</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">B21</td><td><span class="star">⭐⭐⭐</span> 🏛 <strong>函館朝市</strong></td><td>免費</td><td>住宿隔壁，1947 創立 250 攤</td></tr>
+<tr><td class="id">B22</td><td><span class="star">⭐⭐⭐</span> 🍴 どんぶり横丁市場</td><td>–</td><td>朝市內 20 家海鮮丼</td></tr>
+<tr><td class="id">B55</td><td><span class="star">⭐⭐</span> 大門横丁屋台</td><td>–</td><td>駅前 26 間屋台聚落</td></tr>
+<tr><td class="id">B69</td><td><span class="star">⭐⭐</span> 🏛 はこだて自由市場 <span class="tag tag-new">NEW</span></td><td>免費</td><td>1945 在地人市場（駅徒步 12 分）</td></tr>
+</table>
+
+<h3>🚶 步行 ≤5 分 — 美食</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>價位</th><th>說明</th></tr>
+<tr><td class="id">B31</td><td><span class="star">⭐⭐⭐</span> <strong>きくよ食堂 元祖巴丼</strong></td><td>¥1,500–3,000</td><td>1956 海膽+鮭魚卵+干貝</td></tr>
+<tr><td class="id">B46</td><td><span class="star">⭐⭐⭐</span> <strong>ハセガワストア やきとり弁当</strong></td><td>¥500–700</td><td>函館限定豬肉串便當（GLAY 推薦）</td></tr>
+<tr><td class="id">B76</td><td><span class="star">⭐⭐⭐</span> HAKODATE Oysters 1854 <span class="tag tag-new">NEW</span></td><td>¥3,000–5,000</td><td>2025/9/19 開，函館首間 oyster bar</td></tr>
+<tr><td class="id">B77</td><td><span class="star">⭐⭐⭐</span> 十字屋食堂 <span class="tag tag-new">NEW</span></td><td>¥900–1,500</td><td>2025/3 開，駅徒步 5 分高級主廚 C/P 王，週三休</td></tr>
+<tr><td class="id">B81</td><td><span class="star">⭐⭐⭐</span> <strong>朝市食堂二番館 ¥550 海鮮丼</strong></td><td>¥550</td><td><span class="tag tag-fix">已更正</span> <strong>已可刷卡</strong>（不再只收現金）</td></tr>
+<tr><td class="id">B40</td><td><span class="star">⭐⭐</span> あじさい JR 函館駅店</td><td>¥900–1,200</td><td>鹽拉麵駅內分店</td></tr>
+<tr><td class="id">B41</td><td><span class="star">⭐⭐</span> 滋養軒</td><td>¥700–900</td><td>1947 銅板拉麵</td></tr>
+<tr><td class="id">B53</td><td><span class="star">⭐⭐</span> 炉ばた大謀</td><td>¥3,000–5,000</td><td>大門横丁網元爐端</td></tr>
+<tr><td class="id">B82</td><td><span class="star">⭐⭐</span> すずや食堂 勝手丼 <span class="tag tag-new">NEW</span></td><td>¥1,870+</td><td>自選 5 種配料</td></tr>
+<tr><td class="id">B83</td><td><span class="star">⭐⭐</span> 山三 道下食堂 <span class="tag tag-new">NEW</span></td><td>¥1,210–3,000</td><td>朝市本店道下丼綜合丼</td></tr>
+</table>
+<div class="disclaimer">⚠️ <strong>B79 神々のばら麺</strong>：補強說 2025/10 開但<strong>找不到任何確認來源</strong>，建議出發前自查或跳過</div>
+
+<h3>🚊 函館市電（≤30 分，¥600/日券）— 景點</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">B14</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>函館山夜景纜車</strong></td><td>¥1,800</td><td>5 月日落 19:00；<strong>2026/4/20 起末班為下山末班前 30 分</strong></td></tr>
+<tr><td class="id">B1</td><td><span class="star">⭐⭐⭐</span> 🏛 <strong>金森紅磚倉庫</strong></td><td>免費</td><td>1909 紅磚倉庫群</td></tr>
+<tr><td class="id">B5</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>八幡坂</strong></td><td>免費</td><td>JAL 廣告坡道</td></tr>
+<tr><td class="id">B17</td><td><span class="star">⭐⭐⭐</span> 🏛 <strong>五稜郭塔</strong></td><td><span class="tag tag-fix">已更正</span> ¥1,200</td><td>2023/4 起漲（原 ¥1,000）</td></tr>
+<tr><td class="id">B16</td><td><span class="star">⭐⭐</span> 🌿 五稜郭公園</td><td>免費</td><td>新綠 + 紫藤</td></tr>
+<tr><td class="id">B85</td><td><span class="star">⭐⭐</span> 🏛 カフェ十字屋（公會堂內） <span class="tag tag-new">NEW</span></td><td>¥600+</td><td><span class="tag tag-fix">已更正開幕日</span> 2021/11 開（不是 2025/4），每年冬休 4 月復開</td></tr>
+<tr><td class="id">B6</td><td><span class="star">⭐⭐</span> 🏛 舊函館區公會堂</td><td>¥300</td><td>1910 藍黃和洋折衷</td></tr>
+<tr><td class="id">B7</td><td><span class="star">⭐⭐</span> 🏛 舊英國領事館</td><td>¥300</td><td>玫瑰園 + 英式下午茶</td></tr>
+<tr><td class="id">B8</td><td><span class="star">⭐⭐</span> 🏛 函館ハリストス正教會</td><td>¥200</td><td>日本首座東正教</td></tr>
+<tr><td class="id">B9</td><td><span class="star">⭐⭐</span> 🏛 元町天主教會</td><td>免費</td><td>哥德風</td></tr>
+<tr><td class="id">B65</td><td><span class="star">⭐⭐</span> 🌿 Café Morrier <span class="tag tag-new">NEW</span></td><td>¥1,200+</td><td>GLAY《White Road》MV 拍攝點</td></tr>
+<tr><td class="id">B66</td><td><span class="star">⭐⭐</span> 🍴 八幡通自販機 specialty 咖啡豆 <span class="tag tag-new">NEW</span></td><td>¥600/100g</td><td>24h 販賣機</td></tr>
+<tr><td class="id">B68</td><td><span class="star">⭐⭐</span> 🏛 トラピスチヌ女子修道院 <span class="tag tag-new">NEW</span></td><td>免費</td><td>1898 日本首座</td></tr>
+<tr><td class="id">B15</td><td><span class="star">⭐⭐</span> 🌿 立待岬</td><td>免費</td><td>津輕海峽斷崖</td></tr>
+<tr><td class="id">B18</td><td><span class="star">⭐⭐</span> 🏛 箱館奉行所</td><td>¥500</td><td>2010 復元江戶役所</td></tr>
+<tr><td class="id">B24</td><td><span class="star">⭐⭐</span> 🌿 湯之川溫泉街足湯</td><td>免費</td><td>北海道三大溫泉</td></tr>
+</table>
+<div class="disclaimer">
+⚠️ <strong>B64 緑の島</strong>：可去（GLAY 演唱會場，免費）但「20 萬人金氏紀錄」<strong>是錯誤幻覺</strong>（那是 1999 幕張，函館實際約 5 萬）<br>
+⚠️ <strong>B63 イカール星人 SHOP</strong>：<span class="tag tag-fix">已更正</span> 已從明治館搬到朝市えきに市場<br>
+⚠️ <strong>B67 美鈴空港店</strong>：「TERU 畫展」是 <strong>2022 年限時展非常設</strong>
+</div>
+
+<h3>🚊 函館市電 — 美食</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>價位</th><th>說明</th></tr>
+<tr><td class="id">B43</td><td><span class="star">⭐⭐⭐</span> <strong>ラッキーピエロ ベイエリア本店</strong></td><td>¥500–900</td><td>函館限定 Chinese Chicken Burger</td></tr>
+<tr><td class="id">B47</td><td><span class="star">⭐⭐⭐</span> <strong>五島軒本店 雪河亭</strong></td><td>¥2,000–5,000</td><td>1879 函館咖哩有形文化財</td></tr>
+<tr><td class="id">B39</td><td><span class="star">⭐⭐⭐</span> あじさい本店 五稜郭</td><td>¥900–1,200</td><td>80 年塩拉麵代表</td></tr>
+<tr><td class="id">B35</td><td><span class="star">⭐⭐⭐</span> 鮨処 木はら</td><td>¥5,000+</td><td>高評價江戶前</td></tr>
+<tr><td class="id">B78</td><td><span class="star">⭐⭐⭐</span> HAKODATE MATCHA STAND <span class="tag tag-new">NEW</span></td><td>¥1,200</td><td>2025/8 開，21cm 抹茶 latte，IG 爆紅</td></tr>
+<tr><td class="id">B80</td><td><span class="star">⭐⭐⭐</span> maison FUJIYA</td><td>¥6,000+</td><td><span class="tag tag-fix">已更正</span> Tabelog Award 2026 Bronze</td></tr>
+<tr><td class="id">B86</td><td><span class="star">⭐⭐⭐</span> 居酒屋 EAST <span class="tag tag-new">NEW</span></td><td>¥4,000–6,000</td><td>五稜郭 Tabelog 百名店 2024，<strong>需訂位</strong></td></tr>
+<tr><td class="id">B74</td><td><span class="star">⭐⭐</span> DIVA&amp;RAM COFFEE <span class="tag tag-new">NEW</span></td><td>¥450–630</td><td>2024/11 開，古民家深焙</td></tr>
+<tr><td class="id">B49</td><td><span class="star">⭐⭐</span> 美鈴珈琲本店</td><td>¥500–800</td><td>1932 北海道最古咖啡</td></tr>
+<tr><td class="id">B48</td><td><span class="star">⭐⭐</span> PETITE MERVEILLE 金森店</td><td>¥500–1,000</td><td>金賞半熟起司蛋糕</td></tr>
+<tr><td class="id">B51</td><td><span class="star">⭐⭐</span> 茶房 菊泉（元町）</td><td>¥800</td><td>百年老屋豆腐聖代</td></tr>
+<tr><td class="id">B37</td><td><span class="star">⭐⭐</span> 函太郎 宇賀浦本店</td><td>¥2,000–3,500</td><td>海岸邊迴轉壽司</td></tr>
+<tr><td class="id">B38</td><td><span class="star">⭐⭐</span> 根室花まる キラリス</td><td>¥2,000–3,000</td><td>駅前迴轉壽司</td></tr>
+</table>
+
+<h3>🚂 JR 一日來回（30–50 分）</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">B25</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>大沼國定公園</strong></td><td>免費</td><td>駒岳火山下湖泊新綠，租腳踏車 ¥1,000 環湖 14km</td></tr>
+<tr><td class="id">E2</td><td><span class="star">⭐⭐</span> 沼の家 大沼糰子</td><td>¥390–650</td><td>站前 15 分必買</td></tr>
+<tr><td class="id">B84</td><td><span class="star">⭐⭐</span> ランバーハウス <span class="tag tag-new">NEW</span></td><td>¥1,750</td><td>大沼牛漢堡排定食</td></tr>
+<tr><td class="id">E3</td><td><span class="star">⭐⭐⭐</span> <strong>長万部 かなや かにめし</strong></td><td>⚠️ ¥1,300–1,350</td><td>日本三大駅弁，10 分可買</td></tr>
+<tr><td class="id">E5</td><td><span class="star">⭐⭐⭐</span> 森町 阿部商店 いかめし</td><td><span class="tag tag-fix">已更正</span> ¥1,450</td><td>1941 花枝飯（原 ¥780 嚴重過時）</td></tr>
+</table>
+
+<div class="alert">
+❌ <strong>已刪除 / 不要去</strong>：B71 函ノ木カフェ（2025/5/30 停業）、B91/B94 賞櫻團（5 月櫻已謝）<br>
+❌ <strong>不要買</strong>：KKday 548082 函館山纜車票（2026/3/31 已過期）
+</div>
+
+</div>
+
+<!-- ============ 札幌 ============ -->
+<div id="sapporo" class="section">
+
+<h2>🍻 基地 3｜KOKO Hotel 札幌大通（5/27–5/31 共 4 晚）</h2>
+<p class="sub">飯店步行 3 分大通公園、5 分狸小路 + 二條市場</p>
+
+<h3>🚶 步行 ≤10 分 — 景點</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">C1</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>大通公園 5/20–5/31 丁香花祭</strong> 🎉</td><td>免費</td><td>飯店步行 3 分</td></tr>
+<tr><td class="id">C69</td><td><span class="star">⭐⭐⭐</span> 🍷 <strong>大通公園 Wine Garden 5/20–5/31 限定</strong> <span class="tag tag-new">NEW</span></td><td>杯 ¥600+</td><td>配丁香花賞日落</td></tr>
+<tr><td class="id">C20</td><td><span class="star">⭐⭐⭐</span> 🍴 二條市場</td><td>免費</td><td>札幌版朝市，海鮮丼早餐</td></tr>
+<tr><td class="id">C19</td><td><span class="star">⭐⭐⭐</span> 狸小路 1–7 丁目</td><td>免費</td><td>200+ 店、藥妝免稅</td></tr>
+<tr><td class="id">C64</td><td><span class="star">⭐⭐⭐</span> 🐧 <strong>AOAO SAPPORO 都市水族館</strong> <span class="tag tag-new">NEW</span></td><td>¥2,200</td><td>2023/7 開，雨天備案神器</td></tr>
+<tr><td class="id">C65</td><td><span class="star">⭐⭐⭐</span> 🏛 <strong>北海道廳舊本廳舍 赤煉瓦</strong> <span class="tag tag-fix">2025/7/25 重開</span></td><td>⚠️ ¥300/¥200 待現場確認</td><td>八角塔陽台 ¥1,200</td></tr>
+<tr><td class="id">C2</td><td><span class="star">⭐⭐</span> 🏛 札幌電視塔</td><td>¥1,000</td><td>大通東端 90m</td></tr>
+<tr><td class="id">C3</td><td><span class="star">⭐⭐</span> 🏛 札幌時計台</td><td>¥200</td><td>1878 美式木鐘樓</td></tr>
+<tr><td class="id">C15</td><td><span class="star">⭐⭐</span> 🌿 JR 塔 T38 展望</td><td>¥740</td><td>札幌站 160m，建議取代 C2</td></tr>
+</table>
+
+<h3>🚶 步行 ≤10 分 — 美食</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>價位</th><th>說明</th></tr>
+<tr><td class="id">C25</td><td><span class="star">⭐⭐⭐</span> <strong>GARAKU 湯咖哩</strong> <span class="tag tag-fix">2025/10/15 已搬</span></td><td>¥1,300–1,800</td><td><strong>新址：南 3 東 2 B1F 二条市場附近</strong>，狸小路舊址無效</td></tr>
+<tr><td class="id">C46</td><td><span class="star">⭐⭐⭐</span> 六花亭札幌本店 2F 喫茶室</td><td>–</td><td>60 円蛋糕、抹茶白巧雪糕</td></tr>
+<tr><td class="id">C47</td><td><span class="star">⭐⭐⭐</span> 北菓樓札幌本館</td><td>–</td><td>安藤忠雄 2016 設計書牆 + 年輪蛋糕</td></tr>
+<tr><td class="id">C41</td><td><span class="star">⭐⭐⭐</span> <strong>根室花まる JR 塔店</strong></td><td>¥200–600/盤</td><td>CP 王迴轉壽司</td></tr>
+<tr><td class="id">C52</td><td><span class="star">⭐⭐⭐</span> はちきょう Tsukko 鮭魚卵飯</td><td>¥4,000+</td><td>喊「おいさー！」</td></tr>
+<tr><td class="id">C86</td><td><span class="star">⭐⭐⭐</span> 二条市場 大磯（OHISO） <span class="tag tag-new">NEW</span></td><td>¥2,500–4,500</td><td>早 7:30 開，海膽巨無霸</td></tr>
+<tr><td class="id">C77</td><td><span class="star">⭐⭐⭐</span> 麵屋翔札幌店 <span class="tag tag-new">NEW</span></td><td>¥1,000–1,400</td><td><span class="tag tag-fix">已更正</span> 招牌「神の塩」<strong>塩拉麵</strong>（不是醬油），2025/4 開</td></tr>
+<tr><td class="id">C98</td><td><span class="star">⭐⭐⭐</span> 山下本気うどん <span class="tag tag-new">NEW</span></td><td>¥1,200–1,800</td><td>2025/5 開，IG 爆紅明太子奶油烏龍</td></tr>
+<tr><td class="id">C100</td><td><span class="star">⭐⭐⭐</span> AUX BACCHANALES（紅磚露台）</td><td>¥1,500–3,000</td><td>招牌舒芙蕾蛋包飯</td></tr>
+<tr><td class="id">C34</td><td><span class="star">⭐⭐⭐</span> けやき 薄野本店</td><td>–</td><td>深夜排隊味噌拉麵</td></tr>
+<tr><td class="id">C37</td><td><span class="star">⭐⭐⭐</span> <strong>だるま 本店</strong></td><td>–</td><td>薄野 1954 排隊王</td></tr>
+<tr><td class="id">C60</td><td><span class="star">⭐⭐⭐</span> 札幌藥妝狸小路本店</td><td>–</td><td>免稅 + 優惠 = 93 折</td></tr>
+<tr><td class="id">C76</td><td><span class="star">⭐⭐</span> ONIYANMA COFFEE&amp;BEER <span class="tag tag-new">NEW</span></td><td>¥600–1,200</td><td>白天 specialty / 晚酒吧</td></tr>
+<tr><td class="id">C97</td><td><span class="star">⭐⭐</span> MATSUYA アリオ ジェラ餅 <span class="tag tag-new">NEW</span></td><td>¥700</td><td>2025/4 開，阿寒 Gelato 包麻糬</td></tr>
+<tr><td class="id">C99</td><td><span class="star">⭐⭐</span> Starbucks 札幌4丁目プレイス店 <span class="tag tag-new">NEW</span></td><td>¥600–900</td><td>2025/8/7 開，茶飲專門</td></tr>
+<tr><td class="id">C102</td><td><span class="star">⭐⭐</span> YAKINIKUBAR TAMURA（紅磚露台 3F）</td><td>¥4,000–8,000</td><td><span class="tag tag-fix">已更正</span> 是燒肉 Bar 不是割烹</td></tr>
+<tr><td class="id">C103</td><td><span class="star">⭐⭐</span> TIGER CURRY 赤煉瓦店</td><td>¥1,200–1,800</td><td><span class="tag tag-fix">已更正</span> 是<strong>札幌湯咖哩</strong>不是印度咖哩</td></tr>
+<tr><td class="id">C101</td><td><span class="star">⭐⭐</span> P'tit Salé（紅磚露台）</td><td>¥2,000–4,000</td><td>北海道食材休閒法式</td></tr>
+</table>
+<div class="alert">❌ C81「生ラム専門店」— 疑為幻覺，無正式店名，已刪除</div>
+
+<h3>🚇 札幌地鐵（≤30 分，¥830/日券）— 景點</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>費用</th><th>說明</th></tr>
+<tr><td class="id">C7</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>北海道大學</strong></td><td>免費</td><td>札幌站北 15 分，白楊 + クラーク像</td></tr>
+<tr><td class="id">C9</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>北海道神宮</strong></td><td>免費</td><td>圓山公園站，5 月新綠</td></tr>
+<tr><td class="id">C5</td><td><span class="star">⭐⭐⭐</span> 🏛 <strong>札幌啤酒博物館</strong></td><td>免費（試飲 ¥500）</td><td>日本唯一</td></tr>
+<tr><td class="id">C12</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>藻岩山纜車夜景</strong></td><td>¥2,100</td><td>日本新三大夜景</td></tr>
+<tr><td class="id">C13</td><td><span class="star">⭐⭐⭐</span> 🌿 <strong>莫埃來沼公園</strong></td><td>免費</td><td>野口勇遺作玻璃金字塔</td></tr>
+<tr><td class="id">C24</td><td><span class="star">⭐⭐⭐</span> 🌸 <strong>川下公園丁香花副場 5/30–5/31 限定</strong></td><td>免費</td><td>世界丁香 200 種 1700 株</td></tr>
+<tr><td class="id">C11</td><td><span class="star">⭐⭐</span> 白色戀人公園</td><td>¥800</td><td>宮の沢站歐風童話村</td></tr>
+<tr><td class="id">C18</td><td><span class="star">⭐⭐</span> 🏛 真駒內瀧野頭大佛</td><td>¥300</td><td>安藤忠雄設計</td></tr>
+<tr><td class="id">C22</td><td><span class="star">⭐⭐</span> 🏛 北海道博物館 + 開拓之村</td><td>¥800</td><td>54 棟明治大正建築</td></tr>
+<tr><td class="id">C6</td><td><span class="star">⭐⭐</span> 札幌啤酒園 buffet</td><td>¥3,600/100 分起</td><td><span class="tag tag-fix">已更正</span> Klook 5012 <strong>可線上訂位</strong></td></tr>
+</table>
+
+<h3>🚇 札幌地鐵 — 美食</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>價位</th><th>說明</th></tr>
+<tr><td class="id">C30</td><td><span class="star">⭐⭐⭐</span> <strong>麵屋彩未</strong></td><td>–</td><td>Tabelog 札幌 No.1 薑味噌（地鐵美園站，週一休）</td></tr>
+<tr><td class="id">C31</td><td><span class="star">⭐⭐⭐</span> すみれ 本店（中の島站）</td><td>–</td><td>味噌拉麵代名詞</td></tr>
+<tr><td class="id">C70</td><td><span class="star">⭐⭐⭐</span> 森彦本店 <span class="tag tag-new">NEW</span></td><td>¥600–1,000</td><td>円山古民家咖啡聖地</td></tr>
+<tr><td class="id">C90</td><td><span class="star">⭐⭐⭐</span> すし善 本店（円山）</td><td>¥15,000–30,000</td><td>1971，米其林 2012 歷史認定</td></tr>
+<tr><td class="id">C27</td><td><span class="star">⭐⭐⭐</span> Picante 湯咖哩（圓山）</td><td>¥1,400–2,000</td><td>北大旁份量大</td></tr>
+<tr><td class="id">C26</td><td><span class="star">⭐⭐⭐</span> Suage 本店 湯咖哩</td><td>¥1,400–1,900</td><td>同級對手</td></tr>
+<tr><td class="id">C82</td><td><span class="star">⭐⭐</span> North Continent <span class="tag tag-new">NEW</span></td><td>¥1,480–2,200</td><td>漢堡排火焰燒烤</td></tr>
+<tr><td class="id">C83</td><td><span class="star">⭐⭐</span> KITAUSHI（薄野） <span class="tag tag-new">NEW</span></td><td>¥6,000–10,000</td><td>北海道和牛完全預約制</td></tr>
+<tr><td class="id">C84</td><td><span class="star">⭐⭐</span> ワインとヤキニク円山 JIN <span class="tag tag-new">NEW</span></td><td>¥8,000–15,000</td><td><span class="tag tag-fix">已更正</span> 在<strong>円山</strong>非薄野</td></tr>
+<tr><td class="id">C85</td><td><span class="star">⭐⭐</span> Steak &amp; Wine Ishizaki <span class="tag tag-new">NEW</span></td><td>¥10,000–20,000</td><td>薄野徒步 2 分鐵板燒</td></tr>
+<tr><td class="id">C78</td><td><span class="star">⭐⭐</span> マルタケ <span class="tag tag-new">NEW</span></td><td>¥3,000–4,500</td><td>Tabelog 鹽味成吉思汗隱家</td></tr>
+<tr><td class="id">C79</td><td><span class="star">⭐⭐</span> ふくろう亭 <span class="tag tag-new">NEW</span></td><td>¥3,000–4,500</td><td>中島公園 7 分月寒式炭火</td></tr>
+<tr><td class="id">C80</td><td><span class="star">⭐⭐</span> 63 ジンギスカン <span class="tag tag-new">NEW</span></td><td>¥3,000–4,500</td><td>薄野地下店</td></tr>
+<tr><td class="id">C93</td><td><span class="star">⭐⭐</span> 瑠玖&amp;魚平 <span class="tag tag-new">NEW</span></td><td>¥4,000–6,000</td><td>狸小路 6 板長精選刺身盛 5 點</td></tr>
+<tr><td class="id">C94</td><td><span class="star">⭐⭐</span> 海鮮バル ネムロ屋 <span class="tag tag-new">NEW</span></td><td>¥4,000–6,000</td><td>根室直送本日造</td></tr>
+<tr><td class="id">C95</td><td><span class="star">⭐⭐</span> 季節料理 裕（中島公園） <span class="tag tag-new">NEW</span></td><td>¥6,000–10,000</td><td>老闆全國跑食材</td></tr>
+<tr><td class="id">C89</td><td><span class="star">⭐⭐</span> 北のグルメ亭（場外市場）</td><td>¥2,500–3,500</td><td>早 7:00 開 12 種魚介丼 ¥2,980</td></tr>
+<tr><td class="id">C91</td><td><span class="star">⭐⭐</span> すし宮川（円山） <span class="tag tag-new">NEW</span></td><td>¥20,000–35,000</td><td>Tabelog Award 2026 Silver</td></tr>
+<tr><td class="id">C88</td><td><span class="star">⭐⭐</span> 小熊商店（二条市場） <span class="tag tag-new">NEW</span></td><td>¥2,500–4,000</td><td>2018 開 7 席小店</td></tr>
+<tr><td class="id">C87</td><td><span class="star">⭐⭐</span> 寿司処 けいらん（二条市場） <span class="tag tag-new">NEW</span></td><td>¥2,500–4,000</td><td>米/味噌全道產</td></tr>
+<tr><td class="id">C96</td><td><span class="star">⭐⭐</span> 十勝豚丼いっぴん 札幌站店 <span class="tag tag-new">NEW</span></td><td>¥1,200–1,800</td><td>帶廣豚丼老店札幌支店</td></tr>
+<tr><td class="id">C74</td><td><span class="star">⭐⭐</span> 詠月珈琲 <span class="tag tag-new">NEW</span></td><td>¥600–900</td><td><span class="tag tag-fix">已更正</span> 在<strong>「中の島」站</strong>非中島公園</td></tr>
+<tr><td class="id">C71</td><td><span class="star">⭐⭐</span> MORIHICO PARCO 店</td><td>¥600–900</td><td>森彦旗艦支店</td></tr>
+</table>
+<div class="alert">❌ C92 まりの店 — 已永久關閉，刪除</div>
+
+<h3>🎯 ES CON FIELD 賽程（5/29–5/31 主場 vs 巨人）</h3>
+<div class="tip">
+<strong>補強檔說「客戶期間無主場賽」是錯的，實際有 3 場！</strong> 想看球去 <a href="https://www.fighters.co.jp/game/schedule/" target="_blank">fighters.co.jp 訂票</a>
+</div>
+<table>
+<tr><th>日期</th><th>主客</th><th>對戰</th><th>開賽</th></tr>
+<tr><td>5/27 三</td><td>客</td><td>vs 阪神（甲子園）</td><td>18:00</td></tr>
+<tr><td>5/28 四</td><td>客</td><td>vs 阪神（甲子園）</td><td>18:00</td></tr>
+<tr><td><strong>5/29 五</strong></td><td><strong>主場 ES CON</strong></td><td><strong>vs 讀賣巨人</strong></td><td><strong>18:00</strong> ⭐</td></tr>
+<tr><td><strong>5/30 六</strong></td><td><strong>主場 ES CON</strong></td><td><strong>vs 讀賣巨人</strong></td><td><strong>14:00</strong> ⭐</td></tr>
+<tr><td><strong>5/31 日</strong></td><td><strong>主場 ES CON</strong></td><td><strong>vs 讀賣巨人</strong></td><td><strong>13:00</strong>（飛機 16:15 看不完）</td></tr>
+</table>
+
+<h3>🚂 JR 一日來回</h3>
+<table>
+<tr><th>區</th><th>名稱</th><th>距離</th><th>說明</th></tr>
+<tr><td><strong>D1</strong></td><td><span class="star">⭐⭐⭐⭐⭐</span> <strong>小樽</strong></td><td>32 分</td><td>運河+音樂盒+LeTAO+壽司+田中酒造+桂苑炒麵+小樽珈琲香房 <span class="tag tag-new">NEW</span></td></tr>
+<tr><td><strong>D5</strong></td><td><span class="star">⭐⭐⭐⭐</span> 登別</td><td>1h10m</td><td>地獄谷+大湯沼健行（A 區若已去 skip）</td></tr>
+<tr><td><strong>D3</strong></td><td><span class="star">⭐⭐⭐⭐</span> 旭川 + 旭山動物園</td><td>1h25m+40m</td><td>⚠️ 企鵝散步 5 月不開；NEW 北彩都ガーデン+Sushi Minato 百名店</td></tr>
+<tr><td><strong>D2</strong></td><td><span class="star">⭐⭐⭐⭐</span> 余市 NIKKA</td><td>1h15m</td><td><span class="tag tag-fix">已更正</span> 見學約 70 分（不是 90 分）+ 自由試飲</td></tr>
+<tr><td><strong>D6</strong></td><td><span class="star">⭐⭐⭐⭐</span> 支笏湖</td><td>1h30m</td><td>觀光船 + 透明獨木舟 + 丸駒溫泉</td></tr>
+<tr><td><strong>D7</strong></td><td><span class="star">⭐⭐⭐⭐</span> 定山溪</td><td>1h</td><td>二見吊橋 + 水庫 + 溫泉</td></tr>
+<tr><td><strong>D4</strong></td><td><span class="star">⭐⭐⭐</span> 美瑛</td><td>2h</td><td>白金青池（5/中–6/下最美）+ 鬱金香（薰衣草 7 月才開）</td></tr>
+</table>
+<div class="disclaimer">
+⚠️ <strong>D13-7 OSA WINERY 只開週六 13–17</strong>（5/27–31 期間只有 5/30 可去）<br>
+⚠️ <strong>D1-9 伊勢鮨「米其林一星」</strong>是 2012 年歷史認定，非現役年度星級<br>
+⚠️ <strong>D15 上湧別鬱金香</strong> 5/底滿開但 🚗 自駕限定<br>
+⚠️ <strong>D15-2 滝川菜の花祭 5/24 結束</strong>，5/27 抵達已過
+</div>
+
+</div>
+
+<!-- ============ 套票 ============ -->
+<div id="tickets" class="section">
+
+<h2>🎫 套票購買清單（已驗證 URL）</h2>
+
+<h3>✅ 安全買（出發前 7 天線上下單）</h3>
+<table>
+<tr><th>套票</th><th>平台 ID</th><th>連結</th><th>注意</th></tr>
+<tr><td><strong>JR 北海道 5 日券</strong></td><td>KKday 122531</td><td><a href="https://www.kkday.com/zh-tw/product/122531" target="_blank">開連結 ↗</a></td><td>雙人 NT$ 8,600，省 ¥6,900</td></tr>
+<tr><td><strong>eSIM 7 日 50% off</strong></td><td>KKday 137689</td><td><a href="https://www.kkday.com/zh-tw/product/137689-japan-unlimited-data-esim-card" target="_blank">開連結 ↗</a></td><td>NT$ 350–500/人</td></tr>
+<tr><td><strong>小樽運河遊船</strong></td><td>KKday 2795</td><td><a href="https://www.kkday.com/en-us/product/2795" target="_blank">開連結 ↗</a></td><td>5–10 月旺季售罄要早訂</td></tr>
+<tr><td><strong>白色戀人公園</strong> <span class="tag tag-fix">改用 Klook</span></td><td>Klook 136238</td><td><a href="https://www.klook.com/zh-TW/activity/136238-shiroi-koibito-park-ticket/" target="_blank">開連結 ↗</a></td><td>KKday 130253 已下架</td></tr>
+<tr><td>藻岩山纜車</td><td>KKday 145835</td><td><a href="https://www.kkday.com/en-us/product/145835-mt-moiwa-ropeway-mini-cable-car-round-trip-ticket-package-japan" target="_blank">開連結 ↗</a></td><td>¥1,890</td></tr>
+<tr><td>藻岩山夜景優先券</td><td>KKday 147580</td><td><a href="https://www.kkday.com/en-us/product/147580" target="_blank">開連結 ↗</a></td><td>旺季排隊省 1h</td></tr>
+<tr><td><strong>札幌啤酒園 buffet</strong> <span class="tag tag-fix">可訂位</span></td><td>Klook 5012</td><td><a href="https://www.klook.com/en-US/activity/5012-sapporo-beer-garden-hokkaido/" target="_blank">開連結 ↗</a></td><td>之前說「不能訂位」是錯的</td></tr>
+<tr><td>JR 塔 T38 展望</td><td>KKday 262404</td><td><a href="https://www.kkday.com/en-us/product/262404" target="_blank">開連結 ↗</a></td><td>取代電視塔更划算</td></tr>
+<tr><td>函館特級套票</td><td>KKday 135031</td><td><a href="https://www.kkday.com/zh-tw/product/135031" target="_blank">開連結 ↗</a></td><td>市電 1 日 + <strong>12 點數</strong></td></tr>
+<tr><td>ぐるっと函館號（市區巴士）</td><td>Klook 76032</td><td><a href="https://www.klook.com/ja/activity/76032-grutto-hakodate-city-bus-tour-hokkaido/" target="_blank">開連結 ↗</a></td><td>實際停：五稜郭塔 + トラピスチヌ + 牛乳工場</td></tr>
+<tr><td>函館山夜景觀光巴士</td><td>Klook 23077</td><td><a href="https://www.klook.com/en-US/activity/23077-mt-hakodate-night-view-sightseeing-bus-hokkaido/" target="_blank">開連結 ↗</a></td><td>免排纜車人潮</td></tr>
+<tr><td>洞爺湖汽船船票</td><td>KKday 130971</td><td><a href="https://www.kkday.com/zh-tw/product/130971" target="_blank">開連結 ↗</a></td><td>¥1,800（已更正）</td></tr>
+<tr><td>旭山動物園 + 美瑛青池一日遊</td><td>KKday 19868 / Klook 15633</td><td><a href="https://www.klook.com/en-US/activity/15633-asahiyama-zoo-shirogane-pond-tour-sapporo/" target="_blank">Klook ↗</a></td><td>NT$ 2,000+ 含午餐</td></tr>
+</table>
+
+<h3>🏪 現場買（線上同價或無單售）</h3>
+<table>
+<tr><td>函館市電 1 日券 ¥600</td><td>車內購</td></tr>
+<tr><td>第一瀧本館 day spa ¥2,250</td><td>櫃台（夕割已廢）</td></tr>
+<tr><td>洞爺湖花火鑑賞船 ¥1,700–1,900</td><td>旅館代訂</td></tr>
+<tr><td>旭山動物園 ¥1,000</td><td>園口（KKday 22061 部分版本 2026/4/7 已過期）</td></tr>
+<tr><td>登別熊牧場 ¥3,200</td><td>纜車站</td></tr>
+</table>
+
+<h3>❌ 絕對不買</h3>
+<div class="alert">
+<ul>
+<li><strong>KKday 548082 函館山纜車票</strong> — 2026/3/31 已過期</li>
+<li><strong>KKday 130253 白色戀人</strong> — 疑下架，改用 Klook 136238</li>
+<li><strong>KKday 12072 白色戀人 DIY</strong> — 是甜點繪畫不是手做餅乾（除非真要繪畫）</li>
+<li><strong>KKday 268652 / Klook 144957</strong> 賞櫻團 — 5 月已過花期</li>
+</ul>
+</div>
+
+</div>
+
+<!-- ============ 動作清單 ============ -->
+<div id="action" class="section">
+
+<h2>📌 行動清單</h2>
+
+<h3>🔥 現在就做（出發前 13 天）</h3>
+<ol>
+<li>訂 <a href="https://www.kkday.com/zh-tw/product/122531" target="_blank">KKday 122531 JR Pass 5 日券</a>（雙人 NT$ 8,600）</li>
+<li>訂 <a href="https://www.kkday.com/zh-tw/product/137689-japan-unlimited-data-esim-card" target="_blank">KKday 137689 eSIM × 2</a></li>
+<li>訂 <a href="https://www.kkday.com/en-us/product/2795" target="_blank">KKday 2795 小樽運河遊船</a>（5–10 月旺季售罄）</li>
+<li>官網訂位（<strong>必訂</strong>）：札幌啤酒園、牛助燒肉、B86 居酒屋 EAST、B80 maison FUJIYA、B76 Oysters 1854</li>
+<li>えきねっと 訂指定席：5/25 洞爺→函館、5/27 函館→札幌、5/28 札幌↔旭川</li>
+<li>如想看球：<a href="https://www.fighters.co.jp/game/schedule/" target="_blank">fighters.co.jp 買 5/29 或 5/30 主場票</a></li>
+</ol>
+
+<h3>🎒 出發前 1 週</h3>
+<ul>
+<li>確認護照效期 &gt; 6 個月</li>
+<li>列印住宿確認信、機票、JR Pass 兌換券</li>
+<li>下載 App：Yahoo!乗換案内、Google Maps（離線）、Tabelog、JR 北海道、DohNa!（函館市電）</li>
+<li>換匯 ¥10 萬現金（≈ NT$22,000）</li>
+</ul>
+
+<h3>🎯 到了再買</h3>
+<ul>
+<li>函館特級套票 ¥2,900（函館站 Tourist Center）</li>
+<li>函館市電 1 日券 ¥600（車內購）</li>
+<li>第一瀧本館 day spa ¥2,250（<strong>夕割已廢</strong>）</li>
+<li>洞爺湖花火鑑賞船 ¥1,700–1,900（旅館代訂）</li>
+<li>旭山動物園門票 ¥1,000</li>
+</ul>
+
+<h3>⏰ 出發前 3 天再速查</h3>
+<ol>
+<li>ES CON 5/29–5/31 票券是否還有</li>
+<li>KKday 套票價格（即時牌價）</li>
+<li>C25 GARAKU 新址實際開門</li>
+<li>B79 神々のばら麺 是否真存在</li>
+<li>各餐廳當週公休日</li>
+</ol>
+
+<h3>🎒 打包重點</h3>
+<ul>
+<li>5 月底北海道日均 13–18°C，早晚 8–13°C</li>
+<li>薄長袖 ×5、防風薄外套、羽絨背心（函館山夜景用）</li>
+<li>暈車藥（特急北斗 3.5h）、轉接頭、行動電源</li>
+<li>溫泉用小毛巾、室內鞋</li>
+</ul>
+
+</div>
+
+<!-- ============ 黑名單 ============ -->
+<div id="avoid" class="section">
+
+<h2>❌ 黑名單 — 已停業 / 不存在 / 過期</h2>
+
+<div class="alert">
+<strong>以下項目已從清單中移除，不要去 / 不要買</strong>
+</div>
+
+<h3>🏪 已停業店家</h3>
+<table>
+<tr><th>ID</th><th>名稱</th><th>狀態</th><th>來源</th></tr>
+<tr><td>A66</td><td>そば処 福庵（登別溫泉街）</td><td>2024 年確認停業</td><td>Yahoo Maps 2025/7 用戶評論</td></tr>
+<tr><td>A53</td><td>EL'TOYA</td><td>營業狀況不確定，可能閉店或搬遷</td><td>Tabelog 標示</td></tr>
+<tr><td>B71</td><td>函ノ木カフェ</td><td>2025/5/30 停業</td><td>oishi-hakodate.com 確認</td></tr>
+<tr><td>C92</td><td>まりの店（薄野）</td><td>舊址永久關閉</td><td>Tabelog [Closed]</td></tr>
+<tr><td>C81</td><td>「生ラム専門店」（COCONO 旁）</td><td>疑為 subagent 幻覺，無正式店名</td><td>查無 Tabelog / 官網 / COCONO 店名單</td></tr>
+</table>
+
+<h3>🎫 不要買的套票</h3>
+<table>
+<tr><th>套票</th><th>原因</th><th>替代</th></tr>
+<tr><td>KKday 548082 函館山纜車票</td><td>2026/3/31 已過期</td><td>函館特級套票 KKday 135031 含纜車點數</td></tr>
+<tr><td>KKday 130253 白色戀人公園</td><td>疑下架（URL 含 /invalid/）</td><td>Klook 136238</td></tr>
+<tr><td>KKday 12072 白色戀人 DIY</td><td>是甜點繪畫不是手做餅乾，名稱誤導</td><td>除非真要繪畫，否則跳過</td></tr>
+<tr><td>KKday 268652 賞櫻團</td><td>5/25 已過花期</td><td>跳過</td></tr>
+<tr><td>Klook 144957 五稜郭+松前城</td><td>5/25 已過花期</td><td>跳過</td></tr>
+</table>
+
+<h3>🌸 5 月底季節不對 — 不要安排</h3>
+<table>
+<tr><td>函館五稜郭櫻</td><td>4/下–5/初已謝</td></tr>
+<tr><td>北海道神宮櫻</td><td>4/下–5/中已謝</td></tr>
+<tr><td>富田農場薰衣草</td><td>7 月才開</td></tr>
+<tr><td>滝川菜の花祭</td><td>5/24 結束（5/27 抵達已過）</td></tr>
+<tr><td>旭山動物園企鵝散步</td><td>冬季限定，5 月不開</td></tr>
+<tr><td>登別鬼花火</td><td>6/1 才開幕</td></tr>
+<tr><td>YOSAKOI 索朗祭</td><td>6/10–6/14（5/31 已飛走）</td></tr>
+<tr><td>北海道神宮例祭</td><td>6/14–6/16（已飛走）</td></tr>
+<tr><td>函館市熱帶植物園猴泡湯</td><td>冬季限定，5 月已結束</td></tr>
+</table>
+
+<h3>🚌 已停駛交通</h3>
+<table>
+<tr><td>道南巴士「登別溫泉↔洞爺溫泉」直達線</td><td>2025/10/26 起停駛 → 須走 JR 經長萬部</td></tr>
+</table>
+
+<h3>📍 描述有誤 — 不要憑記憶找</h3>
+<table>
+<tr><th>原描述（錯）</th><th>正確</th></tr>
+<tr><td>C25 GARAKU 在狸小路</td><td>2025/10/15 已搬到南 3 東 2 B1F（二条市場附近）</td></tr>
+<tr><td>B63 イカール星人 SHOP 在明治館</td><td>已搬到朝市えきに市場</td></tr>
+<tr><td>C84 円 JIN 在薄野</td><td>實際在円山（南 6 西 23）</td></tr>
+<tr><td>C74 詠月珈琲 中島公園站</td><td>實際是「中の島」站（差 3 站）</td></tr>
+<tr><td>A62 BLOSSOM 在万世閣 1F</td><td>實際在 B1F</td></tr>
+<tr><td>A69 IRENKA Hamburger 須計程車</td><td>登別溫泉街內步行可達</td></tr>
+</table>
+
+</div>
+
+<div class="footer">
+<p>📄 北海道 9 日驗證版 v1.0 final｜2026/5/10 整理</p>
+<p>已套用 51 件錯誤更正（4 路 adversarial-reviewer 對 350 項驗證）</p>
+<p>✅ 高信心 167 / ⚠️ 中信心 92 / ❌ 已剔除 36</p>
+<p>本頁僅供旅遊參考，價格/營業狀態以官方為準</p>
+</div>
+
+<script>
+function show(id, btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
