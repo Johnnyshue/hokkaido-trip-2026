@@ -1,0 +1,33 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;color:#222;background:#f5f3ef}
+.wrap{max-width:880px;margin:0 auto;padding:18px 16px 60px;background:#fff;min-height:100vh}
+.topnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eee}
+.topnav a{padding:5px 10px;background:#eef6f0;color:#1a4d2e;text-decoration:none;font-size:.85em;border-radius:12px}
+.topnav a.now{background:#7eb77f;color:#fff;font-weight:600}
+.topnav a:hover{background:#7eb77f;color:#fff}
+h1{font-size:1.5em;color:#1a4d2e;margin:6px 0 4px}
+.sub{color:#666;font-size:.92em;margin-bottom:14px}
+h2{font-size:1.18em;margin:24px 0 10px;color:#1a4d2e;border-left:5px solid #7eb77f;padding-left:10px}
+h3{font-size:1.02em;margin:14px 0 6px;color:#2c5f3f}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92em}
+th,td{border:1px solid #ddd;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#e8f0e9;color:#1a4d2e}
+.box{background:#f9f7f1;border-left:4px solid #d4a55c;padding:10px 14px;margin:12px 0;font-size:.93em;border-radius:0 6px 6px 0}
+.warn{background:#fff0f0;border-left:4px solid #d65a5a;padding:10px 14px;margin:12px 0;font-size:.93em;border-radius:0 6px 6px 0}
+.tip{background:#eef6f0;border-left:4px solid #7eb77f;padding:10px 14px;margin:12px 0;font-size:.93em;border-radius:0 6px 6px 0}
+.timeline{background:#f9f7f1;padding:12px 14px;border-radius:6px;margin:10px 0;font-size:.92em}
+.timeline div{padding:4px 0;border-bottom:1px dashed #ddd}
+.timeline div:last-child{border:0}
+.timeline .t{display:inline-block;width:95px;color:#7a4a08;font-weight:600;font-size:.9em}
+a{color:#1a4d2e}
+ul,ol{margin:6px 0 6px 22px}
+li{margin:2px 0;font-size:.93em}
+.opt{border:2px solid #7eb77f;border-radius:8px;padding:12px 14px;margin:10px 0;background:#fafdf9}
+.opt h3{margin-top:0;color:#1a4d2e}
+.tag{display:inline-block;padding:1px 7px;background:#7eb77f;color:#fff;border-radius:8px;font-size:.78em;margin-right:4px}
+.tag-r{background:#d65a5a}
+.tag-o{background:#d4a55c}
+.tag-b{background:#5a8db7}
+.tag-p{background:#9b6bb1}
+.footer{color:#888;font-size:.82em;text-align:center;margin-top:30px;padding-top:18px;border-top:1px solid #eee}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}

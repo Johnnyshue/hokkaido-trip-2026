@@ -3,489 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🎫 跟團 vs 自由行分析｜北海道 9 日</title>
-<style>
-:root{--bg:#fafafa;--card:#fff;--text:#222;--sub:#666;--accent:#e57373;--toya:#4a90b8;--hako:#d4a017;--sapp:#7b9c3d;--border:#eee;--lite:#fef5f5;--warn:#fff3e0;--info:#e3f2fd}
-@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--card:#252525;--text:#eee;--sub:#aaa;--accent:#ff8a80;--toya:#7bb8d6;--hako:#e8c46a;--sapp:#a8c878;--border:#333;--lite:#2a2020;--warn:#2e2a1e;--info:#1e2832}}
-*{box-sizing:border-box}
-body{font-family:-apple-system,"Noto Sans TC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;margin:0;padding:16px;max-width:760px;margin:0 auto}
-h1{font-size:1.7em;margin:8px 0 4px}
-.sub{color:var(--sub);font-size:.92em;margin-bottom:24px}
-.base{padding:18px 20px;margin:24px 0;border-radius:10px;background:var(--card);border-top:5px solid var(--accent)}
-.base.toya{border-color:var(--toya)}
-.base.hako{border-color:var(--hako)}
-.base.sapp{border-color:var(--sapp)}
-.base h2{margin:0 0 8px;font-size:1.5em}
-.base.toya h2{color:var(--toya)}
-.base.hako h2{color:var(--hako)}
-.base.sapp h2{color:var(--sapp)}
-.summary{font-size:1.08em;font-weight:bold;padding:12px 16px;border-radius:6px;margin:12px 0 20px}
-.toya .summary{background:#e3f2fd;color:#0d5d8a}
-.hako .summary{background:#fff8e1;color:#8a6a00}
-.sapp .summary{background:#e8f5e9;color:#3d6a1a}
-@media(prefers-color-scheme:dark){.toya .summary{background:#1e2832;color:#7bb8d6}.hako .summary{background:#2e2a1e;color:#e8c46a}.sapp .summary{background:#1f2a1c;color:#a8c878}}
-h3{font-size:1.15em;margin:20px 0 8px;padding-left:8px;border-left:4px solid var(--accent)}
-.toya h3{border-color:var(--toya)}
-.hako h3{border-color:var(--hako)}
-.sapp h3{border-color:var(--sapp)}
-h4{font-size:1em;margin:14px 0 4px;color:var(--sub)}
-ul{padding-left:22px;margin:6px 0}
-li{margin:5px 0}
-.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:.78em;margin-left:4px;background:#fce4ec;color:#c2185b}
-.tag.bus{background:#e3f2fd;color:#1565c0}
-.tag.jr{background:#e8f5e9;color:#2e7d32}
-.tag.tram{background:#fff3e0;color:#e65100}
-.tag.metro{background:#f3e5f5;color:#6a1b9a}
-.tag.walk{background:#fffde7;color:#827717}
-.tag.must{background:var(--accent);color:#fff;font-weight:bold}
-@media(prefers-color-scheme:dark){.tag{background:#3a2128;color:#f8bbd0}.tag.bus{background:#1a2733;color:#7fb3e3}.tag.jr{background:#1f2a1c;color:#a5d6a7}.tag.tram{background:#332514;color:#ffb74d}.tag.metro{background:#2d1e33;color:#ce93d8}.tag.walk{background:#2e2e1c;color:#dce775}}
-.warn{background:var(--warn);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #ff9800}
-.info{background:var(--info);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #2196f3}
-.plan{background:var(--lite);padding:12px 16px;margin:14px 0;border-radius:6px;font-weight:500}
-.toc{background:var(--card);padding:14px 18px;border-radius:8px;margin-bottom:24px;border:1px solid var(--border);text-align:center}
-.toc a{display:inline-block;margin:4px;padding:6px 14px;border-radius:18px;font-weight:bold;text-decoration:none}
-.toc a.toya{background:var(--toya);color:#fff}
-.toc a.hako{background:var(--hako);color:#fff}
-.toc a.sapp{background:var(--sapp);color:#fff}
-.toc a.other{background:#f5f5f5;color:#666;border:1px solid #ddd}
-.toc a.full{background:#212121;color:#fff}
-@media(prefers-color-scheme:dark){.toc a.other{background:#333;color:#ccc;border-color:#444}.toc a.full{background:#666;color:#fff}}
-a.link{color:var(--accent);text-decoration:none;border-bottom:1px dotted}
-hr{border:none;border-top:1px dashed var(--border);margin:32px 0}
-.no{color:#d32f2f;text-decoration:line-through}
-@media(prefers-color-scheme:dark){.no{color:#ef9a9a}}
-.price{color:#888;font-size:.9em;margin-left:4px}
-</style>
+<title>🎫 套票分析</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>🗾 🎫 跟團 vs 自由行分析</h1>
-<p class="sub">2026/5/23（六）→ 5/31（日）｜兩人｜完全不開車</p>
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
-</div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other">🚗 沒車去不到</a>
-<a href="tour.html" class="other" style="background:#e57373;color:#fff">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<h2 id="tour" style="margin-top:32px">🎫 何時該跟一日遊團 vs 自由行？</h2>
-<p>Klook/KKday 有很多「札幌出發一日遊」，我評估你 9 日哪些可以參加、哪些不必：</p>
+<div class="wrap">
 
-<h3>✅ 強烈推薦跟團</h3>
+<div class="topnav">
+<a href="index.html">🏠</a>
+<a href="day1.html">D1</a><a href="day2.html">D2</a><a href="day3.html">D3</a><a href="day4.html">D4</a><a href="day5.html">D5</a><a href="day6.html">D6</a><a href="day7.html">D7</a><a href="day8.html">D8</a><a href="day9.html">D9</a>
+<a href="before.html">行前</a>
+<a href="nocar.html">沒車</a>
+<a href="tour.html" style="background:#d4a55c;color:#fff">套票</a>
+<a href="avoid.html">避雷</a>
+</div>
 
-<div class="day" style="background:var(--lite)">
-<h4 style="color:#4caf50;margin-top:0">⭐⭐⭐ 5/28 旭山動物園 + 美瑛青池 + 白鬚瀑布一日遊</h4>
-<p><strong>為什麼推薦跟團</strong>：</p>
+<h1>🎫 KKday/Klook 套票分析</h1>
+<p class="sub">值不值得買 + 沒車是不是一定要</p>
+
+<h2>🏆 強烈推薦（5/23-5/31 必買 1-2 個）</h2>
+
+<div class="opt">
+<h3>① JR Pass 北海道 5 日券 ¥20,000</h3>
+<table>
+<tr><th>項目</th><th>內容</th></tr>
+<tr><td>哪買</td><td>KKday/Klook 海外購買 · 比現場便宜 ¥1,000</td></tr>
+<tr><td>啟用</td><td>5/23 啟用，連用 5 天到 5/27 失效</td></tr>
+<tr><td>包含</td><td>JR 北海道全線（不含北海道新幹線）· JR 北海道直營巴士 4 條（札幌→白色戀人公園、神宮、新千歲）</td></tr>
+<tr><td>值不值</td><td><strong>必買</strong>—5/23 機場→函館 ¥9,440 + 5/25 函館→札幌 ¥9,770 兩段就 ¥19,210 · 再加 1 個日歸（旭川 ¥4,810×2 或小樽 ¥750×2）= 回本+省 ¥3,000-9,000</td></tr>
+<tr><td>沒車是否一定要</td><td><strong>是</strong>—不買等於搭 JR 全程單價超貴</td></tr>
+</table>
+</div>
+
+<div class="opt">
+<h3>② KKday 11257 札幌出發 洞爺湖+登別+昭和新山一日遊</h3>
+<table>
+<tr><th>項目</th><th>內容</th></tr>
+<tr><td>連結</td><td><a href="https://www.kkday.com/zh-tw/product/11257" target="_blank">KKday 11257</a></td></tr>
+<tr><td>價格</td><td>約 ¥10,000-12,000/人 · 中文導遊</td></tr>
+<tr><td>行程</td><td>札幌 8:30 → 昭和新山熊牧場 → 洞爺湖展望台 → 登別地獄谷 → 札幌 18:30</td></tr>
+<tr><td>適合</td><td>5/26（二）or 5/28（四）· 不浪費 JR Pass</td></tr>
+<tr><td>沒車是否一定要</td><td><strong>是</strong>—洞爺湖到登別的「都市間高速バス」已停駛（飄兒警示），自己用 JR 跑 3 個點 1 天做不完</td></tr>
+<tr><td>取代方案</td><td>札幌出發單買 JR 到登別 ¥4,580 ×2 + 道南巴士到地獄谷 = ¥10,000+ 還只玩 1 點，套票超划算</td></tr>
+</table>
+</div>
+
+<h2>👍 推薦（看個人喜好）</h2>
+
+<div class="opt">
+<h3>③ KKday 19868 旭山動物園+青池+白鬚瀑布一日遊</h3>
+<table>
+<tr><th>項目</th><th>內容</th></tr>
+<tr><td>連結</td><td><a href="https://www.kkday.com/zh-tw/product/19868" target="_blank">KKday 19868</a></td></tr>
+<tr><td>價格</td><td>約 ¥8,000/人 · 中文導遊</td></tr>
+<tr><td>行程</td><td>札幌 8:00 → 旭山動物園 → 青池 → 白鬚瀑布 → 札幌 19:00</td></tr>
+<tr><td>適合</td><td>5/28-5/31（JR Pass 過期後）</td></tr>
+<tr><td>沒車是否一定要</td><td><strong>是（青池/白鬚瀑布）</strong>—青池單獨去要租車或計程車 · 旭山動物園可單獨用 JR Pass 去（飄兒方案）</td></tr>
+<tr><td>取代方案</td><td>如果 5/26-5/27 用 JR Pass 去旭山，但青池會去不到（青池 5 月剛融冰，藍但不深，要不要看見仁見智）</td></tr>
+</table>
+</div>
+
+<div class="opt">
+<h3>④ ES CON FIELD 火腿 vs 讀賣巨人 票（5/29、5/30、5/31）</h3>
+<table>
+<tr><th>項目</th><th>內容</th></tr>
+<tr><td>哪買</td><td><a href="https://www.fighters.co.jp/" target="_blank">日本火腿官網</a> / KKday / Klook</td></tr>
+<tr><td>價格</td><td>外野 ¥3,000 / 內野 ¥6,000-12,000 / 包廂高價</td></tr>
+<tr><td>適合</td><td>5/29 或 5/30 任 1 場（5/31 你 14 點要進機場，太趕）</td></tr>
+<tr><td>沒車是否一定要</td><td><strong>否</strong>—JR + 接駁巴士可達北廣島駅</td></tr>
+<tr><td>建議</td><td>5/15 前盡早搶巨人戰票</td></tr>
+</table>
+</div>
+
+<h2>🟡 可有可無</h2>
+
+<div class="opt">
+<h3>⑤ 函館山纜車</h3>
 <ul>
-<li>自由行：JR 札幌→旭川 ¥4,690（特急+特急券） + 巴士 41 番 ¥500 + 入園 ¥1,000 = <strong>¥6,190 單人，只能玩動物園</strong></li>
-<li>跟團：¥10,000-12,000（KKday <a href="https://www.kkday.com/zh-tw/product/19868-hokkaido-day-tour-from-sapporo-asahiyama-zoo-blue-pond-shirahige-falls-japan" target="_blank" class="link">19868</a> / Klook <a href="https://www.klook.com/zh-TW/activity/15633-asahiyama-zoo-shirogane-pond-tour-sapporo/" target="_blank" class="link">15633</a>）= <strong>動物園+美瑛青池+白鬚瀑布+午餐 4 個地方</strong></li>
-<li><strong>多花約 ¥4,000 換 3 個景點</strong>，自由行根本去不了美瑛青池（沒車）</li>
-<li>美瑛青池 5/中-6/下是最美季節（鈷藍最深）</li>
+<li>現場買 ¥1,800（往返）OK</li>
+<li>KKday 預訂略便宜或省排隊</li>
+<li><strong>沒車是否一定要</strong>：否，現場買 OK · 旺季可預訂</li>
 </ul>
-<p><strong>建議</strong>：5/28 跟團最划算（JR Pass 第 5 天也不省，因為到旭山其實只搭 1 段）</p>
 </div>
 
-<h3>⚠️ 視情況跟團</h3>
-
-<div class="day" style="background:var(--warn)">
-<h4 style="color:#ff9800;margin-top:0">🤔 札幌出發「洞爺湖+登別+昭和新山一日遊」</h4>
-<p><strong>不建議</strong>：你已經住洞爺 2 晚 + 5/24 自己會去昭和新山。跟這個團等於重複跑。</p>
-<p>除非：你想 5/24 改成「Upopoy 白老」當天去 → 那 5/24 洞爺 + 5/27 札幌進入後可考慮跟這個團補登別。但團是從札幌出發，5/27 抵札幌當天累，不適合再跑遠。</p>
-</div>
-
-<div class="day" style="background:var(--warn)">
-<h4 style="color:#ff9800;margin-top:0">🤔 札幌出發「小樽+白色戀人+啤酒博物館一日」</h4>
-<p><strong>不建議</strong>：</p>
+<div class="opt">
+<h3>⑥ 函館一日遊 KKday（朝市+元町+五稜郭+函館山）</h3>
 <ul>
-<li>你 5/29 自己跑小樽（JR 32 分，¥800 散買就好）</li>
-<li>5/30 自己去白色戀人公園（地鐵 16 分，¥290） + 啤酒博物館（地鐵 ¥210）</li>
-<li>這 3 個地方分散在不同方向，跟團硬塞一天會很趕</li>
-<li><strong>自由行更有彈性</strong></li>
+<li>價格約 ¥6,000-8,000/人</li>
+<li>含中文導遊+巴士</li>
+<li><strong>沒車是否一定要</strong>：否—函館市區小，市電+步行 OK</li>
+<li>適合：第一次來、想跟團輕鬆</li>
 </ul>
 </div>
 
-<h3>❌ 不必跟團（自己跑更好）</h3>
+<div class="opt">
+<h3>⑦ 小樽運河+天狗山 一日遊</h3>
 <ul>
-<li><strong>札幌→洞爺接駁團</strong>：你已經住洞爺 2 晚，不需要從札幌跟團來</li>
-<li><strong>登別地獄谷一日遊</strong>（從札幌出發）：你住洞爺，搭 JR 過去 40 分鐘 ¥2,970（用 JR Pass 含在 5 日券內）。自己玩可深度走大湯沼健行（A50/A51/A49），跟團只看地獄谷</li>
-<li><strong>函館觀光巴士「ぐるっと函館号」</strong>（Klook 76032）：你 2 晚函館用市電 1 日券 ¥800 自由走更有彈性，不必跟巴士團</li>
+<li>價格約 ¥5,000-7,000/人</li>
+<li><strong>沒車是否一定要</strong>：否—JR 30 分 ¥750 自助超 OK</li>
+<li>適合：純放鬆派</li>
 </ul>
+</div>
 
-<h3>🎫 推薦套票（散買景點門票）</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.93em">
-<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">套票</th><th>用途</th><th>連結</th></tr>
-<tr><td><strong>JR 北海道 5 日券</strong></td><td>5/24-5/28 啟用最划算</td><td><a href="https://www.kkday.com/zh-tw/product/122531" target="_blank" class="link">KKday 122531</a></td></tr>
-<tr><td>eSIM 7 日 50% off</td><td>NT$ 350-500</td><td><a href="https://www.kkday.com/zh-tw/product/137689-japan-unlimited-data-esim-card" target="_blank" class="link">KKday 137689</a></td></tr>
-<tr><td><strong>洞爺湖汽船船票</strong></td><td>5/24 中島巡或煙火船</td><td><a href="https://www.kkday.com/zh-tw/product/130971" target="_blank" class="link">KKday 130971</a></td></tr>
-<tr><td>小樽運河遊船</td><td>5/29 旺季先訂（會售完）</td><td><a href="https://www.kkday.com/en-us/product/2795" target="_blank" class="link">KKday 2795</a></td></tr>
-<tr><td>藻岩山纜車</td><td>5/30 夜景</td><td><a href="https://www.kkday.com/en-us/product/145835-mt-moiwa-ropeway-mini-cable-car-round-trip-ticket-package-japan" target="_blank" class="link">KKday 145835</a></td></tr>
-<tr><td>函館特級套票</td><td>5/25-26 市電 1 日+12 點數</td><td><a href="https://www.kkday.com/zh-tw/product/135031" target="_blank" class="link">KKday 135031</a></td></tr>
-<tr><td>白色戀人公園</td><td>5/30 KKday 已下架→用 Klook</td><td><a href="https://www.klook.com/zh-TW/activity/136238-shiroi-koibito-park-ticket/" target="_blank" class="link">Klook 136238</a></td></tr>
-<tr><td>札幌啤酒園 buffet</td><td>需訂位</td><td><a href="https://www.klook.com/en-US/activity/5012-sapporo-beer-garden-hokkaido/" target="_blank" class="link">Klook 5012</a></td></tr>
+<h2>❌ 不推薦（不適合你 5 月底行程）</h2>
+
+<div class="opt">
+<h3>⛔ 富良野薰衣草一日遊</h3>
+<ul>
+<li>5 月底薰衣草未開（6 月底-7 月才開）</li>
+<li><strong>不要買</strong></li>
+</ul>
+</div>
+
+<div class="opt">
+<h3>⛔ 四季彩之丘+富田農場</h3>
+<ul>
+<li>5 月底花田未盛開</li>
+<li>飄兒原話：「我寫的是 7 月夏天版」</li>
+<li><strong>不要買</strong></li>
+</ul>
+</div>
+
+<div class="opt">
+<h3>⛔ 札幌出發洞爺湖+登別+昭和新山 一日遊（你已住札幌不用了）</h3>
+<ul>
+<li>因為你 5/25 後住札幌，不需要洞爺住宿</li>
+<li>用 KKday 11257 即可（你新行程後已 OK）</li>
+</ul>
+</div>
+
+<h2>📊 套票總結（依日期）</h2>
+<table>
+<tr><th>日期</th><th>必買</th><th>選買</th></tr>
+<tr><td>出發前</td><td>JR Pass 5 日券</td><td>ES CON 票、KKday 11257、KKday 19868</td></tr>
+<tr><td>5/23-5/25 函館</td><td>—</td><td>函館山纜車（現場買 OK）</td></tr>
+<tr><td>5/26-5/27 札幌</td><td>—</td><td>用 JR Pass 日歸（不需套票）</td></tr>
+<tr><td>5/28 札幌</td><td>—</td><td>KKday 11257 洞爺登別（JR Pass 已用完）</td></tr>
+<tr><td>5/29-5/30 札幌</td><td>ES CON 票</td><td>KKday 19868 旭山青池</td></tr>
+<tr><td>5/31 回國</td><td>—</td><td>—</td></tr>
 </table>
 
-<div class="warn">
-❌ <strong>絕對不要買</strong>：
-<ul>
-<li>KKday 548082 函館山纜車票（2026/3/31 已過期）</li>
-<li>KKday 130253 白色戀人公園門票（已下架）</li>
-<li>KKday 12072 白色戀人 DIY（是繪畫體驗不是手做餅乾）</li>
-</ul>
-</div>
-
-<hr>
-
-<h2 id="before" style="margin-top:32px">📌 出發前 5 件事</h2>
-<ol>
-<li><strong>買 JR 北海道 5 日券 NT$ 4,300/人</strong>，<a href="https://www.kkday.com/zh-tw/product/122531" target="_blank" class="link">KKday 122531</a>，5/24（一）啟用</li>
-<li><strong>えきねっと 訂指定席</strong>（北斗特急全車指定席，沒劃位上不去）—— <strong style="color:#d32f2f">5/25 洞爺 08:43 → 函館 北斗 4 號最重要！過了就 11 點到不了函館</strong></li>
-<li>訂位 3 家：牛助燒肉（5/23 晚洞爺）+ <a href="https://www.klook.com/en-US/activity/5012-sapporo-beer-garden-hokkaido/" target="_blank" class="link">札幌啤酒園</a>（5/29 晚）+ 居酒屋 EAST（5/26 晚函館五稜郭）</li>
-<li><a href="https://www.kkday.com/zh-tw/product/137689-japan-unlimited-data-esim-card" target="_blank" class="link">KKday 137689 日本 eSIM</a>（50% off 約 NT$ 350-500）</li>
-<li>想看球賽：<a href="https://www.fighters.co.jp/game/calendar/" target="_blank" class="link">日本火腿 5/29-31 主場 vs 巨人</a></li>
-</ol>
-
-<!-- ============ 洞爺湖 ============ -->
-<div class="base toya" id="toya">
-<h2>🏔 洞爺湖（5/23 六 → 5/25 一，2 晚）</h2>
-
-<div class="summary">
-洞爺湖必去、必體驗：<strong>看煙火 🎆、泡溫泉 ♨️、搭城堡造型船 ⛵、火山纜車 🌋</strong>
-</div>
-
-<p><strong>住宿</strong>：Hotel Hanabi（洞爺湖溫泉街，湖畔南岸 29-1）— 飯店湖側房可直接從窗前看煙火 🎆</p>
-
-<h3>🚶 走路可以去的（飯店步行 10 分內）</h3>
-<ul>
-<li><span class="tag must">必去</span><strong>洞爺湖煙火大會</strong> — 每晚 20:45-21:05，4/28-10/31 不間斷 <span class="price">免費（湖側房窗前看）/ 觀賞船 ¥1,900</span></li>
-<li><span class="tag must">必體驗</span><strong>洞爺湖汽船 Espoir 希望號</strong>（中世紀城堡造型）— 4-10 月每 30 分一班，繞中島 50 分 <span class="price">¥1,800</span></li>
-<li><strong>北海道洞爺湖サミット記念館</strong>（巴士總站 3F）— 2008 G8 高峰會原桌椅，<strong>免費</strong> <span class="price">9:00-17:00</span></li>
-<li><strong>泉源公園 9 金棒</strong> — 每 3 小時一次 8m 高間歇泉 <span class="price">24h 免費</span></li>
-<li><strong>金比羅火口災害遺構散策路</strong> — 2000 年噴發埋公寓現場 <span class="price">免費</span></li>
-<li><strong>火山科學館</strong>（同遊客中心）— 2000 噴發 4D 體驗 <span class="price">¥600</span></li>
-<li><strong>洞龍之湯足湯</strong>（湖畔）<span class="price">24h 免費</span></li>
-</ul>
-
-<h3>🚌 搭巴士或計程車可以去的（半天）</h3>
-<ul>
-<li><span class="tag bus">巴士 20 分</span><span class="tag must">必去</span><strong>有珠山纜車 + 昭和新山</strong> — 道南巴士一天 <strong>4 班</strong>（首班 10:25、末 15:50），360° 火山 + 羊蹄山 + 太平洋全景 <span class="price">巴士 ¥340 + 纜車 ¥2,000</span></li>
-<li><span class="tag bus">同上</span>昭和新山熊牧場 <span class="price">¥1,000</span></li>
-<li><span class="tag">計程車 15 分</span><strong>Lake Hill Farm</strong> — 20 口味 gelato + 羊蹄山景</li>
-</ul>
-
-<h3>🚂 搭 JR 可以去的（一日來回）</h3>
-<ul>
-<li><span class="tag jr">1h</span><span class="tag must">5/24 排這個</span><strong>Upopoy 國立愛努博物館</strong>（白老）— <strong style="color:#d32f2f">⚠️ 5/25 週一休館，務必排 5/24（日）去！</strong> <span class="price">¥1,200</span></li>
-<li><span class="tag jr">40 分</span><strong>登別地獄谷 + 大湯沼健行</strong> — 90 分一條路走完，多數人錯過 <span class="price">免費（巴士 ¥400 + JR ¥2,970 + 巴士 ¥350）</span></li>
-<li><span class="tag jr">40 分</span><strong>まるひら 雲丹專門</strong>（登別）— 海膽工場直營，2023/7 新開 <span class="price">¥2,000-4,500，週一休</span></li>
-<li><span class="tag jr">1h+計程車</span><strong>地球岬</strong>（室蘭）— 北海道自然百選 No.1</li>
-<li><span class="tag jr">1h</span><strong>第一瀧本館日歸溫泉</strong> — 1,500 坪 5 種泉質 35 池 <span class="price">¥2,250</span></li>
-</ul>
-
-<h3>🍴 必吃美食</h3>
-<ul>
-<li><strong>望羊蹄</strong>（1946 老店，招牌多蜜醬漢堡排）<span class="price">¥1,100-2,500，週二休</span></li>
-<li><strong>牛助燒肉</strong>（溫泉街排隊王，要訂位）<span class="price">¥2,500-4,000</span></li>
-<li><strong>わかさいも「いもてん」現炸</strong>（飄兒大推，外酥內細紅豆內餡）<span class="price">¥200-400</span></li>
-<li>白老必吃：<strong>ななかまど IRENKA 蘋果派</strong> + <strong>牛之里白老牛漢堡</strong>（Upopoy 入口前）</li>
-</ul>
-
-<h3>🛒 必買伴手禮在哪</h3>
-<ul>
-<li><strong>越後屋 1F 伴手禮店</strong>（湖畔南岸，<strong>9:00-18:00 不休</strong>）— 銀魂木刀 + 北海道伴手禮一站買齊</li>
-<li><strong>わかさいも本舗</strong>（湖畔南岸 144 號）— 名物若狹芋（仿地瓜紅豆菓子）</li>
-</ul>
-
-<div class="plan">
-<strong>📅 2 晚怎麼配</strong>：<br>
-<strong>Day 1（5/23 六）抵達</strong>：機場 → JR 北斗 → 道南巴士 → 飯店 → 晚餐望羊蹄 → 20:45 煙火<br>
-<strong>Day 2（5/24 日）洞爺一日 OR 跑 Upopoy</strong>：<br>
-　🅰️ 留洞爺：上午有珠山纜車 → 午茶 わかさいも いもてん → 下午搭船 → 煙火<br>
-　🅱️ 跑 Upopoy：07:35 巴士到洞爺站 → 09:34 北斗 → 10:27 白老 → Upopoy + 蘋果派<br>
-<strong>Day 3（5/25 一）移動</strong>：07:35 巴士 → 08:43 北斗 4 號 → 10:38 函館
-</div>
-
-<div class="warn">
-⚠️ <strong>不要等飯店免費接駁</strong>，那是從札幌出發 16:00 才到太晚。自己搭 JR 早 1 小時。
+<div class="footer">
+<a href="index.html">🏠 回首頁</a>
 </div>
 
 </div>
-
-
-<!-- ============ 函館 ============ -->
-<div class="base hako" id="hako">
-<h2>🌃 函館（5/25 一 → 5/27 三，2 晚）</h2>
-
-<div class="summary">
-函館必去、必體驗：<strong>函館山世界三大夜景 🌃、朝市海鮮丼 🦐、元町坂道+教堂群 ⛪、五稜郭塔 ⭐</strong>
-</div>
-
-<p><strong>住宿</strong>：東横INN 函館駅前大門（松風町 5-1）— JR 函館駅西口徒步 5 分，<strong>大門横丁就在飯店旁邊 1 分鐘</strong>，朝市方向步行 5-7 分。</p>
-
-<h3>🚶 走路可以去的（飯店步行 10 分內）</h3>
-
-<h4>大門横丁（飯店旁 1 分）</h4>
-<ul>
-<li><strong>大門横丁屋台</strong> — 26 間屋台聚落 <span class="price">17:00-24:00</span></li>
-<li><strong>炉ばた大謀</strong>（網元爐端燒）<span class="price">¥3,000-5,000</span></li>
-<li><span class="tag must">夜營活海產</span><strong>海光房</strong> — 唯一 22:00 才打烊，活烏賊+海鮮丼+螃蟹粥 <span class="price">¥3,000-5,000</span></li>
-</ul>
-
-<h4>函館朝市（飯店步行 5-7 分）</h4>
-<ul>
-<li><span class="tag must">必吃</span><strong>村上海膽丼</strong> — 函館朝市第一，海膽工場直營無添加 <span class="price">4-9/30 早餐 09:00 開門！</span></li>
-<li><span class="tag must">必吃</span><strong>きくよ食堂 元祖巴丼</strong>（海膽+鮭魚卵+干貝）<span class="price">5-11 月 05:00 開門！</span></li>
-<li><strong>朝市食堂二番館 ¥550 海鮮丼</strong>（已可刷卡）</li>
-<li><strong>駅二市場「活烏賊釣堀」</strong> — 自己釣老闆現切生魚片</li>
-<li><strong>はこだて自由市場</strong>（1945，在地人市場）<span class="price">8:00-17:30</span></li>
-</ul>
-
-<h4>函館站附近</h4>
-<ul>
-<li><span class="tag must">函館限定</span><strong>ハセガワストア やきとり弁当</strong>（GLAY 推薦的便利商店烤雞便當）<span class="price">¥500-700</span></li>
-<li><strong>ラッキーピエロ 函館駅前店</strong>（Chinese Chicken Burger 函館限定）<span class="price">¥500-900</span></li>
-<li><strong>HAKODATE Oysters 1854</strong>（2025/9 新開，函館首間生蠔吧）<span class="price">17:00-23:00 晚餐限定</span></li>
-<li><strong>十字屋食堂</strong>（2025/3 新開高級主廚定食）<span class="price">¥900-1,500，週三休</span></li>
-</ul>
-
-<h3>🚊 搭市電可以去的（買「市電 1 日券 ¥800」）</h3>
-
-<div class="warn">
-💡 <strong>1 日券 ¥800（不是 ¥600，2025/12/1 漲價）</strong>，同日搭 3 段以上才划算。
-</div>
-
-<h4>「十字街」站（市電 6 分，¥250）</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>金森紅磚倉庫</strong>（1909 紅磚倉庫群）<span class="price">免費</span></li>
-<li><span class="tag must">必去</span><strong>八幡坂</strong>（JAL 廣告坡道）<span class="price">免費</span></li>
-<li><span class="tag must">必去</span><strong>函館山夜景纜車</strong>（步行 10 分上坡，世界三大夜景）<span class="price">¥1,800，<strong>上行末班 21:30</strong></span></li>
-<li><strong>元町教堂群</strong>：舊公會堂 ¥300 / 英國領事館 ¥300 / ハリストス正教會 ¥200 / 元町天主教會 免費</li>
-<li><span class="tag must">必吃</span><strong>ラッキーピエロ ベイエリア本店</strong>（函館限定）<span class="price">¥500-900</span></li>
-<li><strong>五島軒本店 雪河亭</strong>（1879 函館咖哩有形文化財）<span class="price">¥2,000-5,000</span></li>
-<li><strong>HAKODATE MATCHA STAND</strong>（IG 爆紅 21cm 抹茶 latte）<span class="price">¥1,200</span></li>
-<li><strong>美鈴珈琲本店</strong>（1932 北海道最古咖啡）<span class="price">¥500-800</span></li>
-<li><strong>maison FUJIYA</strong>（Tabelog Award Bronze 2026）<span class="price">¥6,000+，需訂位</span></li>
-</ul>
-
-<h4>「五稜郭公園前」站（市電 19 分，¥270）</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>五稜郭塔</strong>（俯瞰星形要塞）<span class="price">¥1,200</span></li>
-<li><strong>五稜郭公園</strong>（5 月新綠）<span class="price">免費</span></li>
-<li><strong>あじさい本店 五稜郭</strong>（80 年函館塩拉麵代表）<span class="price">¥900-1,200，<strong style="color:#d32f2f">⚠️ 5/27 第 4 週三休 → 改金森店 / 函館站店</strong></span></li>
-<li><strong>居酒屋 EAST</strong>（Tabelog 百名店 2024）<span class="price">¥4,000-6,000，需訂位</span></li>
-</ul>
-
-<h4>其他站</h4>
-<ul>
-<li><span class="tag tram">湯の川 30 分</span><strong>湯之川溫泉街足湯</strong> <span class="price">免費</span></li>
-<li><span class="tag tram">谷地頭 22 分（只 2 系統）</span>立待岬（步行 15-20 分）</li>
-<li><span class="tag tram">函館どつく前</span>トラピスチヌ女子修道院</li>
-</ul>
-
-<h3>🚂 搭 JR 可以去的（半天來回）</h3>
-<ul>
-<li><span class="tag jr">39-47 分</span><span class="tag must">5/26 排這裡</span><strong>大沼國定公園</strong> — 駒岳新綠 + 腳踏車環湖 14km ¥1,000，遊船 30 分 ¥1,460 <span class="price">JR ¥680 片道</span></li>
-<li><strong>沼の家 大沼糰子</strong>（站前 1 分必買）<span class="price">¥390-650</span></li>
-<li><strong>ランバーハウス 大沼牛漢堡排定食</strong>（大沼公園站旁）<span class="price">¥1,750，週三休</span></li>
-</ul>
-
-<h3>🛒 必買伴手禮在哪</h3>
-<ul>
-<li><strong>金森紅磚倉庫</strong>（市電十字街 + 步行 3 分）：<strong>Petite Merveille 一口起司蛋糕</strong>（5 口味）+ <strong>Pastry Snaffle's Cheese Omelet</strong>（半熟歐姆蛋口感）+ <strong>あおい森 金森限定巧克力焦糖木莓蛋糕</strong></li>
-<li><strong>JR 函館站旁 キラリス函館</strong>：駅前綜合伴手禮</li>
-<li><strong>函館朝市</strong>：海鮮乾貨、昆布糖、松前漬</li>
-</ul>
-
-<div class="plan">
-<strong>📅 2 晚怎麼配</strong>：<br>
-<strong>Day 1（5/25 一）抵達</strong>：10:38 抵函館 → 朝市午餐（村上海膽 9:00 開）→ 寄行李 → 下午搭市電金森+八幡坂+元町 → 18:30 函館山夜景 → 大門横丁晚餐<br>
-<strong>Day 2（5/26 二）函館深度</strong>：05:00 きくよ早餐 → 09:00 JR 去大沼 → 下午回函館搭市電到五稜郭 → 晚餐居酒屋 EAST<br>
-<strong>Day 3（5/27 三）移動</strong>：05:00 朝市最後一餐 → 07:37 北斗 3 號 → 11:22 札幌
-</div>
-
-<div class="warn">
-⚠️ <strong>5/27 第 4 週三</strong>：味彩五稜郭本店休、明治館休（其他分店仍開）
-</div>
-
-</div>
-
-
-<!-- ============ 札幌 ============ -->
-<div class="base sapp" id="sapp">
-<h2>🍻 札幌（5/27 三 → 5/31 日，4 晚）</h2>
-
-<div class="summary">
-札幌必去、必體驗：<strong>湯咖哩 🍛、味噌拉麵 🍜、成吉思汗烤羊 🐑、丁香花祭 🌸、藻岩山夜景 🌃、看球賽 ⚾</strong>
-</div>
-
-<p><strong>住宿</strong>：KOKO Hotel 札幌大通（南 1 條西 6 丁目 8-1）— 地鐵「大通」1 番出口徒步 4 分，市電「西 4 丁目」徒步 3 分。</p>
-
-<h3>🚶 走路可以去的（飯店步行 10-15 分內）</h3>
-
-<h4>大通公園周邊（飯店步行 3-5 分）</h4>
-<ul>
-<li><span class="tag must">期間限定</span><strong>札幌丁香花祭 5/20-5/31</strong>（大通公園）— 5 月來北海道才碰得到！</li>
-<li><span class="tag must">期間限定</span><strong>大通公園 Wine Garden 5/20-5/31</strong>（西 7 丁目）<span class="price">杯 ¥600 起</span></li>
-<li><span class="tag must">5 月剛開</span><strong>大通 Tokibi Wagon 玉米攤車</strong>（4-10 月）<span class="price">¥300-500</span></li>
-<li><strong>AOAO SAPPORO 都市水族館</strong>（雨天備案神器）<span class="price">¥2,200，10:00-22:00</span></li>
-<li>札幌電視塔 ¥1,000 / 札幌時計台 ¥200 / 赤煉瓦廳舍 ¥300（2025/7 重開）</li>
-<li><strong>狸小路商店街 1-7 丁目</strong>（200+ 店）</li>
-<li><strong>二条市場</strong>（飯店徒步 12-15 分，不是 5 分）</li>
-<li><strong>中島公園菖蒲池划船</strong>（4/下-10/2nd 週一）<span class="price">¥600/40 分，5 月剛開</span></li>
-</ul>
-
-<h4>湯咖哩 / 拉麵（飯店步行範圍）</h4>
-<ul>
-<li><span class="tag must">必吃</span><strong>Suage+ 本店</strong>（薄野，Tabelog 札幌湯咖哩 No.1）<span class="price">¥1,500-2,200，11:30-22:30 全札幌最晚收，<strong>只收現金</strong></span></li>
-<li><strong>GARAKU 湯咖哩 新址</strong>（2025/10 搬到南 3 條東 2 丁目 6-1 B1F，<strong>舊狸小路址不要去！</strong>）<span class="price">¥1,300-1,800，13:50 就常售完</span></li>
-<li><strong>奧芝商店</strong>（蝦湯咖哩 + 牛肉漢堡排）<span class="price">¥1,500+</span></li>
-<li><span class="tag must">必吃</span><strong>けやき 薄野本店</strong>（札幌宵夜味噌拉麵）<span class="price"><strong>10:30-翌 2:45，只收現金</strong></span></li>
-</ul>
-
-<h4>成吉思汗（飯店步行 10-12 分）</h4>
-<ul>
-<li><span class="tag must">必吃</span><strong>だるま 本店</strong>（薄野 1954 排隊王）<span class="price">17:00-翌 3:00</span></li>
-<li><strong>炭火兜 成吉思汗</strong>（達摩升級版，北海道產羊，<strong>需 Tabelog 預約</strong>）<span class="price">¥3,000-4,500</span></li>
-<li><strong>松尾成吉思汗 札幌駅前店</strong>（だるま 替代，環境舒適）</li>
-</ul>
-
-<h4>海鮮 / 壽司（飯店步行 12-15 分二條市場）</h4>
-<ul>
-<li><span class="tag must">飄兒最強</span><strong>海鮮処 魚屋の台所</strong>（二条市場 Tabelog 第 1，「全北海道最強醋飯」）<span class="price">¥2,500-4,000</span></li>
-<li><strong>二条市場 大磯</strong>（早 7:30 開，海膽巨無霸；<strong>本店週一休 → 2 號店在右巷 1 分</strong>）<span class="price">¥2,500-4,500</span></li>
-<li><span class="tag must">必吃</span><strong>根室花まる JR 塔店</strong>（CP 王迴轉壽司，<strong>點當日推薦菜單</strong>）<span class="price">¥200-600/盤</span></li>
-<li><strong>はちきょう Tsukko 鮭魚卵飯</strong>（薄野居酒屋必體驗）<span class="price">¥4,000+</span></li>
-<li><span class="tag must">飯店附近</span><strong>函館村上海膽 札幌店</strong>（不用跑函館！海膽工場直營高級版）<span class="price">¥3,000+</span></li>
-</ul>
-
-<h4>甜點 / 咖啡（飯店步行 5-10 分）</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>六花亭札幌本店 2F 喫茶室</strong>（60 元日圓蛋糕）<span class="price"><strong>10:00-17:30，週三休</strong></span></li>
-<li><span class="tag must">必去</span><strong>北菓樓札幌本館</strong>（安藤忠雄設計書牆+年輪蛋糕，<strong>早上去搶夢幻泡芙</strong>）</li>
-<li><strong>菓子と喫茶 SIROYA</strong>（大通站 14 出口地下街，<strong>市區喝白色戀人冰淇淋</strong>）</li>
-</ul>
-
-<h3>🚇 搭地鐵 / 市電可以去的（半天）</h3>
-
-<h4>「圓山公園」站（東西線 5 分，¥210）</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>北海道神宮</strong>（5 月新綠）<span class="price">免費</span></li>
-<li><span class="tag must">神宮限定</span><strong>神宮茶屋現烤福餅 + 六花亭神宮店判官餅</strong>（札幌本店買不到！點餐送免費熱茶）</li>
-<li><strong>森彦本店</strong>（円山古民家咖啡聖地）<span class="price">¥600-1,000</span></li>
-<li><strong>Picante 湯咖哩</strong>（北大旁，份量大）<span class="price">¥1,400-2,000</span></li>
-<li><strong>すし善 本店</strong>（米其林星 1971 創業）<span class="price">¥15,000-30,000</span></li>
-</ul>
-
-<h4>「東區役所前」站（東豐線）</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>札幌啤酒博物館</strong>（日本唯一）<span class="price"><strong>免費（試飲 ¥500），11:00-18:00，週一公休，試飲 16:00 截止</strong></span></li>
-<li>札幌啤酒園 buffet <span class="price">¥3,600+，<a href="https://www.klook.com/en-US/activity/5012-sapporo-beer-garden-hokkaido/" target="_blank" class="link">Klook 5012 訂位</a></span></li>
-</ul>
-
-<h4>「環狀通東」站 + 中央巴士</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>莫埃來沼公園</strong>（野口勇遺作玻璃金字塔）<span class="price">免費</span></li>
-</ul>
-
-<h4>「宮の沢」站（東西線 16 分，¥290）</h4>
-<ul>
-<li><strong>白色戀人公園</strong><span class="price">¥800</span>
-<ul>
-<li><span class="tag must">飄兒最愛</span><strong>4F 牛津茶餐廳</strong>（看鐘樓表演 + 喝白色戀人巧克力）</li>
-<li><strong>3F 巧克力幻想館工廠</strong>（95% 自動化巧克力 + 年輪蛋糕製造）</li>
-</ul></li>
-</ul>
-
-<h4>市電「藻岩山ロープウェイ入口」</h4>
-<ul>
-<li><span class="tag must">必去</span><strong>藻岩山纜車夜景</strong>（日本新三大夜景）<span class="price">¥230 市電 + ¥2,100 纜車，<strong>上行末班 21:30</strong></span></li>
-</ul>
-
-<h4>美園 / 中の島站</h4>
-<ul>
-<li><span class="tag must">必吃</span><strong>麵屋彩未</strong>（Tabelog 札幌 No.1 薑味噌拉麵）<span class="price">週一休</span></li>
-<li><span class="tag must">必吃</span><strong>一粒庵</strong>（米其林推薦 + 飄兒「札幌味噌第一」）<span class="price"><strong>週日休 + 14:30-17 午休</strong></span></li>
-<li><strong>すみれ 本店</strong>（味噌拉麵代名詞）</li>
-</ul>
-
-<h3>🚂 搭 JR 可以去的（一日來回）</h3>
-<ul>
-<li><span class="tag jr">32 分</span><span class="tag must">必去</span><strong>小樽</strong> — 運河 + 堺町通 + LeTAO 鐘樓本店 3F 免費觀景台 + 三角市場 + 北一硝子星空喫茶 + 茶和々抹茶 + ポプラファーム 哈密瓜霜淇淋 <span class="price">JR ¥800 片道</span></li>
-<li><span class="tag jr">1h25m+巴士</span><span class="tag must">推薦</span><strong>旭山動物園</strong> — 旭川駅 6 番乘車口搭 <strong>41 番 / 47 番</strong>（沒 48 番！） <span class="price">¥5,190 片道（含特急+巴士+門票）</span></li>
-<li><span class="tag jr">55-65 分</span><strong>余市 NIKKA 蒸餾所</strong>（免費預約制，威士忌迷必朝聖）</li>
-<li><span class="tag jr">1h10m</span><strong>登別</strong>（地獄谷+大湯沼，洞爺基地已去過可 skip）</li>
-<li><span class="tag jr">1h30m</span>支笏湖 / <span class="tag jr">1h 巴士</span>定山溪溫泉</li>
-</ul>
-
-<h3>⚾ ES CON FIELD 看主場球賽（5/29、5/30、5/31）</h3>
-<p>日本火腿 vs 讀賣巨人交流戰：</p>
-<ul>
-<li>5/29 五 18:00 開賽（推薦看這天）</li>
-<li>5/30 六 14:00 開賽</li>
-<li>5/31 日 13:00 開賽（你 16:15 飛機看不完）</li>
-</ul>
-<p><strong>路線</strong>：飯店 → 大通駅 → 南北線さっぽろ駅 → JR 札幌駅 → 快速エアポート → 北廣島駅（17 分，¥580）→ 西口接駁巴士 ¥200（賽前 2.5h 開）。<a href="https://www.fighters.co.jp/game/calendar/" target="_blank" class="link">買票</a></p>
-
-<h3>🛒 必買伴手禮在哪</h3>
-<ul>
-<li><span class="tag must">一站買齊</span><strong>狸小路 4 丁目土產店</strong>（飯店步行 5 分）— 六花亭 + Royce + 白色戀人 + 薯條三兄弟 全有 + 札幌藥妝<strong>免稅+優惠 = 93 折</strong></li>
-<li><strong>大丸百貨 B1</strong>（JR 札幌站）— Fruitscake Factory 水果塔 + KINOTOYA BAKE 半熟起司塔</li>
-<li><strong>北菓樓札幌本館</strong>（安藤忠雄）+ <strong>六花亭札幌本店</strong>（飯店步行 5-10 分）— 早上去搶夢幻泡芙、本店限定商品</li>
-<li><span class="tag must">怕熱最後買</span><strong>新千歲機場免稅店</strong>（5/31 飛機前）— Royce 生巧 + LeTAO 雙層起司 + Calbee 洋蔥脆薯餅（<strong>機場限定！</strong>）</li>
-</ul>
-
-<div class="plan">
-<strong>📅 4 晚怎麼配</strong>：<br>
-<strong>Day 1（5/27 三）</strong>：11:22 抵札幌 → check-in → 大通公園+丁香花祭+Wine Garden → 晚餐 Suage+ → 宵夜 けやき<br>
-<strong>Day 2（5/28 四）</strong>：JR 札幌 → 旭山動物園日歸 → 晚餐 だるま 成吉思汗（JR Pass 第 5 日）<br>
-<strong>Day 3（5/29 五）</strong>：JR → 小樽日歸（運河+LeTAO+三角市場）→ 傍晚北廣島看球（5/29 18:00 開賽）<br>
-<strong>Day 4（5/30 六）</strong>：圓山公園+北海道神宮+判官餅 → 白色戀人公園 4F → 川下會場副場（5/30-31 限定）→ 藻岩山夜景<br>
-<strong>Day 5（5/31 日）回國</strong>：北菓樓搶泡芙 → 狸小路 4 丁目血拼 → 大丸 B1 → 13:00 出發機場 → 16:15 BR115
-</div>
-
-<div class="info">
-💡 <strong>5/30、5/31 是週六/日</strong> → 買「<strong>ドニチカキップ ¥520</strong>」地鐵全天無限搭，比平日 ¥830 省。
-</div>
-
-</div>
-
-
-<!-- ============ 不要做 ============ -->
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
-</div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other">🚗 沒車去不到</a>
-<a href="tour.html" class="other" style="background:#e57373;color:#fff">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<p class="sub" style="text-align:center;margin-top:30px">
-版本 v3.0 拆分版｜<a href="verified.html">查看完整版 350 項 matrix→</a>
-</p>
 </body>
 </html>

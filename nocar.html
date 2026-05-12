@@ -3,152 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🚗 沒車去不到的景點清單｜北海道 9 日</title>
-<style>
-:root{--bg:#fafafa;--card:#fff;--text:#222;--sub:#666;--accent:#e57373;--toya:#4a90b8;--hako:#d4a017;--sapp:#7b9c3d;--border:#eee;--lite:#fef5f5;--warn:#fff3e0;--info:#e3f2fd}
-@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--card:#252525;--text:#eee;--sub:#aaa;--accent:#ff8a80;--toya:#7bb8d6;--hako:#e8c46a;--sapp:#a8c878;--border:#333;--lite:#2a2020;--warn:#2e2a1e;--info:#1e2832}}
-*{box-sizing:border-box}
-body{font-family:-apple-system,"Noto Sans TC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;margin:0;padding:16px;max-width:760px;margin:0 auto}
-h1{font-size:1.7em;margin:8px 0 4px}
-.sub{color:var(--sub);font-size:.92em;margin-bottom:24px}
-.base{padding:18px 20px;margin:24px 0;border-radius:10px;background:var(--card);border-top:5px solid var(--accent)}
-.base.toya{border-color:var(--toya)}
-.base.hako{border-color:var(--hako)}
-.base.sapp{border-color:var(--sapp)}
-.base h2{margin:0 0 8px;font-size:1.5em}
-.base.toya h2{color:var(--toya)}
-.base.hako h2{color:var(--hako)}
-.base.sapp h2{color:var(--sapp)}
-.summary{font-size:1.08em;font-weight:bold;padding:12px 16px;border-radius:6px;margin:12px 0 20px}
-.toya .summary{background:#e3f2fd;color:#0d5d8a}
-.hako .summary{background:#fff8e1;color:#8a6a00}
-.sapp .summary{background:#e8f5e9;color:#3d6a1a}
-@media(prefers-color-scheme:dark){.toya .summary{background:#1e2832;color:#7bb8d6}.hako .summary{background:#2e2a1e;color:#e8c46a}.sapp .summary{background:#1f2a1c;color:#a8c878}}
-h3{font-size:1.15em;margin:20px 0 8px;padding-left:8px;border-left:4px solid var(--accent)}
-.toya h3{border-color:var(--toya)}
-.hako h3{border-color:var(--hako)}
-.sapp h3{border-color:var(--sapp)}
-h4{font-size:1em;margin:14px 0 4px;color:var(--sub)}
-ul{padding-left:22px;margin:6px 0}
-li{margin:5px 0}
-.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:.78em;margin-left:4px;background:#fce4ec;color:#c2185b}
-.tag.bus{background:#e3f2fd;color:#1565c0}
-.tag.jr{background:#e8f5e9;color:#2e7d32}
-.tag.tram{background:#fff3e0;color:#e65100}
-.tag.metro{background:#f3e5f5;color:#6a1b9a}
-.tag.walk{background:#fffde7;color:#827717}
-.tag.must{background:var(--accent);color:#fff;font-weight:bold}
-@media(prefers-color-scheme:dark){.tag{background:#3a2128;color:#f8bbd0}.tag.bus{background:#1a2733;color:#7fb3e3}.tag.jr{background:#1f2a1c;color:#a5d6a7}.tag.tram{background:#332514;color:#ffb74d}.tag.metro{background:#2d1e33;color:#ce93d8}.tag.walk{background:#2e2e1c;color:#dce775}}
-.warn{background:var(--warn);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #ff9800}
-.info{background:var(--info);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #2196f3}
-.plan{background:var(--lite);padding:12px 16px;margin:14px 0;border-radius:6px;font-weight:500}
-.toc{background:var(--card);padding:14px 18px;border-radius:8px;margin-bottom:24px;border:1px solid var(--border);text-align:center}
-.toc a{display:inline-block;margin:4px;padding:6px 14px;border-radius:18px;font-weight:bold;text-decoration:none}
-.toc a.toya{background:var(--toya);color:#fff}
-.toc a.hako{background:var(--hako);color:#fff}
-.toc a.sapp{background:var(--sapp);color:#fff}
-.toc a.other{background:#f5f5f5;color:#666;border:1px solid #ddd}
-.toc a.full{background:#212121;color:#fff}
-@media(prefers-color-scheme:dark){.toc a.other{background:#333;color:#ccc;border-color:#444}.toc a.full{background:#666;color:#fff}}
-a.link{color:var(--accent);text-decoration:none;border-bottom:1px dotted}
-hr{border:none;border-top:1px dashed var(--border);margin:32px 0}
-.no{color:#d32f2f;text-decoration:line-through}
-@media(prefers-color-scheme:dark){.no{color:#ef9a9a}}
-.price{color:#888;font-size:.9em;margin-left:4px}
-</style>
+<title>🚆 沒車去不到</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>🗾 🚗 沒車去不到的景點清單</h1>
-<p class="sub">2026/5/23（六）→ 5/31（日）｜兩人｜完全不開車</p>
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
-</div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other" style="background:#e57373;color:#fff">🚗 沒車去不到</a>
-<a href="tour.html" class="other">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<h2 id="nocar" style="margin-top:32px">🚗 沒車就去不了的景點清單（重要！）</h2>
-<p>北海道很多景點 <strong>JR 到不了、巴士班次極少甚至沒有</strong>，必須跟團或包車。先知道哪些是「沒車就絕對去不了」才能決定要不要跟團：</p>
+<div class="wrap">
 
-<h3>❌ 完全沒車去不了（一定要跟團或包車）</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.93em">
-<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">景點</th><th>為什麼去不了</th><th>解法</th></tr>
-<tr><td><strong>美瑛白金青池</strong>（鈷藍湖，5 月最美）</td><td>JR 美瑛站到青池 17km，巴士 5-9 月才有「美遊巴士」一天 3-4 班</td><td>跟 <a href="https://www.kkday.com/zh-tw/product/19868" target="_blank" class="link">KKday 19868</a> 一日遊 or 美遊巴士</td></tr>
-<tr><td><strong>白鬚瀑布</strong>（青池旁）</td><td>同上</td><td>同上</td></tr>
-<tr><td><strong>四季彩之丘</strong>（美瑛拼布花田）</td><td>JR 美馬牛站走 25 分鐘 or 觀光巴士</td><td>跟 <a href="https://www.kkday.com/en-us/product/140341" target="_blank" class="link">KKday 140341</a></td></tr>
-<tr><td><strong>富田農場</strong>（薰衣草）</td><td>JR 富良野線「薰衣草田站」7-8 月才開</td><td>5 月去不了（薰衣草也沒開）</td></tr>
-<tr><td><strong>拼布之路</strong>（美瑛山丘）</td><td>沒有大眾交通</td><td>跟團或包車</td></tr>
-<tr><td><strong>上湧別鬱金香公園</strong>（5/底滿開）</td><td>自駕距札幌 3.5h，沒巴士直達</td><td>5 月底放棄</td></tr>
-<tr><td><strong>きじひき高原</strong>（函館北斗市）</td><td>自駕限定</td><td>放棄</td></tr>
-<tr><td><strong>洞爺湖月浦展望台</strong>、Sairo 展望台</td><td>沒巴士，計程車 ¥2,000-3,000</td><td>計程車 or 放棄</td></tr>
+<div class="topnav">
+<a href="index.html">🏠</a>
+<a href="day1.html">D1</a><a href="day2.html">D2</a><a href="day3.html">D3</a><a href="day4.html">D4</a><a href="day5.html">D5</a><a href="day6.html">D6</a><a href="day7.html">D7</a><a href="day8.html">D8</a><a href="day9.html">D9</a>
+<a href="before.html">行前</a>
+<a href="nocar.html" style="background:#d4a55c;color:#fff">沒車</a>
+<a href="tour.html">套票</a>
+<a href="avoid.html">避雷</a>
+</div>
+
+<h1>🚆 沒車去不到（不自駕真的去不了）</h1>
+<p class="sub">用戶完全不自駕 · 公共交通可達 vs 一定要租車/計程車</p>
+
+<h2>✅ 不自駕 OK（公共交通可達）</h2>
+<table>
+<tr><th>地點</th><th>怎麼去</th><th>備註</th></tr>
+<tr><td>函館朝市</td><td>JR 函館駅步行 5 分</td><td>飯店 5 分</td></tr>
+<tr><td>函館元町（教會群、八幡坂、紅磚倉庫）</td><td>市電「十字街」站</td><td>¥230/次</td></tr>
+<tr><td>函館山纜車</td><td>市電「十字街」步行 10 分 or 登山巴士（4-11 月運行）</td><td>纜車¥1,800 / 巴士 ¥500</td></tr>
+<tr><td>五稜郭塔+公園</td><td>市電「五稜郭公園前」步行 15 分</td><td>市電 ¥260</td></tr>
+<tr><td>大沼公園</td><td>JR 函館→大沼公園駅 30-50 分</td><td>JR Pass 涵蓋</td></tr>
+<tr><td>湯之川溫泉</td><td>市電「湯の川温泉」站</td><td>¥260</td></tr>
+<tr><td>札幌大通公園</td><td>地鐵「大通」步行 0 分</td><td>飯店 3 分</td></tr>
+<tr><td>北海道神宮</td><td>地鐵「圓山公園」步行 15 分 or JR 巴士「神宮前」步行 1 分</td><td>JR 巴士 JR Pass 涵蓋</td></tr>
+<tr><td>白色戀人公園</td><td>地鐵東西線「宮の沢」步行 7 分</td><td>¥250 + ¥800 入園</td></tr>
+<tr><td>藻岩山纜車</td><td>市電「ロープウェイ入口」轉接駁巴士</td><td>¥2,100 來回</td></tr>
+<tr><td>札幌啤酒博物館</td><td>地鐵東豐線「東區役所前」步行 10 分</td><td>免費</td></tr>
+<tr><td>北海道大學</td><td>地鐵南北線「北 12 條」2 號出口步行 5 分</td><td>飄兒推（比 JR 站近）</td></tr>
+<tr><td>小樽運河</td><td>JR 札幌→小樽 32 分</td><td>JR Pass 涵蓋</td></tr>
+<tr><td>余市 Nikka 蒸餾所</td><td>JR 札幌→余市 1h15m</td><td>JR Pass 涵蓋</td></tr>
+<tr><td>旭山動物園</td><td>JR 札幌→旭川 + 旭川電氣軌道 41/47 巴士</td><td>JR Pass + ¥500 巴士</td></tr>
+<tr><td>三井 Outlet 北廣島</td><td>JR 札幌→北廣島 16 分 + 接駁巴士</td><td>¥360</td></tr>
+<tr><td>ES CON FIELD</td><td>JR 札幌→北廣島 + 接駁巴士 or 步行 20 分</td><td>¥360</td></tr>
+<tr><td>支笏湖</td><td>札幌駅前 中央巴士「支笏湖線」1h</td><td>¥1,050</td></tr>
+<tr><td>定山溪溫泉</td><td>札幌駅前 じょうてつ巴士 1h</td><td>¥790</td></tr>
+<tr><td>洞爺湖+登別+昭和新山</td><td>KKday 11257 套票</td><td>跟團</td></tr>
+<tr><td>青池+白鬚瀑布</td><td>KKday 19868 套票</td><td>跟團</td></tr>
+<tr><td>川下公園（丁香花副場）</td><td>地鐵東西線「白石」→ 巴士 27 號</td><td>地鐵+巴士 ¥420</td></tr>
 </table>
 
-<h3>⚠️ JR + 巴士可以去但麻煩（自由行 OK 但要計算班次）</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.93em">
-<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">景點</th><th>怎麼到？</th><th>注意</th></tr>
-<tr><td><strong>有珠山纜車 + 昭和新山</strong>（洞爺）</td><td>道南巴士「洞爺湖温泉→昭和新山」</td><td><strong>一天只 4 班！</strong>10:25/12:45/13:40/15:50</td></tr>
-<tr><td><strong>登別地獄谷</strong></td><td>JR 登別站 + 道南巴士 14 分</td><td>巴士首班 NAVITIME 顯示 10:25 起，早到要計程車</td></tr>
-<tr><td><strong>旭山動物園</strong></td><td>JR 旭川站 + <strong>41 番 / 47 番</strong>巴士 30 分（沒 48 番！）</td><td>巴士 30 分 1 班，企鵝散步 5 月不開</td></tr>
-<tr><td><strong>Upopoy 白老</strong></td><td>JR 白老站徒步 12 分</td><td>5/25 週一休館</td></tr>
-<tr><td><strong>地球岬（室蘭）</strong></td><td>JR 東室蘭站 + 計程車 15 分 ¥2,500-3,500</td><td>沒巴士到岬邊</td></tr>
-<tr><td><strong>余市 NIKKA</strong></td><td>JR 余市站徒步 3 分</td><td>預約制，自由行最方便</td></tr>
-<tr><td><strong>函館大沼公園</strong></td><td>JR 函館本線普通車</td><td>多需新函館北斗換車</td></tr>
-<tr><td><strong>莫埃來沼公園</strong>（札幌）</td><td>地鐵環狀通東 + 中央巴士 23 分</td><td>巴士 20-30 分 1 班</td></tr>
-<tr><td><strong>頭大佛（真駒內瀧野）</strong></td><td>地鐵真駒内 + 巴士 25 分</td><td>—</td></tr>
+<h2>⚠️ 不自駕困難（需租車或計程車）</h2>
+<table>
+<tr><th>地點</th><th>原因</th><th>替代方案</th></tr>
+<tr><td><strong>函館 立待岬</strong></td><td>市電終點站「谷地頭」步行 15 分（上坡）</td><td>體力 OK 走得到，無車 OK</td></tr>
+<tr><td><strong>函館 惠山岬 / 椴法華</strong></td><td>函館郊區，巴士 1 天 2 班</td><td>放棄，沒這時間</td></tr>
+<tr><td><strong>美瑛 青池/四季彩之丘（單去）</strong></td><td>JR 美瑛站→各景點巴士 5/26 起運行但有限</td><td>用 KKday 19868 套票（含旭山+青池+白鬚瀑布）</td></tr>
+<tr><td><strong>富良野薰衣草</strong></td><td>5 月底未開（6 月底-7 月才開）</td><td><strong>季節錯，不適合 5 月去</strong></td></tr>
+<tr><td><strong>道東：知床、阿寒、釧路、網走</strong></td><td>太遠，3 天起跳，租車最方便</td><td>放棄</td></tr>
+<tr><td><strong>洞爺湖環湖一周</strong></td><td>湖邊步道部分要租車</td><td>用 KKday 11257 套票（只去展望台）</td></tr>
+<tr><td><strong>有珠山纜車（單去）</strong></td><td>洞爺湖站→纜車需道南巴士 1 天 4 班</td><td>用 KKday 11257 套票（含昭和新山+有珠山）</td></tr>
+<tr><td><strong>登別熊牧場+地獄谷（純自助）</strong></td><td>JR 登別站→地獄谷 巴士每小時 1 班</td><td>用 KKday 11257 套票（含登別地獄谷）</td></tr>
+<tr><td><strong>札幌羊之丘展望台</strong></td><td>地鐵+巴士 50 分（需轉乘）</td><td>89 號公車 4-11 月札幌駅直達 40 分（飄兒提示）</td></tr>
 </table>
 
-<h3>✅ 自由行最方便（JR/地鐵直接到）</h3>
+<h2>📋 不自駕路線總結</h2>
+
+<h3>函館（5/23-5/25）</h3>
 <ul>
-<li><strong>小樽</strong>（JR 札幌 32 分）</li>
-<li><strong>函館元町</strong>（市電 6 分）</li>
-<li><strong>札幌市區所有景點</strong>（地鐵 + 市電）</li>
-<li><strong>定山溪溫泉</strong>（中央巴士 1h，30 分 1 班）</li>
-<li><strong>支笏湖</strong>（JR 千歲 + 巴士，1h30m）</li>
+<li>市電 1 日券 ¥800（朝市/元町/五稜郭/湯之川 全覆蓋）</li>
+<li>JR Pass 涵蓋大沼日歸</li>
+<li>纜車單買 ¥1,800</li>
 </ul>
 
-<div class="info">
-💡 <strong>結論</strong>：你 9 日唯一可能要跟團的就是 <strong>5/28 旭山 + 美瑛青池</strong>（自由行去得了旭山但去不了青池）。其他天自由行都 OK。
+<h3>札幌（5/25-5/31）</h3>
+<ul>
+<li>地鐵單買 ¥210/次（平日）</li>
+<li>週末 ドニチカ ¥520（5/30 六、5/31 日適用）</li>
+<li>JR Pass 5/25-5/27 仍有效（小樽/余市/旭山日歸用）</li>
+<li>5/28 後 JR 改單買（小樽 ¥750、旭川 ¥4,810）</li>
+<li>遠程用 KKday/巴士團</li>
+</ul>
+
+<h2>💡 飄兒不自駕 4 大省事建議</h2>
+<ol>
+<li><strong>JR Pass 5 日券是不自駕鐵則</strong>—海外買 ¥20,000，洞爺→函館 + 函館→札幌 + 1 個日歸（旭山/小樽）就回本</li>
+<li><strong>道南巴士 + JR 北海道 + 札幌市電/地鐵</strong>—基本上北海道主要城市都靠這 3 種</li>
+<li><strong>KKday/Klook 在地團</strong>—去 美瑛/旭山/洞爺登別 比自己搭車省心</li>
+<li><strong>飯店免費接駁的陷阱</strong>—函館飯店接駁多半下午才到，自己搭 JR 更早抵達</li>
+</ol>
+
+<h2>🚫 不適合 5 月底（季節錯）</h2>
+<ul>
+<li>富良野 薰衣草（要 6 月底-7 月才開）</li>
+<li>美瑛 全盛開花期（要 7 月）</li>
+<li>道東 流冰（2-3 月）</li>
+<li>釧路濕原（5 月綠意較少，6-9 月最美）</li>
+</ul>
+
+<div class="footer">
+<a href="index.html">🏠 回首頁</a>
 </div>
 
-<hr>
-
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
 </div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other" style="background:#e57373;color:#fff">🚗 沒車去不到</a>
-<a href="tour.html" class="other">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<p class="sub" style="text-align:center;margin-top:30px">
-版本 v3.0 拆分版｜<a href="verified.html">查看完整版 350 項 matrix→</a>
-</p>
 </body>
 </html>

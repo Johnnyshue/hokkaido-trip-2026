@@ -3,260 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Day 8（5/30 六）札幌｜北海道 9 日</title>
-<style>
-:root{--bg:#fafafa;--card:#fff;--text:#222;--sub:#666;--accent:#e57373;--toya:#4a90b8;--hako:#d4a017;--sapp:#7b9c3d;--border:#eee;--lite:#fef5f5;--warn:#fff3e0;--info:#e3f2fd}
-@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--card:#252525;--text:#eee;--sub:#aaa;--accent:#ff8a80;--toya:#7bb8d6;--hako:#e8c46a;--sapp:#a8c878;--border:#333;--lite:#2a2020;--warn:#2e2a1e;--info:#1e2832}}
-*{box-sizing:border-box}
-body{font-family:-apple-system,"Noto Sans TC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;margin:0;padding:16px;max-width:760px;margin:0 auto}
-h1{font-size:1.7em;margin:8px 0 4px}
-.sub{color:var(--sub);font-size:.92em;margin-bottom:24px}
-.base{padding:18px 20px;margin:24px 0;border-radius:10px;background:var(--card);border-top:5px solid var(--accent)}
-.base.toya{border-color:var(--toya)}
-.base.hako{border-color:var(--hako)}
-.base.sapp{border-color:var(--sapp)}
-.base h2{margin:0 0 8px;font-size:1.5em}
-.base.toya h2{color:var(--toya)}
-.base.hako h2{color:var(--hako)}
-.base.sapp h2{color:var(--sapp)}
-.summary{font-size:1.08em;font-weight:bold;padding:12px 16px;border-radius:6px;margin:12px 0 20px}
-.toya .summary{background:#e3f2fd;color:#0d5d8a}
-.hako .summary{background:#fff8e1;color:#8a6a00}
-.sapp .summary{background:#e8f5e9;color:#3d6a1a}
-@media(prefers-color-scheme:dark){.toya .summary{background:#1e2832;color:#7bb8d6}.hako .summary{background:#2e2a1e;color:#e8c46a}.sapp .summary{background:#1f2a1c;color:#a8c878}}
-h3{font-size:1.15em;margin:20px 0 8px;padding-left:8px;border-left:4px solid var(--accent)}
-.toya h3{border-color:var(--toya)}
-.hako h3{border-color:var(--hako)}
-.sapp h3{border-color:var(--sapp)}
-h4{font-size:1em;margin:14px 0 4px;color:var(--sub)}
-ul{padding-left:22px;margin:6px 0}
-li{margin:5px 0}
-.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:.78em;margin-left:4px;background:#fce4ec;color:#c2185b}
-.tag.bus{background:#e3f2fd;color:#1565c0}
-.tag.jr{background:#e8f5e9;color:#2e7d32}
-.tag.tram{background:#fff3e0;color:#e65100}
-.tag.metro{background:#f3e5f5;color:#6a1b9a}
-.tag.walk{background:#fffde7;color:#827717}
-.tag.must{background:var(--accent);color:#fff;font-weight:bold}
-@media(prefers-color-scheme:dark){.tag{background:#3a2128;color:#f8bbd0}.tag.bus{background:#1a2733;color:#7fb3e3}.tag.jr{background:#1f2a1c;color:#a5d6a7}.tag.tram{background:#332514;color:#ffb74d}.tag.metro{background:#2d1e33;color:#ce93d8}.tag.walk{background:#2e2e1c;color:#dce775}}
-.warn{background:var(--warn);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #ff9800}
-.info{background:var(--info);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #2196f3}
-.plan{background:var(--lite);padding:12px 16px;margin:14px 0;border-radius:6px;font-weight:500}
-.toc{background:var(--card);padding:14px 18px;border-radius:8px;margin-bottom:24px;border:1px solid var(--border);text-align:center}
-.toc a{display:inline-block;margin:4px;padding:6px 14px;border-radius:18px;font-weight:bold;text-decoration:none}
-.toc a.toya{background:var(--toya);color:#fff}
-.toc a.hako{background:var(--hako);color:#fff}
-.toc a.sapp{background:var(--sapp);color:#fff}
-.toc a.other{background:#f5f5f5;color:#666;border:1px solid #ddd}
-.toc a.full{background:#212121;color:#fff}
-@media(prefers-color-scheme:dark){.toc a.other{background:#333;color:#ccc;border-color:#444}.toc a.full{background:#666;color:#fff}}
-a.link{color:var(--accent);text-decoration:none;border-bottom:1px dotted}
-hr{border:none;border-top:1px dashed var(--border);margin:32px 0}
-.no{color:#d32f2f;text-decoration:line-through}
-@media(prefers-color-scheme:dark){.no{color:#ef9a9a}}
-.price{color:#888;font-size:.9em;margin-left:4px}
-</style>
+<title>Day 8 · 5/30（六）札幌 · 川下副場+ES CON 2 戰</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>🗾 Day 8（5/30 六）札幌</h1>
-<p class="sub">2026/5/23（六）→ 5/31（日）｜兩人｜完全不開車</p>
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other" style="background:#e57373;color:#fff">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
-</div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other">🚗 沒車去不到</a>
-<a href="tour.html" class="other">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<h2 id="day8detail" style="margin-top:32px;color:var(--sapp)">🔍 Day 8（5/30 六）你有 4 個選擇</h2>
-<p class="big" style="color:var(--sapp)">「整天自由 + 5/30 六買 ドニチカキップ ¥520 地鐵全天無限搭」</p>
+<div class="wrap">
 
-<div class="info">
-🎯 <strong>5/30 限定（其他天看不到）</strong>：
+<div class="topnav">
+<a href="index.html">🏠</a>
+<a href="day1.html">D1</a>
+<a href="day2.html">D2</a>
+<a href="day3.html">D3</a>
+<a href="day4.html">D4</a>
+<a href="day5.html">D5</a>
+<a href="day6.html">D6</a>
+<a href="day7.html">D7</a>
+<a href="day8.html" class="now">D8</a>
+<a href="day9.html">D9</a>
+</div>
+
+<h1>Day 8 · 5/30（六）札幌</h1>
+<p class="sub">🌸 丁香花祭川下副場限定 + ⚾ ES CON 第 2 戰 + 🚇 ドニチカ 一日券生效</p>
+
+<h2>🔥 今天 3 大季節限定</h2>
+<div class="tip">
+🌸 <strong>丁香花祭 川下副場 5/30-5/31 限定 2 日</strong>—地鐵+巴士可達<br>
+⚾ <strong>火腿 vs 讀賣巨人 第 2 戰</strong>（週六 14:00 開賽，比平日早！）<br>
+🚇 <strong>週末「ドニチカ きっぷ」一日券 ¥520</strong>—地鐵無限搭<br>
+🍷 大通 Wine Garden 倒數 2 天
+</div>
+
+<h2>⚾ 5/30 比賽時間特別注意</h2>
+<div class="warn">
+⚠️ <strong>週六/週日比賽常 14:00 開賽</strong>（非平日 18:00）<br>
+→ 出發前確認 <a href="https://www.fighters.co.jp/" target="_blank">官網</a> 確切時間<br>
+→ 14:00 開賽 = 12:30 抵 ES CON = 11:30 札幌駅出發<br>
+→ <strong>上午只能簡單活動</strong>，不適合排遠的
+</div>
+
+<h2>🗺 推薦行程組合（自由挑）</h2>
+
+<div class="opt">
+<h3>方案 A. 川下副場 + ES CON 雙拼（季節最完整）</h3>
+<div class="timeline">
+<div><span class="t">07:30</span>起床</div>
+<div><span class="t">08:00</span>飯店早餐 / 二条市場 7:00 起</div>
+<div><span class="t">09:00</span>地鐵 大通 → 「白石」站（東西線 6 站，買 ドニチカ ¥520）→ 巴士 27 號到「川下公園」</div>
+<div><span class="t">09:30-11:30</span>川下副場丁香花祭（攤位、舞台演出、賞花）</div>
+<div><span class="t">11:30</span>巴士回札幌駅 / 地鐵</div>
+<div><span class="t">12:00-12:30</span>札幌駅快速便當（如札幌 GRANSTA 海鮮便當）</div>
+<div><span class="t">12:30</span>札幌駅 → 北廣島駅（JR 16 分 ¥360）</div>
+<div><span class="t">13:00</span>抵 ES CON</div>
+<div><span class="t">14:00-17:30</span>火腿 vs 巨人 第 2 戰 ⚾</div>
+<div><span class="t">18:00</span>JR 回札幌</div>
+<div><span class="t">18:30</span>抵札幌駅 → 大通 Wine Garden（步行 8 分）</div>
+<div><span class="t">19:30</span>晚餐</div>
+</div>
+</div>
+
+<div class="opt">
+<h3>方案 B. 不去 ES CON 改純市區深度</h3>
+<div class="timeline">
+<div><span class="t">08:00</span>起床</div>
+<div><span class="t">09:00</span>北海道神宮+圓山公園（地鐵「圓山公園」）</div>
+<div><span class="t">11:00</span>白色戀人公園（地鐵「宮の沢」）</div>
+<div><span class="t">13:00</span>札幌啤酒博物館（午餐 Beer Garden）</div>
+<div><span class="t">15:30</span>川下副場丁香花祭</div>
+<div><span class="t">17:30</span>大通 Wine Garden</div>
+<div><span class="t">19:30</span>晚餐</div>
+<div><span class="t">21:00</span>狸小路掃貨</div>
+</div>
+</div>
+
+<div class="opt">
+<h3>方案 C. ES CON 全 day + 早場 Outlet</h3>
+<p>09:30 三井 Outlet 北廣島 → 13:00 接駁巴士到 ES CON → 14:00 比賽 → 17:30 回札幌</p>
+</div>
+
+<div class="opt">
+<h3>方案 D. 小樽日歸 + 晚上 Wine Garden</h3>
+<p>JR Pass 過期 → 札幌→小樽單買 ¥750 × 2 = ¥1,500（不太划算但可以）</p>
+<p>09:00 出發 → 17:00 回札幌 → 大通 Wine Garden</p>
+</div>
+
+<h2>🌸 川下副場丁香花祭詳細</h2>
+<div class="box">
+<strong>地點</strong>：札幌市白石區川下公園（JR 札幌駅以東約 8km）<br>
+<strong>日期</strong>：5/30（六）+ 5/31（日）限定 2 日<br>
+<strong>移動</strong>：
 <ul>
-<li>川下公園丁香花副場（5/30-31 限定，世界丁香 200 種 1700 株）</li>
-<li>六花亭神宮店「判官餅」（札幌本店買不到）</li>
-<li>ES CON FIELD 5/30 六 14:00 開賽（vs 巨人，5/30 是這趟最後機會）</li>
+<li>地鐵東西線「白石」站 → 中央巴士 27 號「川下公園前」</li>
+<li>or 地鐵東豐線「南郷 18 丁目」步行 15 分</li>
 </ul>
+<strong>內容</strong>：露天攤位、丁香花徑、舞台表演、丁香花苗販售
 </div>
 
-<h3 style="border-top:2px solid var(--green);padding-top:12px;color:var(--green)">🅰️ A 案：神宮+白色戀人+川下+藻岩山（東西線版，推薦）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>第一次到札幌、想看完所有經典 + 限定</p>
-<p><strong>預算：</strong>¥3,500（ドニチカ + 白色戀人 + 藻岩山）</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>09:00</strong> 東西線 → 圓山公園</li>
-<li>🕒 <strong>09:15</strong> 北海道神宮（5 月新綠）</li>
-<li>🕒 <strong>10:00</strong> 神宮限定：六花亭判官餅 + 神宮茶屋現烤福餅</li>
-<li>🕒 <strong>11:30</strong> 圓山公園散步</li>
-<li>🕒 <strong>12:30</strong> 森彦本店 円山古民家咖啡聖地午餐</li>
-<li>🕒 <strong>14:00</strong> 東西線 → 宮の沢 → 白色戀人公園 ¥800（4F 牛津茶餐廳 + 3F 工廠）</li>
-<li>🕒 <strong>17:00</strong> 川下公園丁香花副場（5/30-31 限定）</li>
-<li>🕒 <strong>19:30</strong> 市電 → 藻岩山纜車 ¥2,100（日本新三大夜景，上行末班 21:30）</li>
-<li>🕒 <strong>22:00</strong> はちきょう 居酒屋宵夜</li>
+<h2>🍴 12:00 午餐選項</h2>
+<ul>
+<li><strong>方案 A</strong>：札幌駅 GRANSTA 便當/迴轉壽司 弁慶</li>
+<li><strong>方案 B</strong>：札幌啤酒博物館 Beer Garden（5 月限定戶外）</li>
+<li><strong>方案 C</strong>：Outlet 美食區 / ES CON 內 Big Boss Restaurant</li>
+<li><strong>方案 D</strong>：小樽 政壽司 / 魚真壽司</li>
 </ul>
-<p><strong>✅ 優：</strong>抓住 5/30 限定（判官餅+川下副場），夜景完美收尾</p>
-<p><strong>❌ 缺：</strong>跑很多地方、不看球</p>
-</div>
 
-<h3 style="border-top:2px solid #1976d2;padding-top:12px;color:#1976d2">🅱️ B 案：莫埃來沼+羊之丘+啤酒博物館（建築派）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>愛建築 / 安藤忠雄 / 野口勇 / 不愛白色戀人</p>
-<p><strong>預算：</strong>¥3,000+</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>09:00</strong> 東豐線 → 環狀通東 → 中央巴士到莫埃來沼公園</li>
-<li>🕒 <strong>10:00</strong> 莫埃來沼公園（野口勇玻璃金字塔 + 海之噴泉）</li>
-<li>🕒 <strong>12:30</strong> 北のグルメ亭場外市場午餐 ¥2,980（12 種魚介丼）</li>
-<li>🕒 <strong>14:00</strong> 東豐線 → 福住 → 89 號巴士到羊之丘展望台 ¥600（5-11 月限定直達）</li>
-<li>🕒 <strong>16:00</strong> 真駒內瀧野頭大佛（安藤忠雄設計）</li>
-<li>🕒 <strong>18:00</strong> 札幌啤酒博物館 + 啤酒園 buffet（要訂位 Klook 5012）</li>
-</ul>
-<p><strong>✅ 優：</strong>3 個大師作品（野口勇+安藤忠雄+赤煉瓦）</p>
-<p><strong>❌ 缺：</strong>沒去白色戀人、沒抓 5/30 限定</p>
-</div>
+<h2>🍷 17-21:00 大通 Wine Garden（倒數 2 天）</h2>
 
-<h3 style="border-top:2px solid #ff6f00;padding-top:12px;color:#ff6f00">🅲 C 案：札幌市中心一整天（在地版）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>愛走路 / 不愛搭車 / 想體驗札幌人日常</p>
-<p><strong>預算：</strong>¥2,000</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>08:30</strong> 二条市場早餐（魚屋の台所「全北海道最強醋飯」）</li>
-<li>🕒 <strong>10:00</strong> 大通公園散步 + 丁香花祭 + Wine Garden</li>
-<li>🕒 <strong>11:30</strong> 北海道廳舊本廳舍 赤煉瓦（2025/7/25 重開）¥300</li>
-<li>🕒 <strong>13:00</strong> 一粒庵拉麵（米其林推薦，飄兒札幌味噌第一）</li>
-<li>🕒 <strong>14:30</strong> AOAO SAPPORO 都市水族館 ¥2,200（雨天也 OK）</li>
-<li>🕒 <strong>17:00</strong> JR 塔 T38 展望台 ¥740（札幌站正上方 160m）</li>
-<li>🕒 <strong>19:00</strong> 螃蟹本家月之舞宴席（Klook 15668 訂位有折）</li>
-<li>🕒 <strong>21:00</strong> 狸小路深夜採購（唐吉訶德 24h）</li>
-</ul>
-<p><strong>✅ 優：</strong>完全不搭地鐵、深度市中心、所有都飯店步行可達</p>
-<p><strong>❌ 缺：</strong>沒去白色戀人、沒看藻岩山夜景</p>
-</div>
-
-<h3 style="border-top:2px solid #9c27b0;padding-top:12px;color:#9c27b0">🅳 D 案：札幌半日 + 看球（ES CON 5/30 六 14:00）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>昨天沒看球、5/29 來不及訂票、要把握最後機會</p>
-<p><strong>預算：</strong>¥2,000+ + 球票</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>09:00</strong> 神宮 + 判官餅（圓山公園站）</li>
-<li>🕒 <strong>11:00</strong> 森彦本店咖啡早餐</li>
-<li>🕒 <strong>12:00</strong> 回札幌站，地下街吃午餐（KINOTOYA / Fruitscake Factory）</li>
-<li>🕒 <strong>12:30</strong> JR 札幌 → 快速エアポート → 北廣島站 ¥580</li>
-<li>🕒 <strong>13:00</strong> 接駁巴士 ¥200 → ES CON FIELD</li>
-<li>🕒 <strong>14:00</strong> 開賽 火腿 vs 巨人（5/30 六場是親子場，更熱鬧）</li>
-<li>🕒 <strong>17:30</strong> 比賽結束</li>
-<li>🕒 <strong>18:30</strong> 回札幌晚餐 + 看川下副場（5/30 開放最後天）</li>
-</ul>
-<p><strong>✅ 優：</strong>抓住神宮限定 + 球賽 + 川下副場</p>
-<p><strong>❌ 缺：</strong>沒去白色戀人 / 藻岩山</p>
-</div>
-
-<h3 style="border-top:2px solid var(--accent);padding-top:12px">🤔 我的推薦</h3>
-
-<div class="info">
-<p><strong>選 A 經典</strong>：<strong>9 成人選</strong>。5/30 限定（判官餅、川下副場）+ 白色戀人 4F + 藻岩山，一天 4 大亮點。</p>
-<p><strong>選 B 建築派</strong>：如果你看過很多櫻花 / 教堂類，想看現代建築大師作品。</p>
-<p><strong>選 C 在地</strong>：如果累了想休息，飯店附近一整天都不需要搭車。</p>
-<p><strong>選 D 看球</strong>：如果 5/29 沒看球（小樽選 B/C 版），<strong>5/30 是最後機會</strong>。</p>
-</div>
-
-<h3 style="border-top:2px solid #e57373;padding-top:12px;color:#e57373">🎫 Day 8 札幌一日 套票分析</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.92em">
-<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">套票</th><th>價</th><th>值不值得</th></tr>
-<tr><td>⭐⭐ <a href="https://www.kkday.com/en-us/product/147580" target="_blank" class="link">KKday 147580</a> 藻岩山纜車<strong>夜景優先券</strong></td><td>¥2,100 +¥50-100</td><td><strong>✅ 強烈推薦選 A 案的人</strong>。旺季排隊可<strong>省 1 小時</strong>。多花 ¥50-100 就值得！</td></tr>
-<tr><td>⭐ <a href="https://www.kkday.com/en-us/product/145835-mt-moiwa-ropeway-mini-cable-car-round-trip-ticket-package-japan" target="_blank" class="link">KKday 145835</a> 藻岩山纜車<strong>標準票</strong></td><td>¥1,890</td><td>比現場 ¥2,100 省 ¥210，但不享優先入場</td></tr>
-<tr><td>⭐⭐ <a href="https://www.klook.com/zh-TW/activity/136238-shiroi-koibito-park-ticket/" target="_blank" class="link">Klook 136238</a> 白色戀人公園門票</td><td>¥800（同現場）</td><td><strong>✅ 推薦線上買</strong>。指定時段免排隊。<br>❌ <strong>不要買 KKday 130253（已下架）</strong></td></tr>
-<tr><td>⭐ <a href="https://www.kkday.com/en-us/product/12072" target="_blank" class="link">KKday 12072</a> 白色戀人 DIY 體驗</td><td>¥2,000-3,000</td><td>⚠️ <strong>注意：是「甜點繪畫塗色」不是「手做餅乾」</strong>。想做餅乾的話會失望</td></tr>
-<tr><td>⭐⭐ <a href="https://www.klook.com/zh-TW/activity/15668-kani-honke-sapporo-hokkaido/" target="_blank" class="link">Klook 15668</a> 螃蟹本家月之舞宴席</td><td>NT$ 2,000-4,000</td><td><strong>✅ 強烈推薦選晚餐螃蟹的人</strong>。線上訂位享折扣，雜炊粥強推。不訂位現場排 1h</td></tr>
-<tr><td>❌ KKday 札幌出發旭山+富田農場一日遊（140341）</td><td>NT$ 2,200</td><td><strong>❌ 不推薦今日</strong>（你 5/28 已選擇旭山）。<strong>5 月富田薰衣草未開</strong>，4-9 月版本去也不美</td></tr>
+<h2>🌃 19:00 晚餐選項</h2>
+<table>
+<tr><th>店</th><th>地點</th><th>類型</th></tr>
+<tr><td>炭火兜 成吉思汗</td><td>狸小路</td><td>羊肉</td></tr>
+<tr><td>麺屋 彩未 美園本店</td><td>東豐線「美園」</td><td>札幌排隊王味噌（17:00-19:30 早 LO）</td></tr>
+<tr><td>蟹本家 薄野本店</td><td>薄野</td><td>螃蟹大餐 ¥6,000+</td></tr>
+<tr><td>湯咖哩 GARAKU</td><td>狸小路 2</td><td>湯咖哩排隊</td></tr>
+<tr><td>磯金漁業部</td><td>薄野</td><td>螃蟹海鮮居酒屋</td></tr>
+<tr><td>札幌成吉思汗 だるま 本店</td><td>薄野</td><td>50 年元祖排隊</td></tr>
 </table>
 
-<hr>
-
-<h3 style="color:var(--sapp)">📅 A 案詳細時間軸（如果你選 A）</h3>
-<p class="big" style="color:var(--sapp)">「札幌全包日：神宮限定判官餅 → 白色戀人 4F 牛津茶餐廳 → 川下副場 → 藻岩山新三大夜景」</p>
-
-<div class="info">
-💡 <strong>今天買「ドニチカキップ ¥520」</strong>（週六/日限定）：地鐵全天無限搭，比平日 ¥830 省 ¥310。地鐵任一站售票機買。
-</div>
-
-<h3>🌅 09:00-12:00 上午：北海道神宮（限定！）</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.93em">
-<tr style="background:var(--lite)"><th>時間</th><th>動作</th><th>票</th></tr>
-<tr><td>09:00</td><td>大通駅 → 東西線 → <strong>圓山公園</strong>站（5 分）</td><td>ドニチカ ¥520</td></tr>
-<tr><td>09:15</td><td>3 番出口 → 走 15 分到 <a href="https://www.google.com/maps/search/%E5%8C%97%E6%B5%B7%E9%81%93%E7%A5%9E%E5%AE%AE" target="_blank" class="link">北海道神宮</a>（5 月新綠）</td><td>免費</td></tr>
-<tr><td>09:45-10:30</td><td><strong>神宮限定！</strong>① 神宮茶屋現烤福餅 + 放牧牛奶霜淇淋 ② <strong>六花亭神宮店「判官餅」</strong>（札幌本店買不到！蕎麥麻糬+紅豆+微鹹烤酥皮，點餐<strong>送免費熱茶</strong>）</td><td>¥300-500/個</td></tr>
-<tr><td>11:00</td><td><a href="https://www.google.com/maps/search/%E5%86%86%E5%B1%B1%E5%85%AC%E5%9C%92+%E6%9C%AD%E5%B9%8C" target="_blank" class="link">圓山公園</a>散步（5 月新綠）</td><td>免費</td></tr>
-<tr><td>11:30</td><td>走 5 分到 <a href="https://www.google.com/maps/search/%E6%A3%AE%E5%BD%A6+%E6%9C%AC%E5%BA%97+%E5%9C%86%E5%B1%B1" target="_blank" class="link">森彦本店</a> 円山古民家咖啡聖地午餐</td><td>¥600-1,000</td></tr>
+<h2>🌌 21:00 後夜間零碎時間</h2>
+<table>
+<tr><th>建議</th><th>說明</th></tr>
+<tr><td>狸小路最後一輪掃貨</td><td>明天 5/31 回國前最後機會 · 多店 23:00 止</td></tr>
+<tr><td>北菓樓札幌本館</td><td>JR 札幌駅旁 · 22:00 止 · 夢幻泡芙明早來搶</td></tr>
+<tr><td>大通 Wine Garden 終場</td><td>21:00 止</td></tr>
+<tr><td>すすきの 居酒屋夜遊</td><td>週六熱鬧</td></tr>
+<tr><td>JR 塔 T38 展望台</td><td>22:00 止 · 札幌夜景告別</td></tr>
+<tr><td>飯店整理行李</td><td>明天 5/31 14:00 退房 → 14:37 抵機場</td></tr>
 </table>
 
-<h3>🍫 14:00-17:00 下午：白色戀人公園</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.93em">
-<tr style="background:var(--lite)"><th>時間</th><th>動作</th><th>票</th></tr>
-<tr><td>14:00</td><td>東西線 → 宮の沢站（16 分）</td><td>ドニチカ ¥520 涵蓋</td></tr>
-<tr><td>14:20</td><td>5 番出口 → 走 7 分到 <a href="https://www.google.com/maps/search/%E7%99%BD%E3%81%84%E6%81%8B%E4%BA%BA%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" class="link">白色戀人公園</a></td><td>¥800（<a href="https://www.klook.com/zh-TW/activity/136238-shiroi-koibito-park-ticket/" target="_blank" class="link">Klook 136238</a>）</td></tr>
-<tr><td>14:30-15:30</td><td><strong>4F 牛津茶餐廳（飄兒最愛！）</strong>看鐘樓表演 + 喝白色戀人熱可可</td><td>¥800-1,500</td></tr>
-<tr><td>15:30-16:30</td><td><strong>3F 巧克力幻想館工廠</strong>（95% 自動化巧克力+年輪蛋糕製造，飄兒：付費區最值得看）</td><td>同票</td></tr>
-</table>
-
-<h3>🌸 17:00-18:30 川下公園丁香花副場（5/30-31 限定！）</h3>
-<p>東西線 → 新さっぽろ → 巴士到 <a href="https://www.google.com/maps/search/%E5%B7%9D%E4%B8%8B%E5%85%AC%E5%9C%92+%E6%9C%AD%E5%B9%8C" target="_blank" class="link">川下公園</a>，<strong>世界丁香花 200 種 1700 株</strong>限定開放</p>
-
-<h3>🌃 19:00-22:00 藻岩山新三大夜景</h3>
-<table style="width:100%;border-collapse:collapse;font-size:.93em">
-<tr style="background:var(--lite)"><th>時間</th><th>動作</th><th>票</th></tr>
-<tr><td>19:00</td><td>大通駅 → 走 3 分到市電「西 4 丁目」站</td><td>—</td></tr>
-<tr><td>19:15</td><td>市電環狀線（外回り）到「ロープウェイ入口」</td><td>¥230</td></tr>
-<tr><td>19:30</td><td>免費接駁巴士（週六 10:17 起有）→ 山麓站</td><td>免費</td></tr>
-<tr><td>19:40</td><td><a href="https://www.google.com/maps/search/%E8%97%BB%E5%B2%A9%E5%B1%B1%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4" target="_blank" class="link">藻岩山纜車</a>+ ミニケーブルカー 上山</td><td>¥2,100</td></tr>
-<tr><td>19:50</td><td>山頂展望台看 360° 日本新三大夜景</td><td>—</td></tr>
-<tr><td>21:30</td><td>下山（上行末班 21:30）</td><td>—</td></tr>
-<tr><td>22:00</td><td>はちきょう 居酒屋宵夜</td><td>—</td></tr>
-</table>
-
-<div class="info">
-☔ <strong>雨天備案</strong>：取消藻岩山（看不到）→ 改 JR 塔 T38 室內展望台 ¥740（飯店附近，160m 高）
+<h2>📦 整理行李提醒（明早再買冷藏品）</h2>
+<div class="warn">
+冷藏伴手禮（Royce 生巧、LeTAO 雙層起司、北菓樓夢幻泡芙）→ <strong>5/31 早上機場前最後買</strong><br>
+常溫類今天逛狸小路就買完
 </div>
 
-<hr>
+<div class="footer">
+<a href="day7.html">← Day 7</a> · <a href="index.html">🏠</a> · <a href="day9.html">Day 9 回國 →</a>
+</div>
 
-<!-- ============ Day 9 ============ -->
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other" style="background:#e57373;color:#fff">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
 </div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other">🚗 沒車去不到</a>
-<a href="tour.html" class="other">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<p class="sub" style="text-align:center;margin-top:30px">
-版本 v3.0 拆分版｜<a href="verified.html">查看完整版 350 項 matrix→</a>
-</p>
 </body>
 </html>

@@ -3,274 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Day 1（5/23 六）抵達 + 洞爺｜北海道 9 日</title>
+<title>Day 1 · 5/23（六）抵函館</title>
+<link rel="stylesheet" href="style.css">
 <style>
-:root{--bg:#fafafa;--card:#fff;--text:#222;--sub:#666;--accent:#e57373;--toya:#4a90b8;--hako:#d4a017;--sapp:#7b9c3d;--border:#eee;--lite:#fef5f5;--warn:#fff3e0;--info:#e3f2fd}
-@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--card:#252525;--text:#eee;--sub:#aaa;--accent:#ff8a80;--toya:#7bb8d6;--hako:#e8c46a;--sapp:#a8c878;--border:#333;--lite:#2a2020;--warn:#2e2a1e;--info:#1e2832}}
-*{box-sizing:border-box}
-body{font-family:-apple-system,"Noto Sans TC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;margin:0;padding:16px;max-width:760px;margin:0 auto}
-h1{font-size:1.7em;margin:8px 0 4px}
-.sub{color:var(--sub);font-size:.92em;margin-bottom:24px}
-.base{padding:18px 20px;margin:24px 0;border-radius:10px;background:var(--card);border-top:5px solid var(--accent)}
-.base.toya{border-color:var(--toya)}
-.base.hako{border-color:var(--hako)}
-.base.sapp{border-color:var(--sapp)}
-.base h2{margin:0 0 8px;font-size:1.5em}
-.base.toya h2{color:var(--toya)}
-.base.hako h2{color:var(--hako)}
-.base.sapp h2{color:var(--sapp)}
-.summary{font-size:1.08em;font-weight:bold;padding:12px 16px;border-radius:6px;margin:12px 0 20px}
-.toya .summary{background:#e3f2fd;color:#0d5d8a}
-.hako .summary{background:#fff8e1;color:#8a6a00}
-.sapp .summary{background:#e8f5e9;color:#3d6a1a}
-@media(prefers-color-scheme:dark){.toya .summary{background:#1e2832;color:#7bb8d6}.hako .summary{background:#2e2a1e;color:#e8c46a}.sapp .summary{background:#1f2a1c;color:#a8c878}}
-h3{font-size:1.15em;margin:20px 0 8px;padding-left:8px;border-left:4px solid var(--accent)}
-.toya h3{border-color:var(--toya)}
-.hako h3{border-color:var(--hako)}
-.sapp h3{border-color:var(--sapp)}
-h4{font-size:1em;margin:14px 0 4px;color:var(--sub)}
-ul{padding-left:22px;margin:6px 0}
-li{margin:5px 0}
-.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:.78em;margin-left:4px;background:#fce4ec;color:#c2185b}
-.tag.bus{background:#e3f2fd;color:#1565c0}
-.tag.jr{background:#e8f5e9;color:#2e7d32}
-.tag.tram{background:#fff3e0;color:#e65100}
-.tag.metro{background:#f3e5f5;color:#6a1b9a}
-.tag.walk{background:#fffde7;color:#827717}
-.tag.must{background:var(--accent);color:#fff;font-weight:bold}
-@media(prefers-color-scheme:dark){.tag{background:#3a2128;color:#f8bbd0}.tag.bus{background:#1a2733;color:#7fb3e3}.tag.jr{background:#1f2a1c;color:#a5d6a7}.tag.tram{background:#332514;color:#ffb74d}.tag.metro{background:#2d1e33;color:#ce93d8}.tag.walk{background:#2e2e1c;color:#dce775}}
-.warn{background:var(--warn);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #ff9800}
-.info{background:var(--info);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #2196f3}
-.plan{background:var(--lite);padding:12px 16px;margin:14px 0;border-radius:6px;font-weight:500}
-.toc{background:var(--card);padding:14px 18px;border-radius:8px;margin-bottom:24px;border:1px solid var(--border);text-align:center}
-.toc a{display:inline-block;margin:4px;padding:6px 14px;border-radius:18px;font-weight:bold;text-decoration:none}
-.toc a.toya{background:var(--toya);color:#fff}
-.toc a.hako{background:var(--hako);color:#fff}
-.toc a.sapp{background:var(--sapp);color:#fff}
-.toc a.other{background:#f5f5f5;color:#666;border:1px solid #ddd}
-.toc a.full{background:#212121;color:#fff}
-@media(prefers-color-scheme:dark){.toc a.other{background:#333;color:#ccc;border-color:#444}.toc a.full{background:#666;color:#fff}}
-a.link{color:var(--accent);text-decoration:none;border-bottom:1px dotted}
-hr{border:none;border-top:1px dashed var(--border);margin:32px 0}
-.no{color:#d32f2f;text-decoration:line-through}
-@media(prefers-color-scheme:dark){.no{color:#ef9a9a}}
-.price{color:#888;font-size:.9em;margin-left:4px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;color:#222;background:#f5f3ef}
+.wrap{max-width:880px;margin:0 auto;padding:18px 16px 60px;background:#fff;min-height:100vh}
+.topnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eee}
+.topnav a{padding:5px 10px;background:#eef6f0;color:#1a4d2e;text-decoration:none;font-size:.85em;border-radius:12px}
+.topnav a.now{background:#7eb77f;color:#fff;font-weight:600}
+.topnav a:hover{background:#7eb77f;color:#fff}
+h1{font-size:1.5em;color:#1a4d2e;margin:6px 0 4px}
+.sub{color:#666;font-size:.92em;margin-bottom:14px}
+h2{font-size:1.18em;margin:24px 0 10px;color:#1a4d2e;border-left:5px solid #7eb77f;padding-left:10px}
+h3{font-size:1.02em;margin:14px 0 6px;color:#2c5f3f}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92em}
+th,td{border:1px solid #ddd;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#e8f0e9;color:#1a4d2e}
+.box{background:#f9f7f1;border-left:4px solid #d4a55c;padding:10px 14px;margin:12px 0;font-size:.93em;border-radius:0 6px 6px 0}
+.warn{background:#fff0f0;border-left:4px solid #d65a5a;padding:10px 14px;margin:12px 0;font-size:.93em;border-radius:0 6px 6px 0}
+.tip{background:#eef6f0;border-left:4px solid #7eb77f;padding:10px 14px;margin:12px 0;font-size:.93em;border-radius:0 6px 6px 0}
+.timeline{background:#f9f7f1;padding:12px 14px;border-radius:6px;margin:10px 0;font-size:.92em}
+.timeline div{padding:4px 0;border-bottom:1px dashed #ddd}
+.timeline div:last-child{border:0}
+.timeline .t{display:inline-block;width:75px;color:#7a4a08;font-weight:600}
+a{color:#1a4d2e}
+ul,ol{margin:6px 0 6px 22px}
+li{margin:2px 0;font-size:.93em}
+.opt{border:2px solid #7eb77f;border-radius:8px;padding:12px 14px;margin:10px 0;background:#fafdf9}
+.opt h3{margin-top:0;color:#1a4d2e}
+.tag{display:inline-block;padding:1px 7px;background:#7eb77f;color:#fff;border-radius:8px;font-size:.78em;margin-right:4px}
+.tag-r{background:#d65a5a}
+.tag-o{background:#d4a55c}
+.tag-b{background:#5a8db7}
+.footer{color:#888;font-size:.82em;text-align:center;margin-top:30px;padding-top:18px;border-top:1px solid #eee}
 </style>
 </head>
 <body>
-<h1>🗾 Day 1（5/23 六）抵達 + 洞爺</h1>
-<p class="sub">2026/5/23（六）→ 5/31（日）｜兩人｜完全不開車</p>
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other" style="background:#e57373;color:#fff">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
-</div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other">🚗 沒車去不到</a>
-<a href="tour.html" class="other">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<h2 id="day1detail" style="margin-top:32px;border-top:3px solid var(--accent);padding-top:14px;color:var(--toya)">🔍 Day 1（5/23 六）抵飯店後你有 4 個選擇</h2>
-<p class="big" style="color:var(--toya)">「機場→飯店（15:00-17:25）固定 → 17:25 抵飯店後給你選」</p>
+<div class="wrap">
 
-<h3 style="border-top:2px solid var(--green);padding-top:12px;color:var(--green)">🅰️ A 案：散步看湖+望羊蹄+飯店窗前煙火（推薦版）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>飛機累、想簡單、預算考量</p>
-<p><strong>預算：</strong>¥2,000-3,500</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>17:30</strong> 飯店 check-in 放好行李</li>
-<li>🕒 <strong>18:00</strong> 出飯店湖畔散步 → 洞龍の湯足湯（24h 免費）</li>
-<li>🕒 <strong>18:30</strong> 望羊蹄晚餐（1946 多蜜醬漢堡排 ¥1,100-2,500，5/23 六沒週二休 OK）</li>
-<li>🕒 <strong>20:00</strong> 飯店泡湯</li>
-<li>🕒 <strong>20:45</strong> 湖側房窗前看煙火（免費！）</li>
-<li>🕒 <strong>21:30</strong> 便利店買宵夜回房</li>
-</ul>
-<p><strong>✅ 優：</strong>最輕鬆、免費煙火視野最棒、預算最低</p>
-<p><strong>❌ 缺：</strong>沒體驗船上煙火</p>
+<div class="topnav">
+<a href="index.html">🏠</a>
+<a href="day1.html" class="now">D1</a>
+<a href="day2.html">D2</a>
+<a href="day3.html">D3</a>
+<a href="day4.html">D4</a>
+<a href="day5.html">D5</a>
+<a href="day6.html">D6</a>
+<a href="day7.html">D7</a>
+<a href="day8.html">D8</a>
+<a href="day9.html">D9</a>
 </div>
 
-<h3 style="border-top:2px solid #1976d2;padding-top:12px;color:#1976d2">🅱️ B 案：早晚餐+觀賞船煙火（湖上 360°）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>想體驗船上 360° 煙火（你沒訂一泊二食，所以晚餐去在地餐廳）</p>
-<p><strong>預算：</strong>¥3,500-5,500（晚餐 + 觀賞船 ¥1,900）</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>17:30</strong> 飯店 check-in</li>
-<li>🕒 <strong>18:00</strong> 飯店泡湯（5 種泉源，先放鬆）</li>
-<li>🕒 <strong>19:00</strong> 飯店附近吃晚餐（望羊蹄/拉麵一本亭 — 早點吃完才能趕船）</li>
-<li>🕒 <strong>20:25</strong> 走 5 分到乃之風渡假村旁觀賞船乘船處</li>
-<li>🕒 <strong>20:35</strong> 觀賞船出航 ¥1,900（建議旅館代訂 or <a href="https://www.kkday.com/zh-tw/product/130971" target="_blank" class="link">KKday 130971</a>）</li>
-<li>🕒 <strong>20:45-21:05</strong> 海上 360° 看煙火</li>
-<li>🕒 <strong>21:15</strong> 回飯店再泡湯</li>
-</ul>
-<p><strong>✅ 優：</strong>船上煙火 360° 環繞、湖中央觀看視野最棒</p>
-<p><strong>❌ 缺：</strong>多 ¥1,900/人；<strong>船最少 5 人成團</strong>（出發前打飯店確認當晚有開）；晚餐要早點吃完趕船</p>
+<h1>Day 1 · 5/23（六）抵函館</h1>
+<p class="sub">桃園 → 新千歲 → 函館（JR 特急北斗，約 4 小時）</p>
+
+<h2>🛫 飛行＋移動（不可變更）</h2>
+<div class="timeline">
+<div><span class="t">10:10</span>BR116 桃園機場起飛</div>
+<div><span class="t">15:00</span>抵新千歲機場（CTS）</div>
+<div><span class="t">15:00-15:50</span>入境＋領行李＋換錢＋上廁所</div>
+<div><span class="t">15:50-16:00</span>機場 JR 站買 JR Pass 兌換（如海外已買）／買 Suica</div>
+<div><span class="t">16:00-16:30</span>機場 → 南千歲駅（快速エアポート 1 站 3 分 ¥210，或 JR Pass 免費）</div>
+<div><span class="t">16:30-17:00</span>南千歲駅候車（買便當/上廁所）</div>
+<div><span class="t">17:00-20:35</span>特急北斗 18 號（南千歲 → 函館，4h35m）</div>
+<div><span class="t">20:35-20:55</span>函館駅 → JR Inn Hakodate（步行 10 分 or 計程車 ¥800）</div>
 </div>
-
-<h3 style="border-top:2px solid #ff6f00;padding-top:12px;color:#ff6f00">🅲 C 案：文青散步+仙堂庵湖景蕎麥+飯店煙火</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>愛日式蕎麥、想看湖景晚餐</p>
-<p><strong>預算：</strong>¥2,000-3,500</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>17:30</strong> 飯店 check-in</li>
-<li>🕒 <strong>18:00</strong> 散步到泉源公園 9 金棒（看每 3h 一次間歇泉）</li>
-<li>🕒 <strong>18:20</strong> 走到仙堂庵（わかさいも 2F）湖景蕎麥麵晚餐</li>
-<li>🕒 <strong>19:30</strong> 飯店泡湯</li>
-<li>🕒 <strong>20:45</strong> 湖側房煙火</li>
-</ul>
-<p><strong>✅ 優：</strong>邊吃邊看湖景、文青風格</p>
-<p><strong>❌ 缺：</strong>仙堂庵 18:00 LO，要趕</p>
-</div>
-
-<h3 style="border-top:2px solid #9c27b0;padding-top:12px;color:#9c27b0">🅳 D 案：牛助燒肉排隊王+飯店煙火（要訂位）</h3>
-<div class="day" style="background:var(--lite)">
-<p><strong>適合：</strong>愛燒肉、想吃溫泉街最熱門店、出發前已訂位</p>
-<p><strong>預算：</strong>¥2,500-4,000</p>
-<ul style="list-style:none;padding-left:0">
-<li>🕒 <strong>17:30</strong> 飯店 check-in</li>
-<li>🕒 <strong>18:00</strong> 飯店泡澡放鬆</li>
-<li>🕒 <strong>19:00</strong> <strong>牛助燒肉</strong>晚餐（溫泉街排隊王，<strong>必須出發前訂位 0142-75-2916</strong>）</li>
-<li>🕒 <strong>20:30</strong> 散步回飯店</li>
-<li>🕒 <strong>20:45</strong> 湖側房煙火</li>
-</ul>
-<p><strong>✅ 優：</strong>北海道和牛燒肉、人氣店</p>
-<p><strong>❌ 缺：</strong>必須事先電話訂位（日文 OK 才方便）</p>
-</div>
-
-<h3 style="border-top:2px solid var(--accent);padding-top:12px">🤔 我的推薦</h3>
-<div class="info">
-<p><strong>選 A 簡單版</strong>：<strong>大多數人選</strong>。剛搭 2.5 小時車過來，不需要再排很多事。飯店湖側房看煙火免費又最近。</p>
-<p><strong>選 B 觀賞船版</strong>：想要湖上 360° 看煙火 — 比飯店窗前多 ¥1,900/人但視野最棒。<strong>船最少 5 人成團</strong>，去之前打飯店電話 0142-75-3000 請代訂或確認當晚有開。</p>
-<p><strong>選 C 文青版</strong>：愛日式蕎麥 + 不愛西式漢堡排 — 仙堂庵 18:00 LO 要早到。</p>
-<p><strong>選 D 燒肉版</strong>：愛燒肉但必須事先電話訂位（5 月底是旺季，當天排隊上不去）。出發前 1-2 週訂。</p>
-</div>
-
-<hr>
-
-<h3 style="color:var(--toya)">📅 A 案詳細時間軸（如果你選 A）</h3>
-<p>含 Google Maps 連結、班次查詢連結、所有營業時間/價錢/距離。</p>
-
-<h3>🚂 17:25 前：從機場到飯店</h3>
 
 <div class="warn">
-⚠️ <strong>Hotel Hanabi 接駁狀況（我能查到的）</strong>：飄兒文章列洞爺湖有接駁的飯店是「乃之風 / 湖畔亭 / 太陽皇宮」3 家，<strong>沒提 Hanabi</strong>。WebSearch 摘要也說「shuttle service is not provided」（無接駁）。<br>
-我官網直接 fetch 失敗（toyahotelhanabi.com 連不上），<strong>強烈建議你出發前打 0142-75-3000 親自問一次</strong>。<br>
-若真沒接駁 → 自己搭 JR 北斗 + 道南巴士（下方步驟）。
+⚠️ <strong>北斗時刻會微調</strong>，請出發前查 <a href="https://www.jrhokkaido.co.jp/" target="_blank">JR 北海道官網</a> 確認。建議搭 <strong>南千歲 17:00 発 北斗 18 號</strong>（緩衝 2h，怕誤點）。<br>
+⚠️ <strong>特急北斗 2025/3/14 起全車指定席</strong>，無自由席，必須先用 <a href="https://www.eki-net.com/" target="_blank">えきねっと</a> 劃位。
 </div>
 
-<table style="width:100%;border-collapse:collapse;font-size:.94em">
-<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">時間</th><th style="text-align:left">動作</th><th>查詢連結</th></tr>
-<tr><td>15:00</td><td>飛機降落新千歲機場，照指示走到地下 JR 站（步行 5 分）</td><td><a href="https://www.google.com/maps/search/%E6%96%B0%E5%8D%83%E6%AD%B2%E7%A9%BA%E6%B8%AF%E9%A7%85" target="_blank" class="link">站點</a></td></tr>
-<tr><td>15:17</td><td>「<strong>快速エアポート</strong>」往札幌方向，下一站<strong>南千歲下車</strong>（3 分鐘，¥270）</td><td><a href="https://www.jrhokkaido.co.jp/global/chinese/airport/index.html" target="_blank" class="link">JR 北海道</a></td></tr>
-<tr><td>15:30</td><td>南千歲轉「<strong>特急北斗 16 號</strong>」往函館方向，<strong>洞爺站下車</strong>（81 分鐘）<br>📌 用 えきねっと 事先劃指定席（全車指定，沒劃位上不去）</td><td><a href="https://www.eki-net.com/" target="_blank" class="link">えきねっと</a> / <a href="https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%8D%83%E6%AD%B2%E7%A9%BA%E6%B8%AF&to=%E6%B4%9E%E7%88%BA" target="_blank" class="link">Yahoo 乗換查班次</a></td></tr>
-<tr><td>16:38</td><td>抵 <strong>JR 洞爺站</strong>，出站找「道南巴士」站牌</td><td><a href="https://www.google.com/maps/search/JR%E6%B4%9E%E7%88%BA%E9%A7%85" target="_blank" class="link">站點</a></td></tr>
-<tr><td>17:05</td><td>道南巴士「洞爺湖温泉行」 — 跟司機說「洞爺湖温泉まで」，車程 20 分，<strong>下車買票 ¥400</strong></td><td><a href="https://www.donanbus.co.jp/map/toyako_toyakoonsen/" target="_blank" class="link">道南巴士時刻表</a></td></tr>
-<tr><td>17:25</td><td>抵「洞爺湖温泉バスターミナル」 → 走 3-5 分到飯店 check-in</td><td><a href="https://maps.app.goo.gl/7sq1rMCnM8s9q5iN7" target="_blank" class="link">Hotel Hanabi</a></td></tr>
+<h2>🎒 機場那 1 小時可以做什麼</h2>
+<table>
+<tr><th>事</th><th>地點（新千歲機場）</th><th>備註</th></tr>
+<tr><td>JR Pass 兌換</td><td>JR 外籍人士服務處（B1 國際線抵達樓層）</td><td>需護照</td></tr>
+<tr><td>換日幣</td><td>2F 入境樓層 ATM／外幣兌換</td><td>建議帶 JPY 現金 ¥20,000+</td></tr>
+<tr><td>領 WiFi/SIM</td><td>1F 入境後 Wi-ho!/Sakura/eSIM 櫃台</td><td>網購便宜</td></tr>
+<tr><td>買便當/飯糰</td><td>2F「市電通り食堂街」便利商店</td><td>北斗車上吃</td></tr>
+<tr><td>Royce 巧克力工廠</td><td>2F 中央連絡通路</td><td>5/31 回國再買更新鮮</td></tr>
 </table>
 
-<div class="info">
-💡 <strong>備用班次（飛機誤點）</strong>：南千歲 16:17（北斗 18 號）→ 洞爺 17:37（最後一班巴士 18:58 勉強趕）<br>
-南千歲 17:26（北斗 20 號）→ 洞爺 18:47（巴士已末班）→ <strong>計程車 ¥2,000-2,500，車程 10 分</strong>
+<h2>🍱 北斗 4 小時車上零碎時間</h2>
+<div class="tip">
+17:00 上車 → 20:35 抵函館，<strong>窗外風景大半天黑</strong>（5 月日落約 19:00）。建議：
+<ul>
+<li>機場買的便當當晚餐（南千歲駅也有便當賣場 OK）</li>
+<li>下載 Netflix/離線音樂（車上 Wi-Fi 不穩）</li>
+<li>用手機先劃 5/25 北斗 3 號座位（えきねっと）</li>
+<li>查明天 5/24 函館天氣（決定函館山要早午晚哪場上去）</li>
+<li><strong>沿線景觀</strong>：登別～東室蘭過後沿太平洋海岸線，天黑前能看到 18:00 左右的內浦灣（噴火灣）</li>
+</ul>
 </div>
 
-<h3>🌅 17:25-18:50：抵達後 1.5 小時你可以做什麼？</h3>
-<p>5 月底洞爺<strong>日落約 18:50</strong>，這段是「天還亮可以散步」的時間。3 個方案任選：</p>
+<h2>🌙 20:35 抵函館後晚上選項（4 選 1）</h2>
 
-<h4>方案 A：散步看湖（推薦給累的人）</h4>
+<div class="opt">
+<h3>A. <span class="tag">最近</span> ラッキーピエロ 駅前店（函館限定漢堡）</h3>
 <ul>
-<li><strong>17:35</strong> 走出飯店到湖畔（步行 1 分）</li>
-<li><strong>17:40-18:00</strong> 沿湖畔步道散步，看羊蹄山+洞爺湖夕陽
-<ul><li><a href="https://www.google.com/maps/search/%E6%B4%9E%E7%88%BA%E6%B9%96%E3%82%B0%E3%83%AB%E3%83%83%E3%81%A8%E5%BD%AB%E5%88%BB%E5%85%AC%E5%9C%92" target="_blank" class="link">環湖雕刻公園</a> — 沿湖 58 座雕塑，免費，24h</li></ul>
-</li>
-<li><strong>18:00</strong> <a href="https://www.google.com/maps/search/%E6%B4%9E%E9%BE%8D%E3%81%AE%E6%B9%AF" target="_blank" class="link">洞龍の湯足湯</a>（步行 5 分湖畔，<strong>24h 免費</strong>）— 泡腳消除飛機疲勞</li>
-<li><strong>18:30</strong> 回飯店 or 直接晚餐</li>
+<li><strong>距離</strong>：JR 函館駅 → 步行 3 分 → 飯店再 7 分</li>
+<li><strong>地址</strong>：函館市若松町 8-8 · <a href="https://maps.google.com/?q=ラッキーピエロ+函館駅前店" target="_blank">Google Maps</a></li>
+<li><strong>營業</strong>：10:00-翌 0:30（六日延長到 1:30）✅ 21:00 抵達 OK</li>
+<li><strong>必點</strong>：中華雞肉漢堡（チャイニーズチキンバーガー）¥390・拉花熱可可 ¥330</li>
+<li><strong>預算</strong>：¥600-1,000/人</li>
 </ul>
+</div>
 
-<h4>方案 B：先逛溫泉街+伴手禮（推薦給愛買的人）</h4>
+<div class="opt">
+<h3>B. <span class="tag-o">便利店派</span> ハセガワストア 函館駅前店 やきとり弁当</h3>
 <ul>
-<li><strong>17:35</strong> 走到 <a href="https://www.google.com/maps/search/%E8%B6%8A%E5%BE%8C%E5%B1%8B+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">越後屋</a>（步行 5 分）— <strong>9:00-18:00 不休</strong>，銀魂木刀+北海道伴手禮一站買齊</li>
-<li><strong>18:00</strong> 走到 <a href="https://www.google.com/maps/search/%E3%82%8F%E3%81%8B%E3%81%95%E3%81%84%E3%82%82%E6%9C%AC%E8%88%97+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">わかさいも本舗本店</a>（步行 7 分，9:00-18:00）—  <strong>いもてん現炸 ¥200-400</strong> + <strong>馬鈴薯冰淇淋 ¥400-500</strong>，1F 湖景內用區可當茶點</li>
-<li><strong>18:30</strong> 回飯店 or 走過去晚餐</li>
+<li><strong>距離</strong>：JR 函館駅 → 步行 2 分</li>
+<li><strong>地址</strong>：函館市若松町 11-13 · <a href="https://maps.google.com/?q=ハセガワストア+函館駅前店" target="_blank">Google Maps</a></li>
+<li><strong>營業</strong>：24 小時</li>
+<li><strong>必買</strong>：函館限定「やきとり弁当（豬肉串便當）」¥600（中），現點現烤豬肉串放飯上</li>
+<li><strong>預算</strong>：¥600/人 → 拿回飯店配啤酒</li>
 </ul>
+</div>
 
-<h4>方案 C：直接看歷史景點（推薦給文青）</h4>
+<div class="opt">
+<h3>C. <span class="tag-b">拉麵派</span> 函館麺や 一文字 函館駅前店</h3>
 <ul>
-<li><strong>17:35</strong> 走到 <a href="https://www.google.com/maps/search/%E6%B3%89%E6%BA%90%E5%85%AC%E5%9C%92+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">泉源公園 9 金棒</a>（步行 7 分，免費 24h）— 每 3 小時一次 8m 高間歇泉</li>
-<li><strong>17:50</strong> 走到 <a href="https://www.google.com/maps/search/%E5%8C%97%E6%B5%B7%E9%81%93%E6%B4%9E%E7%88%BA%E6%B9%96%E3%82%B5%E3%83%9F%E3%83%83%E3%83%88%E8%A8%98%E5%BF%B5%E9%A4%A8" target="_blank" class="link">北海道洞爺湖サミット記念館</a>（步行 5 分到巴士總站 3F，<strong>免費，9:00-17:00 → ⚠️ 抵達當天可能已關門</strong>，列入隔天行程）</li>
-<li>改成 <a href="https://www.google.com/maps/search/%E9%87%91%E6%AF%94%E7%BE%85%E7%81%AB%E5%8F%A3%E7%81%BD%E5%AE%B3%E9%81%BA%E6%A7%8B%E6%95%A3%E7%AD%96%E8%B7%AF" target="_blank" class="link">金比羅火口災害遺構散策路</a>（步行 10 分，免費）— 看 2000 年噴發埋掉的公寓現場</li>
+<li><strong>距離</strong>：JR 函館駅 → 步行 2 分</li>
+<li><strong>地址</strong>：函館市若松町 20-7 · <a href="https://maps.google.com/?q=函館麺や+一文字+函館駅前店" target="_blank">Google Maps</a></li>
+<li><strong>營業</strong>：11:00-翌 1:30 · 21:00 抵 OK</li>
+<li><strong>必點</strong>：鹽味豚骨拉麵（函館招牌鹽味系）¥850</li>
 </ul>
+</div>
 
-<h3>🍽️ 18:30-20:30 晚餐（5 個方案任選）</h3>
+<div class="opt">
+<h3>D. <span class="tag-r">最懶</span> 飯店泡澡 + 便利店宵夜</h3>
+<ul>
+<li>飯店：JR Inn Hakodate（12-14 Wakamatsucho）· <a href="https://maps.google.com/?q=JR+Inn+Hakodate" target="_blank">Google Maps</a></li>
+<li>飯店泡澡（依現場設備為準）+ 樓下/隔壁 7-11 買零食啤酒</li>
+<li><strong>適合</strong>：累爆、明早要早起、想休息</li>
+</ul>
+</div>
 
-<table style="width:100%;border-collapse:collapse;font-size:.92em">
-<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">餐廳</th><th>類型</th><th>距離</th><th>價錢</th><th>營業</th><th>訂位?</th><th>Maps</th></tr>
-<tr><td><strong>望羊蹄</strong></td><td>1946 多蜜醬漢堡排</td><td>步行 5 分</td><td>¥1,100-2,500</td><td>11-14:30 / 17-20:30，<strong>週二休</strong>（5/23 六 OK）</td><td>不可預約</td><td><a href="https://www.google.com/maps/search/%E6%9C%9B%E7%BE%8A%E8%B9%84+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">📍</a></td></tr>
-<tr><td><strong>牛助燒肉</strong></td><td>溫泉街排隊王</td><td>步行 5 分</td><td>¥2,500-4,000</td><td>17:30-22:00</td><td><strong>要訂位</strong>，0142-75-2916</td><td><a href="https://www.google.com/maps/search/%E7%89%9B%E5%8A%A9+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">📍</a></td></tr>
-<tr><td><strong>仙堂庵</strong>（わかさいも 2F）</td><td>湖景蕎麥麵</td><td>步行 7 分</td><td>¥1,500-3,000</td><td>11-18（晚餐去就趕末班）</td><td>不可</td><td><a href="https://www.google.com/maps/search/%E4%BB%99%E5%A0%82%E5%BA%B5+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">📍</a></td></tr>
-<tr><td><strong>拉麵一本亭</strong></td><td>20 小時熬湯</td><td>步行 3 分</td><td>¥900</td><td>11:30-14:30 / 17:30-24:00</td><td>不可</td><td><a href="https://www.google.com/maps/search/%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E4%B8%80%E6%9C%AC%E4%BA%AD+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">📍</a></td></tr>
-<tr><td>燒肉金城</td><td>手切和牛+牛舌</td><td>步行 7 分</td><td>¥3,000-5,000</td><td>17-22</td><td>建議訂</td><td><a href="https://www.google.com/maps/search/%E7%84%BC%E8%82%89%E9%87%91%E5%9F%8E+%E6%B4%9E%E7%88%BA%E6%B9%96" target="_blank" class="link">📍</a></td></tr>
+<h2>🛏 22:00 後夜間零碎時間建議</h2>
+<table>
+<tr><th>建議</th><th>說明</th></tr>
+<tr><td>22:00 整理行李＋洗澡</td><td>明早不用早起，但函館朝市建議 7:00 開始</td></tr>
+<tr><td>22:30 看明天天氣</td><td>函館山看夜景要好天氣，若 5/24 不好就改 5/25 早晨上山</td></tr>
+<tr><td>22:30 劃 5/25 北斗 3 號座位</td><td>えきねっと 提前 1 個月開放，可事先用台灣劃</td></tr>
+<tr><td>23:00 設鬧鐘 06:30</td><td>明早函館朝市 6:00 開但 7:00 後人潮也少</td></tr>
+<tr><td>查明天函館山纜車運行</td><td>5 月天氣不穩，<a href="https://334.co.jp/cht/" target="_blank">官網查當日運行</a></td></tr>
 </table>
 
-<div class="info">
-⭐ <strong>我的推薦：望羊蹄</strong>（1946 老店穩定）or <strong>牛助燒肉</strong>（事先電話訂位）。<strong>拉麵一本亭</strong>是預算最低選項。<br>
-飯店通常另賣晚餐方案，但你沒訂 → 4 家在地餐廳擇一。
+<h2>📍 飯店資訊</h2>
+<div class="box">
+<strong>JR Inn Hakodate（JR イン函館）</strong><br>
+住址：北海道函館市若松町 12-14（〒040-0063）<br>
+距離 JR 函館駅：步行 5-10 分（直線約 200m）<br>
+<a href="https://maps.google.com/?q=JR+Inn+Hakodate" target="_blank">📍 Google Maps</a> · 5/23-5/25 共 2 晚
 </div>
 
-<h3>🎆 20:45-21:05 看煙火（必看）</h3>
+<h2>📌 飯店周邊 5 分鐘步行可達</h2>
 <ul>
-<li><strong>方案 1：飯店湖側房窗前看</strong>（免費，最舒服）— Hotel Hanabi 湖側房直接看煙火施放</li>
-<li><strong>方案 2：飯店外湖畔</strong>（免費）— 走到湖畔步道，跟其他遊客一起看（人多但有氣氛）</li>
-<li><strong>方案 3：搭煙火鑑賞船</strong>（¥1,900）— 從 <a href="https://www.google.com/maps/search/%E6%B4%9E%E7%88%BA%E6%B9%96%E6%B1%BD%E8%88%B9+%E6%B8%A9%E6%B3%89%E8%A1%97" target="_blank" class="link">洞爺湖汽船乗船處</a> 出發（不在飯店旁，在乃之風方向，步行 5 分）。船上看煙火 360°，但要走過去搭船<br>📌 訂船：旅館代訂或現場排隊，或 <a href="https://www.kkday.com/zh-tw/product/130971" target="_blank" class="link">KKday 130971</a></li>
+<li><strong>函館朝市</strong>（早上去）：步行 5 分 → 明天早餐</li>
+<li><strong>函館駅</strong>：步行 5-10 分（明天搭電車去元町用）</li>
+<li><strong>金森紅磚倉庫</strong>：步行 15-20 分</li>
+<li><strong>市電「函館駅前」站</strong>：步行 5 分（明早搭去元町）</li>
+<li><strong>7-11 函館松風町店</strong>：步行 3 分（24h）</li>
 </ul>
 
-<h3>🌙 21:05 後可做的事</h3>
-<ul>
-<li><strong>飯店泡溫泉</strong>（推薦）— 5 種泉源，露天風呂看星空</li>
-<li><strong>再吃宵夜</strong> — 拉麵一本亭開到 24:00（步行 3 分）</li>
-<li><strong>便利店</strong> — 溫泉街內有 7-11，買零食/啤酒回房</li>
-<li><strong>洞龍の湯足湯</strong>（24h 免費）— 邊泡腳邊看星空，5 月底夜涼帶外套</li>
-</ul>
-
-<div class="warn">
-📌 <strong>明早行程預告</strong>：5/24 上午 10:25 道南巴士去昭和新山+有珠山纜車（一天只 4 班！）→ 早一點起床（如有訂含早就吃飯店）
+<div class="footer">
+<a href="index.html">← 回首頁</a> · <a href="day2.html">Day 2 函館一整天 →</a>
 </div>
 
-<hr>
-
-<!-- ============ Day 2 ============ -->
-<div class="toc" style="margin-bottom:24px">
-<div style="margin-bottom:10px">
-<a href="index.html" class="other">🏠 首頁</a>
-<a href="day1.html" class="other" style="background:#e57373;color:#fff">Day 1</a>
-<a href="day2.html" class="other">Day 2</a>
-<a href="day3.html" class="other">Day 3</a>
-<a href="day4.html" class="other">Day 4</a>
-<a href="day5.html" class="other">Day 5</a>
-<a href="day6.html" class="other">Day 6</a>
-<a href="day7.html" class="other">Day 7</a>
-<a href="day8.html" class="other">Day 8</a>
-<a href="day9.html" class="other">Day 9</a>
 </div>
-<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
-<a href="before.html" class="other">📌 行前必做</a>
-<a href="nocar.html" class="other">🚗 沒車去不到</a>
-<a href="tour.html" class="other">🎫 跟團分析</a>
-<a href="avoid.html" class="other">❌ 不要做</a>
-<a href="verified.html" class="full">📋 完整版</a>
-</div>
-</div>
-<p class="sub" style="text-align:center;margin-top:30px">
-版本 v3.0 拆分版｜<a href="verified.html">查看完整版 350 項 matrix→</a>
-</p>
 </body>
 </html>
