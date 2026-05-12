@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 3（5/25 一）→函館｜北海道 9 日</title>
+<style>
+:root{--bg:#fafafa;--card:#fff;--text:#222;--sub:#666;--accent:#e57373;--toya:#4a90b8;--hako:#d4a017;--sapp:#7b9c3d;--border:#eee;--lite:#fef5f5;--warn:#fff3e0;--info:#e3f2fd}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--card:#252525;--text:#eee;--sub:#aaa;--accent:#ff8a80;--toya:#7bb8d6;--hako:#e8c46a;--sapp:#a8c878;--border:#333;--lite:#2a2020;--warn:#2e2a1e;--info:#1e2832}}
+*{box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans TC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;margin:0;padding:16px;max-width:760px;margin:0 auto}
+h1{font-size:1.7em;margin:8px 0 4px}
+.sub{color:var(--sub);font-size:.92em;margin-bottom:24px}
+.base{padding:18px 20px;margin:24px 0;border-radius:10px;background:var(--card);border-top:5px solid var(--accent)}
+.base.toya{border-color:var(--toya)}
+.base.hako{border-color:var(--hako)}
+.base.sapp{border-color:var(--sapp)}
+.base h2{margin:0 0 8px;font-size:1.5em}
+.base.toya h2{color:var(--toya)}
+.base.hako h2{color:var(--hako)}
+.base.sapp h2{color:var(--sapp)}
+.summary{font-size:1.08em;font-weight:bold;padding:12px 16px;border-radius:6px;margin:12px 0 20px}
+.toya .summary{background:#e3f2fd;color:#0d5d8a}
+.hako .summary{background:#fff8e1;color:#8a6a00}
+.sapp .summary{background:#e8f5e9;color:#3d6a1a}
+@media(prefers-color-scheme:dark){.toya .summary{background:#1e2832;color:#7bb8d6}.hako .summary{background:#2e2a1e;color:#e8c46a}.sapp .summary{background:#1f2a1c;color:#a8c878}}
+h3{font-size:1.15em;margin:20px 0 8px;padding-left:8px;border-left:4px solid var(--accent)}
+.toya h3{border-color:var(--toya)}
+.hako h3{border-color:var(--hako)}
+.sapp h3{border-color:var(--sapp)}
+h4{font-size:1em;margin:14px 0 4px;color:var(--sub)}
+ul{padding-left:22px;margin:6px 0}
+li{margin:5px 0}
+.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:.78em;margin-left:4px;background:#fce4ec;color:#c2185b}
+.tag.bus{background:#e3f2fd;color:#1565c0}
+.tag.jr{background:#e8f5e9;color:#2e7d32}
+.tag.tram{background:#fff3e0;color:#e65100}
+.tag.metro{background:#f3e5f5;color:#6a1b9a}
+.tag.walk{background:#fffde7;color:#827717}
+.tag.must{background:var(--accent);color:#fff;font-weight:bold}
+@media(prefers-color-scheme:dark){.tag{background:#3a2128;color:#f8bbd0}.tag.bus{background:#1a2733;color:#7fb3e3}.tag.jr{background:#1f2a1c;color:#a5d6a7}.tag.tram{background:#332514;color:#ffb74d}.tag.metro{background:#2d1e33;color:#ce93d8}.tag.walk{background:#2e2e1c;color:#dce775}}
+.warn{background:var(--warn);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #ff9800}
+.info{background:var(--info);padding:10px 14px;margin:10px 0;border-radius:6px;font-size:.93em;border-left:3px solid #2196f3}
+.plan{background:var(--lite);padding:12px 16px;margin:14px 0;border-radius:6px;font-weight:500}
+.toc{background:var(--card);padding:14px 18px;border-radius:8px;margin-bottom:24px;border:1px solid var(--border);text-align:center}
+.toc a{display:inline-block;margin:4px;padding:6px 14px;border-radius:18px;font-weight:bold;text-decoration:none}
+.toc a.toya{background:var(--toya);color:#fff}
+.toc a.hako{background:var(--hako);color:#fff}
+.toc a.sapp{background:var(--sapp);color:#fff}
+.toc a.other{background:#f5f5f5;color:#666;border:1px solid #ddd}
+.toc a.full{background:#212121;color:#fff}
+@media(prefers-color-scheme:dark){.toc a.other{background:#333;color:#ccc;border-color:#444}.toc a.full{background:#666;color:#fff}}
+a.link{color:var(--accent);text-decoration:none;border-bottom:1px dotted}
+hr{border:none;border-top:1px dashed var(--border);margin:32px 0}
+.no{color:#d32f2f;text-decoration:line-through}
+@media(prefers-color-scheme:dark){.no{color:#ef9a9a}}
+.price{color:#888;font-size:.9em;margin-left:4px}
+</style>
+</head>
+<body>
+
+<h1>🗾 Day 3（5/25 一）→函館</h1>
+<p class="sub">2026/5/23（六）→ 5/31（日）｜兩人｜完全不開車</p>
+
+<div class="toc" style="margin-bottom:24px">
+<div style="margin-bottom:10px">
+<a href="index.html" class="other">🏠 首頁</a>
+<a href="day1.html" class="other">Day 1</a>
+<a href="day2.html" class="other">Day 2</a>
+<a href="day3.html" class="other" style="background:#e57373;color:#fff">Day 3</a>
+<a href="day4.html" class="other">Day 4</a>
+<a href="day5.html" class="other">Day 5</a>
+<a href="day6.html" class="other">Day 6</a>
+<a href="day7.html" class="other">Day 7</a>
+<a href="day8.html" class="other">Day 8</a>
+<a href="day9.html" class="other">Day 9</a>
+</div>
+<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
+<a href="index.html#before" class="other">📌 行前必做</a>
+<a href="index.html#nocar" class="other">🚗 沒車去不到</a>
+<a href="index.html#avoid" class="other">❌ 不要做</a>
+<a href="verified.html" class="full">📋 完整版</a>
+</div>
+</div>
+
+<h2 id="day3detail" style="margin-top:32px;color:var(--toya)">🔍 Day 3（5/25 一）抵函館後你有 4 個選擇</h2>
+<p class="big" style="color:var(--toya)">「早上 07:35-10:38 固定搭車（北斗 4 號）→ 10:38 抵函館後給你選」</p>
+
+<h3 style="border-top:2px solid var(--green);padding-top:12px;color:var(--green)">🅰️ A 案：朝市→元町→函館山夜景（推薦版）</h3>
+<div class="day" style="background:var(--lite)">
+<p><strong>適合：</strong>第一次到函館、想看完所有經典</p>
+<p><strong>預算：</strong>¥4,000+（午餐 + 市電 1 日券 ¥800 + 纜車 ¥1,800）</p>
+<ul style="list-style:none;padding-left:0">
+<li>🕒 <strong>10:38</strong> 抵函館站 → 飯店寄行李</li>
+<li>🕒 <strong>11:00</strong> 朝市午餐：村上海膽（9:00 開）or きくよ食堂</li>
+<li>🕒 <strong>13:00</strong> 朝市散步 + 駅二市場活烏賊釣堀</li>
+<li>🕒 <strong>15:00</strong> 飯店 check-in</li>
+<li>🕒 <strong>15:30</strong> 市電到十字街 → 金森紅磚 → 八幡坂夕陽 → 元町教堂群</li>
+<li>🕒 <strong>18:30</strong> 函館山纜車（5 月日落 19:00）¥1,800</li>
+<li>🕒 <strong>21:00</strong> 大門横丁 ハセガワストア 烤雞便當宵夜</li>
+</ul>
+<p><strong>✅ 優：</strong>函館山世界三大夜景必看 + 元町黃金時段</p>
+<p><strong>❌ 缺：</strong>跑很多地方，剛到函館會累</p>
+</div>
+
+<h3 style="border-top:2px solid #1976d2;padding-top:12px;color:#1976d2">🅱️ B 案：朝市深度+五稜郭+函館山夜景</h3>
+<div class="day" style="background:var(--lite)">
+<p><strong>適合：</strong>愛海鮮、想多在朝市挖寶</p>
+<p><strong>預算：</strong>¥5,500+（含五稜郭塔 ¥1,200）</p>
+<ul style="list-style:none;padding-left:0">
+<li>🕒 <strong>10:38</strong> 抵函館 → 寄行李</li>
+<li>🕒 <strong>11:00</strong> 朝市深度逛：村上海膽 + 駅二市場活烏賊 + 山三 道下食堂道下丼</li>
+<li>🕒 <strong>14:00</strong> 飯店 check-in</li>
+<li>🕒 <strong>14:30</strong> 市電到「五稜郭公園前」→ 五稜郭塔 ¥1,200</li>
+<li>🕒 <strong>16:30</strong> 市電到十字街 → 元町快走（金森+八幡坂）</li>
+<li>🕒 <strong>18:30</strong> 函館山纜車</li>
+<li>🕒 <strong>21:00</strong> 海光房晚餐（朝市旁活海產，22:00 才打烊）</li>
+</ul>
+<p><strong>✅ 優：</strong>5/26 不必再跑五稜郭、朝市玩透</p>
+<p><strong>❌ 缺：</strong>元町匆忙、要跑來跑去</p>
+</div>
+
+<h3 style="border-top:2px solid #ff6f00;padding-top:12px;color:#ff6f00">🅲 C 案：放輕鬆版（不上函館山）</h3>
+<div class="day" style="background:var(--lite)">
+<p><strong>適合：</strong>累、陰天、想留體力給明天大沼</p>
+<p><strong>預算：</strong>¥3,000</p>
+<ul style="list-style:none;padding-left:0">
+<li>🕒 <strong>10:38</strong> 抵函館 → 寄行李</li>
+<li>🕒 <strong>11:00</strong> 朝市午餐（隨意挑）</li>
+<li>🕒 <strong>13:00</strong> 飯店休息 + 泡澡（東横INN 也有大浴場）</li>
+<li>🕒 <strong>15:30</strong> 市電到十字街，逛金森紅磚 + 八幡坂</li>
+<li>🕒 <strong>17:30</strong> 元町教堂群（傍晚拍照）</li>
+<li>🕒 <strong>19:30</strong> 五島軒本店晚餐（1879 函館咖哩有形文化財）</li>
+<li>🕒 <strong>21:30</strong> 回飯店</li>
+</ul>
+<p><strong>✅ 優：</strong>不累、5/26 體力充沛去大沼</p>
+<p><strong>❌ 缺：</strong>沒看函館山夜景 → <strong>但 5/26 可上去！</strong>（夜景沒時間限制）</p>
+</div>
+
+<h3 style="border-top:2px solid #9c27b0;padding-top:12px;color:#9c27b0">🅳 D 案：函館 Bay Cruise + 元町（4-10 月限定）</h3>
+<div class="day" style="background:var(--lite)">
+<p><strong>適合：</strong>愛搭船、5/26 也想去大沼</p>
+<p><strong>預算：</strong>¥4,500+</p>
+<ul style="list-style:none;padding-left:0">
+<li>🕒 <strong>10:38</strong> 抵函館 → 寄行李</li>
+<li>🕒 <strong>11:00</strong> 朝市午餐</li>
+<li>🕒 <strong>13:00</strong> 飯店 check-in 短暫休息</li>
+<li>🕒 <strong>14:00</strong> 市電到十字街</li>
+<li>🕒 <strong>14:30</strong> 函館 Bay Cruise（4/1-10/31 限定，金森碼頭）</li>
+<li>🕒 <strong>15:30</strong> 金森紅磚倉庫深逛（あおい森限定蛋糕）</li>
+<li>🕒 <strong>17:00</strong> 元町坡道 + 教堂群</li>
+<li>🕒 <strong>18:30</strong> 函館山纜車（黃金時段）</li>
+<li>🕒 <strong>21:00</strong> 大門横丁晚餐</li>
+</ul>
+<p><strong>✅ 優：</strong>多體驗一個船遊（5 月限定）</p>
+<p><strong>❌ 缺：</strong>多一筆船費</p>
+</div>
+
+<h3 style="border-top:2px solid var(--accent);padding-top:12px">🤔 我的推薦</h3>
+<div class="info">
+<p><strong>選 A 經典</strong>：第一次去函館的話 — 函館山夜景是「世界三大夜景」（米其林三星），絕對首日上去（黃金時段卡位人潮少）。</p>
+<p><strong>選 B 朝市深度 + 五稜郭</strong>：如果 5/26 你想全天玩大沼 + 元町補拍。今天先把五稜郭+朝市+函館山三件事做完。</p>
+<p><strong>選 C 放輕鬆</strong>：剛從洞爺搭 2h 北斗來，下午想休息。函館山 5/26 晚再上也可以。</p>
+<p><strong>選 D Bay Cruise</strong>：5 月限定船遊 + 拍照很美，多體驗一個。</p>
+</div>
+
+<h3 style="border-top:2px solid #e57373;padding-top:12px;color:#e57373">🎫 Day 3-4 函館跟團套票分析</h3>
+<table style="width:100%;border-collapse:collapse;font-size:.92em">
+<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">套票</th><th>價</th><th>值不值得</th></tr>
+<tr><td>⭐⭐ <a href="https://www.kkday.com/zh-tw/product/135031" target="_blank" class="link">KKday 135031</a> 函館特級套票</td><td>¥2,900</td><td><strong>✅ 強烈推薦</strong>。1 日市電券 ¥800 + 12 點數券（函館山纜車佔 7 點 ¥1,800 + 五稜郭塔 4 點 ¥1,200）。<strong>Day 3-4 兩天都用得到</strong>，單買就值回票價。</td></tr>
+<tr><td>⭐ <a href="https://www.klook.com/en-US/activity/23077-mt-hakodate-night-view-sightseeing-bus-hokkaido/" target="_blank" class="link">Klook 23077</a> 函館山夜景觀光巴士</td><td>¥3,500-4,500</td><td><strong>⚠️ 視情況</strong>。免排隊纜車（旺季排 1.5h）+ 直達山頂。<br>✅ 優：不排隊<br>❌ 缺：比市電+纜車貴 ¥1,000+、失去元町黃昏散步</td></tr>
+<tr><td>❌ <a href="https://www.kkday.com/en-us/product/548082" target="_blank" class="link">KKday 548082</a> 函館山纜車單獨票</td><td>—</td><td><strong>❌ 2026/3/31 已過期，不要買！</strong>改現場 ¥1,800 或用函館特級套票點數</td></tr>
+<tr><td>❌ Klook 76032 ぐるっと函館号</td><td>¥2,500-3,000</td><td>❌ 路線只停五稜郭+トラピスチヌ+牛乳工廠，不含元町 — 市電 1 日券更彈性</td></tr>
+<tr><td>❌ KKday 141109 函館 2 日遊（札幌出發）</td><td>NT$ 7,000+</td><td>❌ 你已住函館，不適用</td></tr>
+</table>
+
+<div class="info">
+💡 <strong>結論</strong>：<strong>必買 KKday 135031 函館特級套票 ¥2,900</strong>（Day 3-4 兩天都能用到）。其他都不必。
+</div>
+
+<hr>
+
+<h3 style="color:var(--toya)">📅 A 案詳細時間軸（如果你選 A）</h3>
+<p class="big" style="color:var(--toya)">「告別洞爺，今天移動到函館，下午直奔元町坂道+晚上世界三大夜景！」</p>
+
+<div class="warn">
+🚨 <strong>今天最重要的事</strong>：搭上 <strong>北斗 4 號 08:43 洞爺発</strong>。錯過下一班 12:33 才到函館 → 朝市午餐沒了，下午行程也擠。
+</div>
+
+<h3>🌅 07:00-08:30 退房 + 搭車</h3>
+<table style="width:100%;border-collapse:collapse;font-size:.93em">
+<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">時間</th><th>動作</th></tr>
+<tr><td>07:00</td><td>早餐（飯店附早 or 便利店；移動日吃飽，特急 2h 沒時間吃中餐）</td></tr>
+<tr><td>07:25</td><td>退房，行李拉到大廳</td></tr>
+<tr><td>07:30</td><td>走 5 分到「洞爺湖温泉バスターミナル」</td></tr>
+<tr><td><strong>07:35</strong></td><td><strong>道南巴士首班</strong> → 洞爺站 ¥400（巴士誤點立刻計程車 ¥2,000-2,500）</td></tr>
+<tr><td>07:55</td><td>抵 JR 洞爺站，先去廁所 + 月台</td></tr>
+<tr><td><strong>08:43</strong></td><td><strong>特急北斗 4 號</strong>洞爺発 → 函館（115 分鐘）<a href="https://www.eki-net.com/" target="_blank" class="link">えきねっと 已劃位</a></td></tr>
+<tr><td><strong>10:38</strong></td><td>抵 JR <strong>函館</strong>站 ← <strong>11 點前抵達的唯一班次！</strong></td></tr>
+</table>
+
+<h3>🍽️ 10:45-13:00 抵函館 → 寄行李 → 朝市午餐</h3>
+<table style="width:100%;border-collapse:collapse;font-size:.93em">
+<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">時間</th><th>動作</th><th>距離/票</th></tr>
+<tr><td>10:45</td><td>JR 函館站西口出來，走 5 分到 <a href="https://www.google.com/maps/search/%E6%9D%B1%E6%A8%AAINN%E5%87%BD%E9%A4%A8%E9%A7%85%E5%89%8D%E5%A4%A7%E9%96%80" target="_blank" class="link">東横INN 函館駅前大門</a> 寄行李</td><td>步行 5 分</td></tr>
+<tr><td>11:00</td><td>走 5-7 分到 <a href="https://www.google.com/maps/search/%E5%87%BD%E9%A4%A8%E6%9C%9D%E5%B8%82" target="_blank" class="link">函館朝市</a></td><td>—</td></tr>
+<tr><td>11:15</td><td><strong>午餐選 1：<a href="https://www.google.com/maps/search/%E6%9D%91%E4%B8%8A%E6%B5%B7%E8%86%BD+%E5%87%BD%E9%A4%A8%E6%9C%9D%E5%B8%82" target="_blank" class="link">村上海膽</a>（函館朝市第一）</strong></td><td>¥3,000+，4/底-9/30 是 09:00 開門 ✅</td></tr>
+<tr><td>11:15</td><td><strong>午餐選 2：<a href="https://www.google.com/maps/search/%E3%81%8D%E3%81%8F%E3%82%88%E9%A3%9F%E5%A0%82%E6%9C%AC%E5%BA%97" target="_blank" class="link">きくよ食堂巴丼</a></strong></td><td>¥1,500-3,000（5-11 月 05:00 開）</td></tr>
+<tr><td>11:15</td><td><strong>午餐選 3：朝市食堂二番館 ¥550 海鮮丼</strong></td><td>¥550 起，已可刷卡</td></tr>
+<tr><td>12:30</td><td>朝市散步 + 駅二市場活烏賊釣堀</td><td>免費看</td></tr>
+</table>
+
+<h3>🏨 13:00-15:00 飯店 check-in + 休息</h3>
+<ul>
+<li><strong>13:00</strong> 回飯店（朝市步行 5-7 分），check-in 後可以稍微休息</li>
+<li><strong>14:30</strong> 出門，先去市電「函館駅前」站（飯店步行 5-8 分）</li>
+</ul>
+
+<h3>⛪ 15:00-18:00 下午：搭市電玩元町</h3>
+
+<p>📌 <strong>買「市電 1 日券 ¥800」</strong>（車內買，今天 + 明天會超過 ¥800 元 / 5-7 段）</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:.93em">
+<tr style="background:var(--lite)"><th style="padding:8px;text-align:left">時間</th><th>景點</th><th>票/開放</th><th>Maps</th></tr>
+<tr><td>15:00</td><td>市電「函館駅前」→ 「<strong>十字街</strong>」站（6 分，¥250）</td><td>市電 1 日券 ¥800</td><td>—</td></tr>
+<tr><td>15:10</td><td><strong>金森紅磚倉庫</strong>（1909 紅磚倉庫群）</td><td>免費，9:30-19:00</td><td><a href="https://www.google.com/maps/search/%E9%87%91%E6%A3%AE%E8%B5%A4%E3%83%AC%E3%83%B3%E3%82%AC%E5%80%89%E5%BA%AB" target="_blank" class="link">📍</a></td></tr>
+<tr><td>16:00</td><td>順遊 <strong>あおい森</strong> 買金森限定巧克力焦糖木莓蛋糕</td><td>—</td><td>—</td></tr>
+<tr><td>16:20</td><td>走 5 分到 <strong>八幡坂</strong>（JAL 廣告坡道，看夕陽超美）</td><td>免費</td><td><a href="https://www.google.com/maps/search/%E5%85%AB%E5%B9%A1%E5%9D%82+%E5%87%BD%E9%A4%A8" target="_blank" class="link">📍</a></td></tr>
+<tr><td>16:50</td><td>走 5 分到 <strong>舊函館區公會堂</strong>（1910 藍黃和洋折衷）</td><td>¥300，9-17</td><td><a href="https://www.google.com/maps/search/%E6%97%A7%E5%87%BD%E9%A4%A8%E5%8C%BA%E5%85%AC%E4%BC%9A%E5%A0%82" target="_blank" class="link">📍</a></td></tr>
+<tr><td>17:15</td><td>走 5 分到 <strong>元町天主教會</strong> + <strong>ハリストス正教會</strong>（哥德風 vs 東正教）</td><td>免費 + ¥200</td><td><a href="https://www.google.com/maps/search/%E5%85%83%E7%94%BA%E3%82%AB%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E6%95%99%E4%BC%9A" target="_blank" class="link">📍</a></td></tr>
+</table>
+
+<h3>🌃 18:30-21:00 函館山世界三大夜景</h3>
+
+<div class="info">
+⭐ <strong>函館人生必看夜景</strong>！5 月日落 19:00，<strong>19:17-19:30 是燈火接續的最美黃金時段</strong>。
+</div>
+
+<table style="width:100%;border-collapse:collapse;font-size:.93em">
+<tr style="background:var(--lite)"><th>時間</th><th>動作</th></tr>
+<tr><td>18:30</td><td>從元町走 10 分（坡道）到 <a href="https://www.google.com/maps/search/%E5%87%BD%E9%A4%A8%E5%B1%B1%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4+%E5%B1%B1%E9%BA%93%E9%A7%85" target="_blank" class="link">函館山纜車山麓站</a></td></tr>
+<tr><td>18:45</td><td>搭纜車上山（3 分鐘），<strong>¥1,800 來回</strong></td></tr>
+<tr><td>18:50-19:30</td><td>山頂展望台看夕陽轉夜景（最人潮的時段，建議提早卡位）</td></tr>
+<tr><td>20:30</td><td>下山（上行末班 21:30，購票截止 21:28）</td></tr>
+</table>
+
+<h3>🍴 21:00 宵夜（大門横丁就在飯店旁）</h3>
+<p>下山搭市電回「函館駅前」站 → 走 5 分到飯店附近的大門横丁：</p>
+<ul>
+<li><a href="https://www.google.com/maps/search/%E3%83%8F%E3%82%BB%E3%82%AC%E3%83%AF%E3%82%B9%E3%83%88%E3%82%A2%E5%87%BD%E9%A4%A8%E9%A7%85%E5%89%8D%E5%BA%97" target="_blank" class="link">ハセガワストア</a> やきとり弁当（GLAY 推薦，函館限定，¥500-700，7-22 點）</li>
+<li><a href="https://www.google.com/maps/search/%E6%B5%B7%E5%85%89%E6%88%BF+%E5%87%BD%E9%A4%A8" target="_blank" class="link">海光房</a>（朝市旁活海產居酒屋，22:00 才打烊 ¥3,000-5,000）</li>
+<li><a href="https://www.google.com/maps/search/%E5%A4%A7%E9%96%80%E6%A8%AA%E4%B8%81" target="_blank" class="link">大門横丁屋台</a>（飯店旁 1 分，26 間屋台任選，17:00-24:00）</li>
+</ul>
+
+<div class="warn">
+📌 <strong>明早行程預告</strong>：5/26 想吃きくよ食堂 → 5:00 開門可超早起；想睡飽就 9:00 出發大沼。
+</div>
+
+<hr>
+
+<!-- ============ Day 4 ============ -->
+
+<div class="toc" style="margin-bottom:24px">
+<div style="margin-bottom:10px">
+<a href="index.html" class="other">🏠 首頁</a>
+<a href="day1.html" class="other">Day 1</a>
+<a href="day2.html" class="other">Day 2</a>
+<a href="day3.html" class="other" style="background:#e57373;color:#fff">Day 3</a>
+<a href="day4.html" class="other">Day 4</a>
+<a href="day5.html" class="other">Day 5</a>
+<a href="day6.html" class="other">Day 6</a>
+<a href="day7.html" class="other">Day 7</a>
+<a href="day8.html" class="other">Day 8</a>
+<a href="day9.html" class="other">Day 9</a>
+</div>
+<div style="border-top:1px dashed var(--border);padding-top:8px;margin-top:4px">
+<a href="index.html#before" class="other">📌 行前必做</a>
+<a href="index.html#nocar" class="other">🚗 沒車去不到</a>
+<a href="index.html#avoid" class="other">❌ 不要做</a>
+<a href="verified.html" class="full">📋 完整版</a>
+</div>
+</div>
+
+<p class="sub" style="text-align:center;margin-top:30px">
+版本 v2.0｜2026/5/12｜<a href="verified.html">查看完整版（含 350 項全景點 matrix）→</a>
+</p>
+
+</body>
+</html>
